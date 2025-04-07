@@ -21,3 +21,22 @@ em{
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+/* swiper css */
+.swiper-pagination-bullet{
+  @apply bg-[#fff] opacity-100;
+}
+.swiper-pagination-bullet-active{
+  @apply bg-[#8539FF];
+}
+
+/* 애니메이션 커스텀 */
+.animate__delay-01s{
+  animation-delay: 0.1s
+}
+.animate__delay-02s{
+  animation-delay: 0.2s
+}
+.animate__delay-03s{
+  animation-delay: 0.3s
+}

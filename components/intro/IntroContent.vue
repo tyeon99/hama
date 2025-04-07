@@ -21,12 +21,10 @@
           <div class="txt">AI 시뮬레이션으로 피싱의 위험에서 <br />벗어나세요.</div>
         </div>
       </div>
-      <div class="custom-pgn">
-        <div class="swiper-pagination"></div>
-      </div>
+      <div class="swiper-pagination"></div>
     </div>
     <div class="start-btn">
-      <button>체험을 시작하세요</button>
+      <button @click="goLink('/main')">체험을 시작하세요</button>
     </div>
   </div>
 </template>
@@ -37,6 +35,9 @@ export default {
     this.initializeSwiper()
   },
   methods: {
+    goLink(path) {
+      this.$router.push(path)
+    },
     initializeSwiper() {
       this.swiper = new window.Swiper('.introSwiper', {
         slidesPerView: '1',
@@ -53,7 +54,7 @@ export default {
 
 <style scoped>
 .introContent{
-  @apply w-full flex flex-col justify-start items-center gap-[68px];
+  @apply w-full flex flex-col justify-start items-center gap-[68px] bg-[#0F172A];
 }
 .introSwiper{
   @apply w-full h-[592px];
@@ -79,10 +80,13 @@ export default {
   @apply text-[#fff] text-[20px] font-medium leading-[24px] tracking-[-0.4px];
   text-shadow: 0px 1px 2.8px rgba(0, 0, 0, 0.40);
 }
-.custom-pgn{
-  @apply w-full flex justify-center items-center;
-}
 .swiper-pagination{
-  @apply w-auto p-[6px_14px];
+  @apply w-auto px-[9px] left-[50%] translate-x-[-50%] bottom-[16px] rounded-[16px] bg-[rgba(15,23,42,0.5)];
+}
+.start-btn{
+  @apply w-full flex justify-center items-center px-[40px] pb-[68px];
+}
+.start-btn button{
+  @apply w-full h-[52px] border-[2px] border-[#7139FF] bg-[#0F172A] rounded-[10px] text-[#D1BCFF] text-[18px] font-normal leading-[20px] font-[JalnanGothic] pt-[3px];
 }
 </style>
