@@ -34,7 +34,7 @@
         </svg>
       </button>
     </div>
-    <AllMenu 
+    <AllMenuOffcanvas 
       v-if="isMenuOffcanvasOpen"
       :isOffcanvasAni="isOffcanvasAni"
       @close-menuOffcanvas="closeMenuOffcanvas"
@@ -43,11 +43,11 @@
 </template>
 
 <script>
-import AllMenu from '~/components/common/AllMenu'
+import AllMenuOffcanvas from '~/components/common/AllMenuOffcanvas'
 
 export default {
   components: {
-    AllMenu
+    AllMenuOffcanvas
   },
   data() {
     return {
@@ -72,7 +72,7 @@ export default {
 
 <style scoped>
 .introHeader{
-  @apply w-full p-[20px_20px_0px_16px] flex justify-between items-center fixed top-0 left-0 right-0 bg-transparent z-[999];
+  @apply w-full p-[20px_20px_0px_16px] flex justify-between items-center fixed top-0 left-0 right-0 bg-transparent z-[998] max-w-[480px] m-[0_auto];
 }
 .introHeader__menu{
   @apply flex justify-center items-center;

@@ -3,11 +3,11 @@
     <div class="swiper introSwiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <div class="title">
+          <div class="title animate__animated animate__fadeInUp animate__delay-26">
             보이스 피싱,<br />
             당신은 안전할까요?
           </div>
-          <div class="txt">철저한 대비만이 우리의 재산을<br />지킵니다.</div>
+          <div class="txt animate__animated animate__fadeInUp animate__delay-27">철저한 대비만이 우리의 재산을<br />지킵니다.</div>
         </div>
         <div class="swiper-slide">
           <div class="title">하마터면 당할 뻔!</div>
@@ -23,7 +23,7 @@
       </div>
       <div class="swiper-pagination"></div>
     </div>
-    <div class="start-btn">
+    <div class="start-btn animate__animated animate__fadeInUp animate__faster animate__delay-3s">
       <button @click="goLink('/main')">체험을 시작하세요</button>
     </div>
   </div>
@@ -40,24 +40,36 @@ export default {
     },
     initializeSwiper() {
       this.swiper = new window.Swiper('.introSwiper', {
-        slidesPerView: '1',
+        slidesPerView: 1,
         spaceBetween: 0,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+          enabled: false // 처음엔 비활성화
+        },
         pagination: {
           el: '.swiper-pagination',
           clickable: true
         }
       })
-    },
+
+      // 3초 후 autoplay 시작
+      setTimeout(() => {
+        if (this.swiper?.autoplay) {
+          this.swiper.autoplay.start()
+        }
+      }, 3000)
+    }
   }
 }
 </script>
 
 <style scoped>
 .introContent{
-  @apply w-full flex flex-col justify-start items-center gap-[68px] bg-[#0F172A];
+  @apply w-full h-[100dvh] flex flex-col justify-between items-center bg-[#0F172A] overflow-y-auto;
 }
 .introSwiper{
-  @apply w-full h-[592px];
+  @apply w-full min-h-[592px];
 }
 .swiper-slide{
   @apply w-full relative px-[24px] pt-[122px] bg-center bg-[length:100%] bg-no-repeat bg-fixed flex flex-col items-start gap-[20px];
@@ -84,7 +96,7 @@ export default {
   @apply w-auto px-[9px] left-[50%] translate-x-[-50%] bottom-[16px] rounded-[16px] bg-[rgba(15,23,42,0.5)];
 }
 .start-btn{
-  @apply w-full flex justify-center items-center px-[40px] pb-[68px];
+  @apply w-full flex justify-center items-center px-[40px] py-[60px];
 }
 .start-btn button{
   @apply w-full h-[52px] border-[2px] border-[#7139FF] bg-[#0F172A] rounded-[10px] text-[#D1BCFF] text-[18px] font-normal leading-[20px] font-[JalnanGothic] pt-[3px];

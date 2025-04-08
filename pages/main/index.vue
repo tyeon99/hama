@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/attribute-hyphenation -->
 <template>
   <div class="wrap">
     <MainHeader />
@@ -7,7 +8,7 @@
         <MainContent />
       </div>
     </div>
-    <NavigationBar />
+    <NavigationBar :activeIndex="1" />
   </div>
 </template>
 
