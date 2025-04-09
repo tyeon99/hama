@@ -38,7 +38,7 @@ em{
 
 /* 최대 사이즈 */
 body{
-  @apply w-full h-full bg-[#fff] justify-start;
+  @apply w-full h-full bg-[#fff];
 }
 .wrap{
   @apply !max-w-[480px] m-[0_auto] bg-[#fff];
