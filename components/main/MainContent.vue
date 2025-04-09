@@ -119,11 +119,11 @@ export default {
     return {
       examples: [
         {
-          cat: '가족사칭',
+          cat: '자녀납치협박',
           catClass: 'cat01',
-          title: '엄마 나 납치됐어!! 빨리 도와줘',
+          title: '"아빠, 나 사채업자에게 납치됐어…"',
           imgNum: 1,
-          text: '딸의 이름으로 저장된 전화가 걸려..딸의 이름으로 저장된 전화가 걸려..',
+          text: '사채업자 사칭, 자녀 납치를 가장한 협박형 보이스피싱',
           date: '2025.03.11',
           views: 230,
           likes: '2300',

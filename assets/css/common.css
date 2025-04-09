@@ -100,7 +100,7 @@ body{
 
 /* 사례 카테고리 css */
 .cat{
-  @apply absolute top-0 right-0 w-[82px] h-[24px] p-[5px_20px] rounded-[0px_16px] text-[#fff] text-[12px] font-extrabold leading-[14px] text-center z-[9];
+  @apply absolute top-0 right-0 w-[82px] h-[24px] p-[5px_0px] rounded-[0px_16px] text-[#fff] text-[12px] font-extrabold leading-[14px] text-center z-[9];
 }
 .cat01{
   @apply bg-[#FF87AD];
