@@ -90,7 +90,8 @@ export default {
         { label: 'AI 피싱체험', link: '/main' },
         { label: '서비스 소개', link: '/' },
         { label: '오프라인 교육', link: '/' },
-        { label: 'CONTACT US', link: '/' }
+        { label: 'CONTACT US', link: '/' },
+        { label: '구글 안드로이드 앱 다운로드', link: '/' }
       ]
     };
   },
