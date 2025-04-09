@@ -128,6 +128,33 @@ body{
 }
 
 /* 애니메이션 커스텀 */
+.animate__customBounceInUp {
+  animation-name: customBounceInUp;
+  animation-duration: 0.8s; /* 애니메이션 속도 */
+  animation-fill-mode: both;
+}
+@keyframes customBounceInUp {
+  from, 40%, 55%, 70%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100px, 0);
+  }
+  40% {
+    opacity: 1;
+    transform: translate3d(0, -3px, 0);
+  }
+  55% {
+    transform: translate3d(0, 3px, 0);
+  }
+  70% {
+    transform: translate3d(0, -3px, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
 .animate__delay-01s{
   animation-delay: 0.1s
 }

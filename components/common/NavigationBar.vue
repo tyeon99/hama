@@ -2,7 +2,7 @@
 <template>
   <div class="navigationBar">
     <div
-      class="navigationBar__nav animate__animated animate__fadeInUp animate__faster animate__delay-1s"
+      class="navigationBar__nav animate__animated animate__bounceInUp animate__delay-1s animate__customBounceInUp"
     >
       <button
         v-for="(item, idx) in navItems"
