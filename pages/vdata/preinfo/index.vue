@@ -3,18 +3,18 @@
   <div class="wrap">
     <div class="container">
       <div class="content">
-        <VDataBriefingContent />
+        <VDataPreinfoContent />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import VDataBriefingContent from '~/components/vdata/briefing/VDataBriefingContent'
+import VDataPreinfoContent from '~/components/vdata/preinfo/VDataPreinfoContent'
 
 export default {
   components: {
-    VDataBriefingContent
+    VDataPreinfoContent
   }  
 }
 </script>

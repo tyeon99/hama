@@ -100,7 +100,7 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      this.goLink('/vdata/briefing')
+      this.goLink('/vdata/preinfo')
     }, 3000)
   },
   methods: {

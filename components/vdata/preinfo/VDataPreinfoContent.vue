@@ -3,7 +3,7 @@
     <div class="vDataContent__title animate__animated animate__fadeInUp">
       <span>사전 상황</span> 설명
     </div>
-    <div class="vDataContent__briefing animate__animated animate__fadeInUp animate__delay-01s">
+    <div class="vDataContent__preinfo animate__animated animate__fadeInUp animate__delay-01s">
       <!-- 사전상황 내용 -->
     </div>
     <div class="vDataContent__btn animate__animated animate__fadeInUp animate__delay-02s">
@@ -46,7 +46,7 @@ export default {
 .vDataContent__title span{
   @apply font-[JalnanGothic] text-[#7139FF];
 }
-.vDataContent__briefing{
+.vDataContent__preinfo{
   @apply w-full p-[20px] rounded-[16px] bg-[#fff] mb-[24px];
 }
 .vDataContent__btn{
