@@ -31,7 +31,7 @@
               </div>
               <div class="date" :class="zoomClass">{{ item.date }}</div>
               <div class="numlike">
-                <div class="num">
+                <div class="num" :class="zoomClass">
                   체험 <strong>{{ item.views }}</strong>
                 </div>
                 <button class="like">
@@ -82,7 +82,7 @@
                 src="~/assets/img/main/detail-title.png"
                 alt="자세히보기 타이틀 아이콘"
               />
-              <span>디지털 피싱 정보</span>
+              <span :class="zoomClass">디지털 피싱 정보</span>
             </div>
             <div class="detail-txt">
               <div class="txt">
@@ -99,8 +99,8 @@
               </div>
             </div>
             <div class="detail-btn">
-              <button class="fill">체험 하러 가기</button>
-              <button>자세히 보러가기</button>
+              <button class="fill" @click="goLink('/vdata')">체험 하러 가기</button>
+              <button @click="goLink('/main/detail')">자세히 보러가기</button>
             </div>
           </div>
           <!-- ex-detail -->
@@ -212,6 +212,9 @@ export default {
     this.offEventBus()
   },
   methods: {
+    goLink(path) {
+      this.$router.push(path)
+    },
     formatLikes (num) {
       if (num >= 1000) {
         return (num / 1000).toFixed(1).replace(/\.0$/, '') + '천개';
@@ -310,7 +313,7 @@ export default {
   @apply w-[calc(100%-40px)] h-[1px] bg-[#6B6D95] m-[16px_auto];
 }
 .ex-detail .detail-title {
-  @apply w-full flex justify-start items-center gap-[8px] px-[8px] mb-[16px];
+  @apply w-full flex justify-start items-end gap-[8px] px-[8px] mb-[16px];
 }
 .ex-detail .detail-title span {
   @apply font-[JalnanGothic] text-[16px] font-normal leading-[20px] tracking-[0.48px] text-[#2B2436];

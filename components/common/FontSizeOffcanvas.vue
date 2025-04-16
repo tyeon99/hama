@@ -87,6 +87,9 @@ export default {
       return this.$store.state.font.fontSizePercent
     }
   },
+  mounted() {
+    document.body.appendChild(this.$el)
+  },
   methods: {
     closeFontSizeOffcanvas () {
       this.$emit('close-fontSizeOffcanvas')
@@ -151,7 +154,7 @@ export default {
   @apply w-full flex flex-col justify-start items-center mb-[48px];
 }
 .offcanvas-body .title {
-  @apply font-[JalnanGothic] mt-[20px] mb-[32px] text-[#2B2436] text-[18px] font-normal leading-[20px];
+  @apply font-[JalnanGothic] mt-[20px] mb-[32px] text-[#2B2436] text-[20px] font-normal leading-[24px];
 }
 .offcanvas-body .control-box {
   @apply w-full flex justify-center items-center gap-[12px];
