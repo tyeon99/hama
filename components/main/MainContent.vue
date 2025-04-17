@@ -13,6 +13,7 @@
           :key="idx"
           class="example animate__animated animate__fadeInUp"
           :style="{ animationDelay: `${(idx + 1) * 0.1}s` }"
+          @click="openDetail(idx)"
         >
           <span :class="['cat', item.catClass]">{{ item.cat }}</span>
           <div class="title text-truncate" :class="zoomClass">
@@ -34,7 +35,7 @@
                 <div class="num" :class="zoomClass">
                   체험 <strong>{{ item.views }}</strong>
                 </div>
-                <button class="like">
+                <button class="like" @click.stop>
                   <span
                     >좋아요 <strong>{{ formatLikes(item.likes) }}</strong></span
                   >
@@ -47,7 +48,7 @@
               </div>
             </div>
           </div>
-          <button class="more" @click="openDetail(idx)">
+          <div class="more">
             <svg
               :class="{ rotated: item.isOpen }"
               xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +70,7 @@
                 fill="#6B6D95"
               />
             </svg>
-          </button>
+          </div>
           <div
             ref="detailBox"
             class="ex-detail"
