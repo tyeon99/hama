@@ -43,10 +43,7 @@ body{
 .wrap{
   @apply !max-w-[480px] m-[0_auto] bg-[#fff];
 }
-.offcanvas-overlay {
-  @apply max-w-[480px] m-[0_auto];
-}
-.navigationBar{
+.offcanvas-overlay, .chatModal, .chatVoiceAnimation, .navigationBar, .chatNavigationBar, .chatTimeOutWarning, .modal-overlay {
   @apply max-w-[480px] m-[0_auto];
 }
 
@@ -169,4 +166,123 @@ body{
 }
 .animate__delay-27{
   animation-delay: 2.7s
+}
+
+/* 채팅화면 음성 애니메이션 */
+.wave {
+  position: absolute;
+  background: rgba(160, 153, 255, 0.5);
+  border-radius: 100%;
+  /* filter: blur(1px); */
+  z-index: 99;
+}
+
+.wave1 {
+  width: 210px;
+  height: 210px;
+  top: -15px;
+  left: -15px;
+  animation: wobble1 0.7s infinite ease-in-out;
+}
+
+.wave2 {
+  width: 170px;
+  height: 230px;
+  top: -20px;
+  left: 0px;
+  rotate: 150deg;
+  animation: wobble2 0.9s infinite ease-in-out;
+}
+
+.wave3 {
+  width: 170px;
+  height: 230px;
+  top: -20px;
+  left: 10px;
+  rotate: 50deg;
+  animation: wobble3 1.1s infinite ease-in-out;
+}
+
+.wave4 {
+  width: 170px;
+  height: 210px;
+  top: -20px;
+  left: 0px;
+  animation: wobble4 1.3s infinite ease-in-out;
+}
+
+@keyframes wobble1 {
+  0% {
+    transform: scale(1) rotate(0deg);
+    border-radius: 50%;
+  }
+
+  50% {
+    transform: scale(1.05) rotate(1deg);
+    border-radius: 47% 53% 50% 50% / 50% 50% 53% 47%;
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+    border-radius: 50%;
+  }
+}
+
+@keyframes wobble2 {
+  0% {
+    transform: scale(1) rotate(0deg);
+    border-radius: 50%;
+  }
+
+  50% {
+    transform: scale(1.03) rotate(-1deg);
+    border-radius: 50% 52% 48% 50% / 49% 50% 51% 50%;
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+    border-radius: 50%;
+  }
+}
+
+@keyframes wobble3 {
+  0% {
+    transform: scale(1) rotate(0deg);
+    border-radius: 50%;
+  }
+
+  50% {
+    transform: scale(1.04) rotate(1.5deg);
+    border-radius: 49% 51% 53% 47% / 48% 52% 50% 50%;
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+    border-radius: 50%;
+  }
+}
+
+@keyframes wobble4 {
+  0% {
+    transform: scale(1) rotate(0deg);
+    border-radius: 50%;
+  }
+
+  50% {
+    transform: scale(1.06) rotate(-2deg);
+    border-radius: 48% 52% 46% 54% / 52% 48% 54% 46%;
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+    border-radius: 50%;
+  }
+}
+
+/* UI 버튼 모음 */
+.showButton{
+  @apply fixed right-[20px] top-[70px] flex flex-col gap-[10px];
+}
+.showButton button{
+  @apply w-[30px] py-[10px] text-[12px] font-normal rounded-full bg-[#67CE67] text-[#fff];
 }

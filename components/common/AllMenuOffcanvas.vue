@@ -89,7 +89,8 @@ export default {
       menuItems: [
         { label: 'AI 피싱 체험', link: '/main' },
         { label: '서비스 소개', link: '/' },
-        { label: '오프라인 교육', link: '/' },
+        { label: '오프라인 교육안내', link: '/' },
+        { label: '협력 파트너', link: '/' },
         { label: '안드로이드 앱 다운로드', link: '/' },
         { label: 'Contact Us', link: '/' }
       ]
