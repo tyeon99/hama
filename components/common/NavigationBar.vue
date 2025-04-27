@@ -45,7 +45,7 @@ export default {
       navItems: [
         { label: '홈', img: 'nav-home', link: '/' },
         { label: 'AI피싱체험', img: 'nav-ai', link: '/main' },
-        { label: '하마터면', img: 'nav-intro', link: '/' },
+        { label: '하마터면', img: 'nav-intro', link: '/guide/intro' },
         { label: '글자크기', img: 'nav-fontsize' }
       ],
       isOffcanvasAni: false,

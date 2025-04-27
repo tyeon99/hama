@@ -88,11 +88,11 @@ export default {
     return {
       menuItems: [
         { label: 'AI 피싱 체험', link: '/main' },
-        { label: '서비스 소개', link: '/' },
-        { label: '오프라인 교육안내', link: '/' },
-        { label: '협력 파트너', link: '/' },
+        { label: '서비스 소개', link: '/guide/intro' },
+        { label: '오프라인 교육안내', link: '/guide/education' },
+        { label: '협력 파트너', link: '/guide/partner' },
         { label: '안드로이드 앱 다운로드', link: '/' },
-        { label: 'Contact Us', link: '/' }
+        { label: 'Contact Us', link: '/guide/inquiry' }
       ]
     };
   },
@@ -135,7 +135,7 @@ export default {
   @apply flex flex-col justify-start items-start gap-[24px];
 }
 .offcanvas-body .menu-group button{
-  @apply flex justify-start items-center gap-[16px];
+  @apply w-full flex justify-start items-center gap-[16px];
 }
 .offcanvas-body .menu-group button span{
   @apply text-[#2c2c2c] font-extrabold text-[20px] leading-[24px];

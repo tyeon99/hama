@@ -13,7 +13,7 @@
         @blur="onInputBlur"
         @keyup.enter="onInputSend"
       />
-      <button @click="onInputButtonClick">
+      <button @mousedown="onInputButtonClick">
         <img width="49" :src="buttonImgSrc" alt="input 버튼" />
       </button>
     </div>

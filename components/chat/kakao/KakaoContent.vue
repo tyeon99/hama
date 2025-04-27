@@ -1,26 +1,32 @@
+<!-- eslint-disable vue/no-v-html -->
 <!-- eslint-disable vue/attribute-hyphenation -->
 <template>
-  <div class="kakaoContent">
+  <div ref="chatContent" class="kakaoContent">
     <div class="kakaoContent__state">
       <img width="16" src="~/assets/img/chat/calling/state-img.png">
       <span :class="zoomClass">모의체험 중</span>
     </div>
     <div class="kakaoContent__chat">
-      <div class="aiChat">
+      <div
+        v-for="(msg, idx) in aiMessages"
+        v-show="msg.typingText.length > 0"
+        :key="idx"
+        class="aiChat"
+      >
         <div class="profile">
           <img width="32" src="~/assets/img/common/profile02.png">
           <span :class="zoomClass">한사기 부장</span>
         </div>
         <div class="chat">
-          <p :class="zoomClass">고객님 안녕하세요 정부지원 대출 상담원 박대출 이올시다.</p>
+          <p :class="zoomClass" v-html="msg.typingText"></p>
           <div class="time" :class="zoomClass">오전 11:29</div>
         </div>
       </div>
-      <div class="userChat">
+      <div v-show="showMessage01" class="userChat"> <!--v-show 생략(밑에것들 까지 / 보여주기용입니당)-->
         <div class="time" :class="zoomClass">오전 11:29</div>
         <p :class="zoomClass">우리딸이라며?</p>
       </div>
-      <div class="aiChat img">
+      <div v-show="showMessage02" class="aiChat img"> <!--ai채팅에 이미지가 들어갈 경우 (타이핑 효과 X)-->
         <div class="profile">
           <img width="32" src="~/assets/img/common/profile02.png">
           <span :class="zoomClass">한사기 부장</span>
@@ -34,7 +40,7 @@
           <div class="time" :class="zoomClass">오전 11:29</div>
         </div>
       </div>
-      <div class="aiChat link">
+      <div v-show="showMessage03" class="aiChat link">  <!--ai채팅에 링크가 들어갈 경우 (타이핑 효과 X)-->
         <div class="profile">
           <img width="32" src="~/assets/img/common/profile02.png">
           <span :class="zoomClass">한사기 부장</span>
@@ -48,7 +54,7 @@
           <div class="time" :class="zoomClass">오전 11:29</div>
         </div>
       </div>
-      <div class="aiChat">
+      <div v-show="showMessage04" class="aiChat">  <!--관계없는 발화 횟수 초과 종료 처리 전 마지막 메세지 (타이핑 효과 X)-->
         <div class="profile">
           <img width="32" src="~/assets/img/common/profile02.png">
           <span :class="zoomClass">한사기 부장</span>
@@ -63,7 +69,7 @@
       </div>
     </div>
 
-    <!-- UI 버튼 모음 -->
+    <!-- UI 버튼 모음 (생략) -->
     <div class="showButton">
       <button @click="openChatVoiceAnimation">음성입력</button>
       <button @click="openChatChoiceOffcanvas">답변선택</button>
@@ -152,7 +158,23 @@ export default {
       isChatTimeOutWarningOpen: false,
       isChatTimeOutEndModalOpen: false,
       modalImgSrc: null,
-      isModalAni: 'animate__zoomIn'
+      isModalAni: 'animate__zoomIn',
+      aiMessages: [
+        {
+          fullText: '고객님 안녕하세요 정부지원 대출 상담원 박대출 이올시다.',
+          typingText: ''
+        },
+        {
+          fullText: '검찰에서 발급된 공식 신분증을 카카오톡으로 보내드렸습니다.',
+          typingText: ''
+        }
+      ],
+      currentTypingIndex: 0,
+      typingInterval: null,
+      showMessage01: false, // 생략
+      showMessage02: false, // 생략
+      showMessage03: false, // 생략
+      showMessage04: false // 생략
     }
   },
   computed: {
@@ -169,7 +191,67 @@ export default {
       return ''
     }
   },
+  mounted() {
+    this.startTyping()
+  },
   methods: {
+    showMessages() {  // 생략 (나머지 메세지들 보여주기용입니다)
+      this.showMessage01 = true
+      this.scrollToBottom()
+      setTimeout(() => {
+        this.showMessage02 = true
+        this.scrollToBottom()
+      }, 1000)
+      setTimeout(() => {
+        this.showMessage03 = true
+        this.scrollToBottom()
+      }, 2000)
+      setTimeout(() => {
+        this.showMessage04 = true
+        this.scrollToBottom()
+      }, 3000)
+    },
+    // 채팅화면 아래로 스크롤
+    scrollToBottom() {
+      this.$nextTick(() => {
+        const chatContent = this.$refs.chatContent
+        chatContent.scrollTo({
+          top: chatContent.scrollHeight,
+          behavior: 'smooth'
+        })
+      })
+    },
+    // ai채팅 타이핑
+    startTyping() {
+      this.typeNextMessage(this.currentTypingIndex)
+    },
+    typeNextMessage(index) {
+      if (index >= this.aiMessages.length) {
+        this.showMessages() // 생략 (나머지 메세지들 보여주기용입니다)
+        return
+      }
+      const message = this.aiMessages[index]
+      message.typingText = ''
+
+      let charIndex = 0
+      clearInterval(this.typingInterval)
+
+      this.typingInterval = setInterval(() => {
+        if (charIndex < message.fullText.length) {
+          message.typingText += message.fullText[charIndex++]
+          this.scrollToBottom()
+        } else {
+          clearInterval(this.typingInterval)
+          this.scrollToBottom()
+
+          // 2초 후 다음 메시지 타이핑
+          setTimeout(() => {
+            this.currentTypingIndex++
+            this.typeNextMessage(this.currentTypingIndex)
+          }, 1000)
+        }
+      }, 100)
+    },
     // 이미지, 링크 열고 닫기기
     openChatImgModal(src) {
       this.modalImgSrc = src

@@ -278,7 +278,7 @@ export default {
   @apply w-full bg-[#fff] rounded-[0px_0px_16px_16px] border border-[#CED0F8] p-[20px_12px] border-t-0 flex flex-col justify-start items-center gap-[20px];
 }
 .mainContent__box .bottom .example {
-  @apply relative w-full rounded-[16px] border border-[#dee1e6] bg-[#fff] p-[12px_8px_8px];
+  @apply relative w-full rounded-[16px] border border-[#dee1e6] bg-[#fff] p-[12px_8px_8px] cursor-pointer;
 }
 .mainContent__box .bottom .example .title {
   @apply w-[calc(100%-67px)] text-[#2B2436] text-[18px] font-extrabold leading-[20px] mb-[10px] px-[12px];
