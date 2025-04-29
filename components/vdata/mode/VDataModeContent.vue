@@ -38,6 +38,7 @@
           </label>
         </div>
       </div>
+      <div class="caution">※ 음성대화는 크롬과 엣지 브라우저만 지원합니다.</div>
     </div>
     <div class="vDataContent__btn animate__animated animate__fadeInUp animate__delay-03s">
       <button
@@ -146,5 +147,8 @@ export default {
 }
 .vDataContent__btn button.fill{
   @apply border-none bg-[#6B4EFF] text-[#fff];
+}
+.caution{
+  @apply w-full text-center mt-[16px] font-medium text-[14px] leading-[17px] text-[#6B6D95];
 }
 </style>
