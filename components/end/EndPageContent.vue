@@ -36,11 +36,10 @@
             <img width="24" :src="card.icon" :alt="card.title" />
             <span :class="zoomClass">{{ card.title }}</span>
           </div>
-          <div class="txtBox">
+          <div class="txtBox" :class="zoomClass">
             <p
               v-for="(txt, pidx) in card.contents"
               :key="pidx"
-              :class="zoomClass"
             >{{ txt }}</p>
           </div>
         </div>
@@ -202,5 +201,28 @@ export default {
 }
 .endPageContent__btn button.fill{
   @apply border-none bg-[#FFE14E];
+}
+
+/* 글자크기 */
+.endPageContent__bottom .card-group .card .txtBox.zoom-07, .endPageContent__bottom .card-group .card .txtBox.zoom-08, .endPageContent__bottom .card-group .card .txtBox.zoom-09, .endPageContent__bottom .card-group .card .txtBox.zoom-11, .endPageContent__bottom .card-group .card .txtBox.zoom-12, .endPageContent__bottom .card-group .card .txtBox.zoom-13{
+  zoom: 1;
+}
+.endPageContent__bottom .card-group .card .txtBox.zoom-07 p{
+  zoom: 0.7;
+}
+.endPageContent__bottom .card-group .card .txtBox.zoom-08 p{
+  zoom: 0.8;
+}
+.endPageContent__bottom .card-group .card .txtBox.zoom-09 p{
+  zoom: 0.9;
+}
+.endPageContent__bottom .card-group .card .txtBox.zoom-11 p{
+  zoom: 1.1;
+}
+.endPageContent__bottom .card-group .card .txtBox.zoom-12 p{
+  zoom: 1.2;
+}
+.endPageContent__bottom .card-group .card .txtBox.zoom-13 p{
+  zoom: 1.3;
 }
 </style>
