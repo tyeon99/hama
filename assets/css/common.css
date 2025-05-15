@@ -288,6 +288,7 @@ body{
 }
 
 /* 데이터 css */
+/* (결과화면) */
 .endPageContent__bottom .card-group .card .txtBox p{
   @apply w-full pl-[20px] relative font-medium text-[14px] leading-[17px] text-[#6B6D95] before:content-[''] before:absolute before:left-[7px] before:top-[7px] before:w-[3px] before:h-[3px] before:bg-[#6B6D95] before:rounded-full;
 }
@@ -299,4 +300,8 @@ body{
 }
 .endPageContent__bottom .top .box .title span{
   @apply font-semibold text-[16px] leading-[19px] text-[#fff];
+}
+/* (채팅화면) */
+.callingContent__chat .aiChat p a{
+  @apply text-[#2687F5];
 }

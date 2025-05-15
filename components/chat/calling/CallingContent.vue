@@ -25,14 +25,14 @@
           </button>
         </p>
       </div>
-      <div v-show="showMessage03" class="aiChat link"> <!--ai채팅에 링크가 들어갈 경우 (타이핑 효과 X)-->
+      <!-- <div v-show="showMessage03" class="aiChat link">
         <p :class="zoomClass">
           <button @click="openChatImgModal(require('~/assets/img/chat/calling/ex-img02.png'))">
             대법원사건조회.kr
           </button>
         </p>
-      </div>
-      <div v-show="showMessage04" class="aiChat">  <!--관계없는 발화 횟수 초과 종료 처리 전 마지막 메세지 (타이핑 효과 X)-->
+      </div> -->
+      <div v-show="showMessage04" class="aiChat end">  <!--관계없는 발화 횟수 초과 종료 처리 전 마지막 메세지 (타이핑 효과 X)-->
         <p :class="zoomClass">
           ...
           <img width="16" src="~/assets/img/common/chat_end-icon.png">
@@ -138,6 +138,10 @@ export default {
         {
           fullText: '검찰에서 발급된 공식 신분증을 카카오톡으로 보내드렸습니다.',
           typingText: ''
+        },
+        {
+          fullText: '이 사건은 <a href="https://www.naver.com">대법원사건조회.kr</a> 에서 확인하실 수 있습니다.',
+          typingText: ''
         }
       ],
       currentTypingIndex: 0,
@@ -204,12 +208,28 @@ export default {
       const message = this.aiMessages[index]
       message.typingText = ''
 
-      let charIndex = 0
       clearInterval(this.typingInterval)
 
+      // 태그 분리 후 타이핑
+      const regex = /<\/?[^>]+>|[^<>]+/g
+      const parts = message.fullText.match(regex) || []
+
+      let partIndex = 0
+      let charIndex = 0
+
       this.typingInterval = setInterval(() => {
-        if (charIndex < message.fullText.length) {
-          message.typingText += message.fullText[charIndex++]
+        if (partIndex < parts.length) {
+          const part = parts[partIndex]
+          if (part.startsWith('<')) {
+            message.typingText += part
+            partIndex++
+            charIndex = 0
+          } else if (charIndex < part.length) {
+            message.typingText += part[charIndex++]
+          } else {
+            partIndex++
+            charIndex = 0
+          }
           this.scrollToBottom()
         } else {
           clearInterval(this.typingInterval)
@@ -331,13 +351,16 @@ export default {
   @apply w-full pr-[28px] flex justify-start items-center;
 }
 .callingContent__chat .aiChat p{
-  @apply relative bg-[#fff] p-[16px_24px] rounded-[16px] font-medium text-[16px] leading-[19px] text-[#2B2436] shadow-[0px_0px_12px_0px_rgba(0,0,0,0.08)] flex justify-start items-center before:content-[''] before:absolute before:w-[20.72px] before:h-[34.64px] before:bottom-0 before:left-[-7.72px] before:bg-[url(~/assets/img/chat/calling/aiChat-tail.png)] before:bg-cover before:bg-center before:bg-no-repeat;
+  @apply relative bg-[#fff] p-[16px_24px] rounded-[16px] font-medium text-[16px] leading-[19px] text-[#2B2436] shadow-[0px_0px_12px_0px_rgba(0,0,0,0.08)] before:content-[''] before:absolute before:w-[20.72px] before:h-[34.64px] before:bottom-0 before:left-[-7.72px] before:bg-[url(~/assets/img/chat/calling/aiChat-tail.png)] before:bg-cover before:bg-center before:bg-no-repeat;
+}
+.callingContent__chat .aiChat p a{
+  @apply text-[#2687F5];
 }
 .callingContent__chat .aiChat.img p{
   @apply p-0 max-w-[250px] rounded-none bg-transparent before:content-none
 }
-.callingContent__chat .aiChat.link p{
-  @apply text-[#2687F5];
+.callingContent__chat .aiChat.end p{
+  @apply flex justify-start items-center;
 }
 .callingContent__chat .userChat{
   @apply w-full pl-[28px] flex justify-end items-center;
