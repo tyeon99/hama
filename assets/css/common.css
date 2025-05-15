@@ -286,3 +286,17 @@ body{
 .showButton button{
   @apply w-[30px] py-[10px] text-[12px] font-normal rounded-full bg-[#67CE67] text-[#fff];
 }
+
+/* 데이터 css */
+.endPageContent__bottom .card-group .card .txtBox p{
+  @apply w-full pl-[20px] relative font-medium text-[14px] leading-[17px] text-[#6B6D95] before:content-[''] before:absolute before:left-[7px] before:top-[7px] before:w-[3px] before:h-[3px] before:bg-[#6B6D95] before:rounded-full;
+}
+.endPageContent__bottom .top .box .title{
+  @apply w-full flex justify-center items-center gap-[8px];
+}
+.endPageContent__bottom .top .box .title p{
+  @apply font-[JalnanGothic] font-normal text-[18px] leading-[21px] text-[#fff];
+}
+.endPageContent__bottom .top .box .title span{
+  @apply font-semibold text-[16px] leading-[19px] text-[#fff];
+}
