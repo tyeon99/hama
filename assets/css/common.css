@@ -302,6 +302,6 @@ body{
   @apply font-semibold text-[16px] leading-[19px] text-[#fff];
 }
 /* (채팅화면) */
-.callingContent__chat .aiChat p a{
+.callingContent__chat .aiChat p a, .messagesContent__chat .aiChat p a, .kakaoContent__chat .aiChat p a{
   @apply text-[#2687F5];
 }
