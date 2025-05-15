@@ -34,7 +34,7 @@ export default {
 
 <style scoped>
 .chatModal {
-  @apply fixed inset-0 z-[999] bg-[#202020] flex flex-col justify-start items-center overflow-y-auto;
+  @apply fixed inset-0 z-[9999] bg-[#202020] flex flex-col justify-start items-center overflow-y-auto;
 }
 .chatModal__header{
   @apply sticky top-0 left-0 w-full h-[64px] bg-[#4D4D4D] flex justify-start items-center gap-[8px] p-[16px] border-b border-[#f5f5f5];
