@@ -1,6 +1,7 @@
 <template>
   <div class="endPageContent">
-    <div class="endPageContent__top">
+    <!-- 시나리오 별 배경이미지 's001 ~ s012' -->
+    <div class="endPageContent__top s001">
       <span class="cat cat01">가족사칭</span>
       <div class="title text-truncate" :class="zoomClass">엄마 나 납치됐어!! 빨리 도와줘!!!</div>
       <div class="txt text-truncate2" :class="zoomClass">
@@ -155,7 +156,7 @@ export default {
   @apply w-full bg-[#798DFF] pb-[120px];
 }
 .endPageContent__top{
-  @apply relative w-full p-[48px_93px_77px_16px] bg-[url(~/assets/img/end/end-bg.png)] bg-center bg-cover bg-no-repeat;
+  @apply relative w-full p-[48px_93px_77px_16px] bg-center bg-cover bg-no-repeat;
 }
 .endPageContent__top .cat{
   @apply top-[10px] right-[7px] rounded-[12px];

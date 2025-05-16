@@ -111,6 +111,24 @@ body{
 .cat04{
   @apply bg-[#1DC8B6];
 }
+.cat05{
+  @apply bg-[#E587FF];
+}
+.cat06{
+  @apply bg-[#5996FF];
+}
+.cat07{
+  @apply bg-[#FFC831];
+}
+.cat08{
+  @apply bg-[#30CD42];
+}
+.cat09{
+  @apply bg-[#AF76FF];
+}
+.cat10{
+  @apply bg-[#FF667A];
+}
 
 /* 메인 아코디언 효과 */
 .ex-detail {
@@ -289,6 +307,43 @@ body{
 
 /* 데이터 css */
 /* (결과화면) */
+/* 시나리오별 배경이미지  */
+.endPageContent__top.s001{
+  @apply bg-[url(https://img.thinkpool.com/hama/img/end/end-bg01.png)];
+}
+.endPageContent__top.s002{
+  @apply bg-[url(https://img.thinkpool.com/hama/img/end/end-bg02.png)];
+}
+.endPageContent__top.s003{
+  @apply bg-[url(https://img.thinkpool.com/hama/img/end/end-bg03.png)];
+}
+.endPageContent__top.s004{
+  @apply bg-[url(https://img.thinkpool.com/hama/img/end/end-bg04.png)];
+}
+.endPageContent__top.s005{
+  @apply bg-[url(https://img.thinkpool.com/hama/img/end/end-bg05.png)];
+}
+.endPageContent__top.s006{
+  @apply bg-[url(https://img.thinkpool.com/hama/img/end/end-bg06.png)];
+}
+.endPageContent__top.s007{
+  @apply bg-[url(https://img.thinkpool.com/hama/img/end/end-bg07.png)];
+}
+.endPageContent__top.s008{
+  @apply bg-[url(https://img.thinkpool.com/hama/img/end/end-bg08.png)];
+}
+.endPageContent__top.s009{
+  @apply bg-[url(https://img.thinkpool.com/hama/img/end/end-bg09.png)];
+}
+.endPageContent__top.s010{
+  @apply bg-[url(https://img.thinkpool.com/hama/img/end/end-bg10.png)];
+}
+.endPageContent__top.s011{
+  @apply bg-[url(https://img.thinkpool.com/hama/img/end/end-bg11.png)];
+}
+.endPageContent__top.s012{
+  @apply bg-[url(https://img.thinkpool.com/hama/img/end/end-bg12.png)];
+}
 .endPageContent__bottom .card-group .card .txtBox p{
   @apply w-full pl-[20px] relative font-medium text-[14px] leading-[17px] text-[#6B6D95] before:content-[''] before:absolute before:left-[7px] before:top-[7px] before:w-[3px] before:h-[3px] before:bg-[#6B6D95] before:rounded-full;
 }
