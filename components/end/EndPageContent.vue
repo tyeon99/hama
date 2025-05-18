@@ -3,7 +3,7 @@
     <!-- 시나리오 별 배경이미지 's001 ~ s012' -->
     <div class="endPageContent__top s001">
       <span class="cat cat01">가족사칭</span>
-      <div class="title text-truncate" :class="zoomClass">엄마 나 납치됐어!! 빨리 도와줘!!!</div>
+      <div class="title text-truncate2" :class="zoomClass">엄마 나 납치됐어!! 빨리 도와줘!!!</div>
       <div class="txt text-truncate2" :class="zoomClass">
         딸의 이름으로 저장된 전화가 걸려..딸의 이름으로 저장된 전화가 걸려..
       </div>
@@ -156,13 +156,13 @@ export default {
   @apply w-full bg-[#798DFF] pb-[120px];
 }
 .endPageContent__top{
-  @apply relative w-full p-[48px_93px_77px_16px] bg-center bg-cover bg-no-repeat;
+  @apply relative w-full p-[48px_16px_77px] bg-center bg-cover bg-no-repeat;
 }
 .endPageContent__top .cat{
   @apply top-[10px] right-[7px] rounded-[12px];
 }
 .endPageContent__top .title{
-  @apply font-extrabold text-[24px] leading-[29px] text-[#fff] mb-[8px];
+  @apply font-extrabold text-[22px] leading-[29px] text-[#fff] mb-[8px];
 }
 .endPageContent__top .txt{
   @apply font-medium text-[13px] leading-[16px] text-[#fff];
