@@ -6,7 +6,6 @@
       animate__fadeIn: isOffcanvasAni,
       animate__fadeOut: !isOffcanvasAni,
     }"
-    @click="closeChatKeypadOffcanvas"
   >
     <div
       ref="offcanvas"
@@ -15,11 +14,7 @@
         animate__fadeInUp: isOffcanvasAni,
         animate__fadeOutDown: !isOffcanvasAni,
       }"
-      :style="{ transform: `translateY(${translateY}px)` }"
       @click.stop
-      @touchstart="onTouchStart"
-      @touchmove="onTouchMove"
-      @touchend="onTouchEnd"
     >
       <div class="offcanvas-body">
         <div class="title">{{ titleTxt }}</div>

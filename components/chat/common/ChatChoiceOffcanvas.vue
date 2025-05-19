@@ -5,7 +5,6 @@
       animate__fadeIn: isOffcanvasAni,
       animate__fadeOut: !isOffcanvasAni,
     }"
-    @click="closeChatChoiceOffcanvas"
   >
     <div
       ref="offcanvas"
@@ -14,13 +13,9 @@
         animate__fadeInUp: isOffcanvasAni,
         animate__fadeOutDown: !isOffcanvasAni,
       }"
-      :style="{ transform: `translateY(${translateY}px)` }"
       @click.stop
-      @touchstart="onTouchStart"
-      @touchmove="onTouchMove"
-      @touchend="onTouchEnd"
     >
-      <div class="offcanvas-header">
+      <!-- <div class="offcanvas-header">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="48"
@@ -35,7 +30,7 @@
             fill="#CDCFD0"
           />
         </svg>
-      </div>
+      </div> -->
       <div class="offcanvas-body">
         <img
           width="88"
@@ -44,7 +39,7 @@
         <div class="title">납치범이 송금을 요구하고 있습니다. 어떻게 하시겠습니까?</div>
       </div>
       <div class="offcanvas-footer">
-        <button>
+        <button @click="closeChatChoiceOffcanvas">
           <img width="12" src="~/assets/img/common/chat_choice-arrow.png">
           <span>즉시 송금하고 딸을 찾는다.</span>
         </button>
@@ -76,9 +71,28 @@ export default {
       return this.$store.state.font.fontSizePercent
     }
   },
+  // mounted () {
+  //   this.calcHeight()
+  // },
+  // updated () {
+  //   this.calcHeight()
+  // },
+  mounted () {
+    // 애니메이션 끝난 후 정확한 높이 측정
+    this.$refs.offcanvas?.addEventListener('animationend', this.calcHeight)
+  },
+  beforeDestroy () {
+    this.$refs.offcanvas?.removeEventListener('animationend', this.calcHeight)
+  },
   methods: {
     closeChatChoiceOffcanvas () {
       this.$emit('close-chatChoiceOffcanvas')
+    },
+    calcHeight() {
+      this.$nextTick(() => {
+        const height = this.$refs.offcanvas.offsetHeight
+        this.$emit('update-height', height)
+      })
     },
     onTouchStart (e) {
       this.touchStartY = e.touches[0].clientY
@@ -113,7 +127,7 @@ export default {
   touch-action: none; /* 터치로 인한 브라우저 액션 방지 */
 }
 .offcanvas-content {
-  @apply relative w-full bg-[#fff] p-[0px_20px_35px] rounded-t-[24px];
+  @apply relative w-full bg-[#fff] p-[25px_20px_35px] rounded-t-[24px];
   transition: transform 0.3s ease;
 }
 .offcanvas-header {

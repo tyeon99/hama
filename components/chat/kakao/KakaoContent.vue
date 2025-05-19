@@ -98,6 +98,7 @@
       v-if="isChatChoiceOffcanvasOpen"
       :isOffcanvasAni="isOffcanvasAni"
       @close-chatChoiceOffcanvas="closeChatChoiceOffcanvas"
+      @update-height="updateChatChoiceHeight"
     />
 
     <!-- 보안키패드 -->
@@ -153,6 +154,7 @@ export default {
       isChatImgModalOpen: false,
       isChatVoiceAnimationOpen: false,
       isChatChoiceOffcanvasOpen: false,
+      openChoiceChatPadding: '166px',
       isChatKeypadOffcanvasOpen: false,
       isChatNumOverOffcanvasOpen: false,
       isChatTimeOutWarningOpen: false,
@@ -270,7 +272,7 @@ export default {
             this.typeNextMessage(this.currentTypingIndex)
           }, 1000)
         }
-      }, 150)
+      }, 120)
     },
     // 이미지, 링크 열고 닫기기
     openChatImgModal(src) {
@@ -307,18 +309,32 @@ export default {
     },
     closeChatChoiceOffcanvas () {
       this.isOffcanvasAni = false
+      this.openChoiceChatPadding = '166px'
+      this.$refs.chatContent.style.paddingBottom = this.openChoiceChatPadding
+      this.scrollToBottom()
       setTimeout(() => {
         this.isChatChoiceOffcanvasOpen = false
       }, 300)
+    },
+    updateChatChoiceHeight(height) {
+      const extraPadding = 20
+      const total = height + extraPadding
+      this.openChoiceChatPadding = `${total}px`
+      this.$refs.chatContent.style.paddingBottom = this.openChoiceChatPadding
+      this.scrollToBottom()
     },
 
     // 보안 키패드 열고 닫기
     openChatKeypadOffcanvas () {
       this.isOffcanvasAni = true
       this.isChatKeypadOffcanvasOpen = true
+      this.$refs.chatContent.style.paddingBottom = '305px'
+      this.scrollToBottom()
     },
     closeChatKeypadOffcanvas () {
       this.isOffcanvasAni = false
+      this.$refs.chatContent.style.paddingBottom = '166px'
+      this.scrollToBottom()
       setTimeout(() => {
         this.isChatKeypadOffcanvasOpen = false
       }, 300)
