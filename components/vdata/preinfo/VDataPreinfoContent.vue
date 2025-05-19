@@ -49,7 +49,7 @@ export default {
   @apply font-[JalnanGothic] text-[#7139FF];
 }
 .vDataContent__preinfo{
-  @apply w-full p-[20px] rounded-[16px] bg-[#fff] mb-[24px];
+  @apply w-full max-h-[calc(100dvh-200px)] p-[20px] rounded-[16px] bg-[#fff] mb-[24px] overflow-y-auto;
 }
 .vDataContent__btn{
   @apply w-full px-[4px] flex flex-col justify-start items-center gap-[16px];
