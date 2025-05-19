@@ -242,7 +242,7 @@ export default {
             this.typeNextMessage(this.currentTypingIndex)
           }, 1000)
         }
-      }, 100)
+      }, 150)
     },
     // 이미지, 링크 열고 닫기기
     openChatImgModal(src) {

@@ -1,10 +1,12 @@
 <template>
   <div class="vDataContent">
-    <div class="vDataContent__title animate__animated animate__fadeInUp">
-      <span>사전 상황</span> 설명
-    </div>
-    <div class="vDataContent__preinfo animate__animated animate__fadeInUp animate__delay-01s">
-      <!-- 사전상황 내용 -->
+    <div class="w-full">
+      <div class="vDataContent__title animate__animated animate__fadeInUp">
+        <span>사전 상황</span> 설명
+      </div>
+      <div class="vDataContent__preinfo animate__animated animate__fadeInUp animate__delay-01s">
+        <!-- 사전상황 내용 -->
+      </div>
     </div>
     <div class="vDataContent__btn animate__animated animate__fadeInUp animate__delay-02s">
       <button>확 인</button>
@@ -38,7 +40,7 @@ export default {
 
 <style scoped>
 .vDataContent {
-  @apply w-full p-[40px_20px] bg-[url(~/assets/img/vdata/vData-bg.png)] bg-cover bg-center bg-no-repeat;
+  @apply w-full h-[100dvh] p-[40px_20px] bg-[url(~/assets/img/vdata/vData-bg.png)] bg-cover bg-center bg-no-repeat flex flex-col justify-between items-start;
 }
 .vDataContent__title{
   @apply w-full mb-[24px] font-[JalnanGothic] text-[20px] leading-[20px] text-[#2B2436] font-normal;
