@@ -101,6 +101,7 @@ export default {
       this.$emit('close-menuOffcanvas')
     },
     goLink(path) {
+      this.closeMenuOffcanvas()
       this.$router.push(path)
     }
   }

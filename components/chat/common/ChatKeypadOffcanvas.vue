@@ -22,10 +22,10 @@
       @touchend="onTouchEnd"
     >
       <div class="offcanvas-body">
-        <div class="title">주민등록 번호 앞자리 입력</div>
+        <div class="title">{{ titleTxt }}</div>
         <div class="input-dot">
           <span
-            v-for="(dot, idx) in 6"
+            v-for="(dot, idx) in maxLength"
             :key="idx"
             :class="{ active: inputValues.length > idx }"
           ></span>
@@ -57,6 +57,10 @@ export default {
     isOffcanvasAni: {
       type: Boolean,
       default: false
+    },
+    maxLength: {
+      type: Number,
+      default: 6 // 기본 6자리
     }
   },
   data () {
@@ -77,6 +81,11 @@ export default {
         ;[keysCopy[i], keysCopy[j]] = [keysCopy[j], keysCopy[i]]
       }
       return keysCopy
+    },
+    titleTxt () {
+      return this.maxLength === 6
+        ? '주민등록 번호 앞자리 입력'
+        : '주민등록 번호 13자리 입력'
     }
   },
   methods: {
@@ -92,7 +101,7 @@ export default {
     keyPress(key) {
       if (key === 'lock') return
 
-      if (this.inputValues.length < 6) {
+      if (this.inputValues.length < this.maxLength) {
         this.inputValues.push(key)
       }
     },
@@ -142,7 +151,7 @@ export default {
   @apply text-[#2B2436] text-[18px] font-semibold leading-[20px] mb-[12px];
 }
 .offcanvas-body .input-dot{
-  @apply w-full flex justify-center items-center gap-[14px] mb-[16px];
+  @apply w-full flex justify-center items-center gap-[12px] mb-[16px];
 }
 .offcanvas-body .input-dot span{
   @apply inline-block w-[12px] h-[12px] bg-[#CDD0E4] rounded-full;

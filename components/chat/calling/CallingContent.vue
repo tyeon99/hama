@@ -71,10 +71,11 @@
       @close-chatChoiceOffcanvas="closeChatChoiceOffcanvas"
     />
 
-    <!-- 보안키패드 -->
+    <!-- 보안키패드 (6 / 13 구분 추가) -->
     <ChatKeypadOffcanvas
       v-if="isChatKeypadOffcanvasOpen"
       :isOffcanvasAni="isOffcanvasAni"
+      :maxLength="6"
       @close-chatKeypadOffcanvas="closeChatKeypadOffcanvas"
     />
 
