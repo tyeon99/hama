@@ -5,7 +5,6 @@
       animate__fadeIn: isOffcanvasAni,
       animate__fadeOut: !isOffcanvasAni,
     }"
-    @click="closeChatNumOverOffcanvas"
   >
     <div
       ref="offcanvas"
@@ -16,9 +15,6 @@
       }"
       :style="{ transform: `translateY(${translateY}px)` }"
       @click.stop
-      @touchstart="onTouchStart"
-      @touchmove="onTouchMove"
-      @touchend="onTouchEnd"
     >
       <div class="offcanvas-header">
         <svg

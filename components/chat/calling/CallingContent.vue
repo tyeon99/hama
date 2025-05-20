@@ -58,6 +58,14 @@
       @close-chatImgModal="closeChatImgModal"
     />
 
+    <!-- 링크 모달 -->
+    <ChatLinkModal 
+      v-if="isChatLinkModalOpen"
+      :isModalAni="isModalAni"
+      :modalLinkSrc="modalLinkSrc"
+      @close-chatLinkModal="closeChatLinkModal"
+    />
+
     <!-- 음성 입력 애니메이션 -->
     <ChatVoiceAnimation 
       v-if="isChatVoiceAnimationOpen"
@@ -103,6 +111,7 @@
 
 <script>
 import ChatImgModal from '~/components/chat/common/ChatImgModal'
+import ChatLinkModal from '~/components/chat/common/ChatLinkModal'
 import ChatVoiceAnimation from '~/components/chat/common/ChatVoiceAnimation'
 import ChatChoiceOffcanvas from '~/components/chat/common/ChatChoiceOffcanvas'
 import ChatKeypadOffcanvas from '~/components/chat/common/ChatKeypadOffcanvas'
@@ -113,6 +122,7 @@ import ChatTimeOutEndModal from '~/components/chat/common/ChatTimeOutEndModal'
 export default {
   components: {
     ChatImgModal,
+    ChatLinkModal,
     ChatVoiceAnimation,
     ChatChoiceOffcanvas,
     ChatKeypadOffcanvas,
@@ -124,6 +134,7 @@ export default {
     return {
       isOffcanvasAni: false,
       isChatImgModalOpen: false,
+      isChatLinkModalOpen: false,
       isChatVoiceAnimationOpen: false,
       isChatChoiceOffcanvasOpen: false,
       openChoiceChatPadding: '166px',
@@ -132,6 +143,7 @@ export default {
       isChatTimeOutWarningOpen: false,
       isChatTimeOutEndModalOpen: false,
       modalImgSrc: null,
+      modalLinkSrc: null,
       isModalAni: 'animate__zoomIn',
       aiMessages: [
         {
@@ -143,7 +155,11 @@ export default {
           typingText: ''
         },
         {
-          fullText: '이 사건은 <a href="https://www.naver.com">대법원사건조회.kr</a> 에서 확인하실 수 있습니다.',
+          fullText: '이 사건은 <button class="chatLink" data-link="https://hama.thinkpool.com/main">대법원사건조회.kr</button> 에서 확인하실 수 있습니다.',
+          typingText: ''
+        },
+        {
+          fullText: '이 사건은 <button class="chatLink" data-link="https://www.thinkpool.com/">씽크풀.kr</button> 에서 확인하실 수 있습니다.',
           typingText: ''
         }
       ],
@@ -171,6 +187,7 @@ export default {
   },
   mounted() {
     this.startTyping()
+    this.chatLinkClick()
   },
   methods: {
     showMessages() {  // 생략 (나머지 메세지들 보여주기용입니다)
@@ -244,9 +261,9 @@ export default {
             this.typeNextMessage(this.currentTypingIndex)
           }, 1000)
         }
-      }, 120)
+      }, 110)
     },
-    // 이미지, 링크 열고 닫기기
+    // 이미지 열고 닫기기
     openChatImgModal(src) {
       this.modalImgSrc = src
       this.isModalAni = 'animate__zoomIn'
@@ -259,6 +276,34 @@ export default {
         this.isChatImgModalOpen = false
         this.modalImgSrc = null
       }, 300)
+    },
+
+    // 링크 열고 닫기기
+    openChatLinkModal(src) {
+      this.modalLinkSrc = src
+      this.isModalAni = 'animate__zoomIn'
+      this.isChatLinkModalOpen = true
+    },
+    closeChatLinkModal() {
+      this.isModalAni = 'animate__zoomOut'
+
+      setTimeout(() => {
+        this.isChatLinkModalOpen = false
+        this.modalImgSrc = null
+      }, 300)
+    },
+    chatLinkClick() {
+      this.$nextTick(() => {
+        const chatContent = this.$refs.chatContent
+        chatContent.addEventListener('click', (event) => {
+          if (event.target.classList.contains('chatLink')) {
+            const link = event.target.dataset.link
+            if (link) {
+              this.openChatLinkModal(link)
+            }
+          }
+        })
+      })
     },
 
     // 음성 인식 애니메이션 열고 닫기
@@ -370,7 +415,7 @@ export default {
 .callingContent__chat .aiChat p{
   @apply relative bg-[#fff] p-[16px_24px] rounded-[16px] font-medium text-[16px] leading-[19px] text-[#2B2436] shadow-[0px_0px_12px_0px_rgba(0,0,0,0.08)] before:content-[''] before:absolute before:w-[20.72px] before:h-[34.64px] before:bottom-0 before:left-[-7.72px] before:bg-[url(~/assets/img/chat/calling/aiChat-tail.png)] before:bg-cover before:bg-center before:bg-no-repeat;
 }
-.callingContent__chat .aiChat p a{
+.callingContent__chat .aiChat p button{
   @apply text-[#2687F5];
 }
 .callingContent__chat .aiChat.img p{
