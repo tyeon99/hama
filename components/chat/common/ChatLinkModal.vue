@@ -7,7 +7,13 @@
       <span>체험으로 돌아가기</span>
     </div>
     <div class="chatModal__link">
+      <img
+        v-if="isImage"
+        :src="modalLinkSrc"
+        style="width: 100%;"
+      />
       <iframe
+        v-else
         :src="modalLinkSrc"
         width="100%"
         height="100%"
@@ -27,6 +33,12 @@ export default {
     modalLinkSrc: {
       type: String,
       required: true
+    }
+  },
+  computed: {
+    isImage() {
+      // 이미지 확장자 확인
+      return /\.(jpeg|jpg|png|gif|webp|bmp|svg)$/i.test(this.modalLinkSrc);
     }
   },
   methods: {

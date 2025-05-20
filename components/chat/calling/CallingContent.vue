@@ -155,11 +155,11 @@ export default {
           typingText: ''
         },
         {
-          fullText: '이 사건은 <button class="chatLink" data-link="https://hama.thinkpool.com/main">대법원사건조회.kr</button> 에서 확인하실 수 있습니다.',
+          fullText: '이 사건은 <button class="chatLink" data-link="https://chatbot-files.thinkpool.com/files/images/008/qr_img.png">대법원사건조회.kr</button> 에서 확인하실 수 있습니다.',
           typingText: ''
         },
         {
-          fullText: '이 사건은 <button class="chatLink" data-link="https://www.thinkpool.com/">씽크풀.kr</button> 에서 확인하실 수 있습니다.',
+          fullText: '이 사건은 <button class="chatLink" data-link="https://hama.thinkpool.com/html/caseInquiry/index.html">씽크풀.kr</button> 에서 확인하실 수 있습니다.',
           typingText: ''
         }
       ],
