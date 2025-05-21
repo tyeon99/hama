@@ -68,7 +68,7 @@ export default {
   @apply font-bold text-[32px] leading-[38px] text-[#fff];
 }
 .outgoingCall .top .call-profile .txt .number{
-  @apply font-medium text-[20px] leading-[24px] tracking-[-2%] text-[#fff];
+  @apply font-medium text-[28px] leading-[28px] tracking-[-2%] text-[#fff];
 }
 .outgoingCall .bottom{
   @apply w-full flex flex-col justify-start items-center gap-[50px];
