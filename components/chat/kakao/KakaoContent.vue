@@ -248,15 +248,14 @@ export default {
     startTyping() {
       this.typeNextMessage(this.currentTypingIndex)
     },
-    typeNextMessage(index) {
+    async typeNextMessage(index) {
       if (index >= this.aiMessages.length) {
         this.showMessages() // 생략 (나머지 메세지들 보여주기용입니다)
         return
       }
+
       const message = this.aiMessages[index]
       message.typingText = ''
-
-      clearInterval(this.typingInterval)
 
       // 태그 분리 후 타이핑
       const regex = /<\/?[^>]+>|[^<>]+/g
@@ -265,31 +264,34 @@ export default {
       let partIndex = 0
       let charIndex = 0
 
-      this.typingInterval = setInterval(() => {
-        if (partIndex < parts.length) {
-          const part = parts[partIndex]
-          if (part.startsWith('<')) {
-            message.typingText += part
-            partIndex++
-            charIndex = 0
-          } else if (charIndex < part.length) {
-            message.typingText += part[charIndex++]
+      await new Promise((resolve) => {
+        this.typingInterval = setInterval(() => {
+          if (partIndex < parts.length) {
+            const part = parts[partIndex]
+            if (part.startsWith('<')) {
+              message.typingText += part
+              partIndex++
+              charIndex = 0
+            } else if (charIndex < part.length) {
+              message.typingText += part[charIndex++]
+            } else {
+              partIndex++
+              charIndex = 0
+            }
+            this.scrollToBottom()
           } else {
-            partIndex++
-            charIndex = 0
-          }
-          this.scrollToBottom()
-        } else {
-          clearInterval(this.typingInterval)
-          this.scrollToBottom()
+            clearInterval(this.typingInterval)
+            this.scrollToBottom()
 
-          // 2초 후 다음 메시지 타이핑
-          setTimeout(() => {
-            this.currentTypingIndex++
-            this.typeNextMessage(this.currentTypingIndex)
-          }, 1000)
-        }
-      }, 105)
+            // 1초 대기 후 resolve
+            setTimeout(resolve, 1000)
+          }
+        }, 105)
+      })
+
+      // 다음 메시지로 이동 (타이핑이 완전히 끝난 후)
+      this.currentTypingIndex++
+      await this.typeNextMessage(this.currentTypingIndex)
     },
     // 이미지 열고 닫기기
     openChatImgModal(src) {
