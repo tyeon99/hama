@@ -41,7 +41,7 @@ export default {
 
 <style scoped>
 .chatVoiceAnimation{
-  @apply fixed inset-0 z-[999] bg-transparent flex justify-center items-center;
+  @apply fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[999] bg-transparent flex justify-center items-center;
 }
 .circle{
   @apply relative w-[180px] h-[180px] rounded-full bg-[#333] flex justify-center items-center font-medium text-[20px] leading-[34px] tracking-[-0.4px] text-[#fff] z-[99];
