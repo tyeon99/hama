@@ -3,9 +3,11 @@
     <MessagesHeader />
     <div class="container">
       <div class="content">
-        <MessagesContent />
+        <MessagesContent ref="chatContent" />
       </div>
-      <ChatInput />
+      <ChatInput
+        @input-focus="inputFocus"
+      />
     </div>
     <ChatNavigationBar />
   </div>
@@ -23,7 +25,12 @@ export default {
     MessagesHeader,
     MessagesContent,
     ChatInput
-  }  
+  },
+  methods: {
+    inputFocus() {
+      this.$refs.chatContent.scrollToBottom()
+    }
+  }
 }
 </script>
 

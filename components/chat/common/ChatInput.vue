@@ -35,6 +35,7 @@ export default {
       this.isFocused = true
       this.buttonImgSrc = require('~/assets/img/common/chat_input-txt.png')
       this.placeholderText = ''
+      this.$emit('input-focus')
     },
     onInputBlur() {
       this.isFocused = false

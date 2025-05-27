@@ -3,9 +3,11 @@
     <KakaoHeader />
     <div class="container">
       <div class="content">
-        <KakaoContent />
+        <KakaoContent ref="chatContent" />
       </div>
-      <ChatInput />
+      <ChatInput
+        @input-focus="inputFocus"
+      />
     </div>
     <ChatNavigationBar />
   </div>
@@ -23,7 +25,12 @@ export default {
     KakaoHeader,
     KakaoContent,
     ChatInput
-  }  
+  },
+  methods: {
+    inputFocus() {
+      this.$refs.chatContent.scrollToBottom()
+    }
+  }
 }
 </script>
 
