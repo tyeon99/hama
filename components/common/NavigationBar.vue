@@ -79,11 +79,11 @@ export default {
   @apply w-full fixed bottom-[0px] flex justify-center items-center z-[997];
 }
 .navigationBar__nav {
-  @apply w-[calc(100%-16px)] h-[73px] bg-[#fff] rounded-[75px] px-[30px] flex justify-center items-center;
+  @apply w-[calc(100%-16px)] h-[58px] bg-[#fff] rounded-[75px] px-[30px] flex justify-center items-center;
   box-shadow: 0px 1px 8px 0px rgba(45, 39, 80, 0.2);
 }
 .navigationBar__nav button {
-  @apply w-[calc(100%/4)] h-[73px] flex flex-col justify-center items-center gap-[7px];
+  @apply w-[calc(100%/4)] h-[58px] flex flex-col justify-center items-center gap-[7px];
 }
 .navigationBar__nav button.active {
   @apply relative overflow-hidden before:content-[''] before:absolute before:w-[12px] before:h-[12px] before:rounded-full before:bg-[#7139FF] before:bottom-[-6px] before:left-[50%] before:translate-x-[-50%];
