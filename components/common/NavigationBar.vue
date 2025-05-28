@@ -76,7 +76,7 @@ export default {
 
 <style scoped>
 .navigationBar {
-  @apply w-full fixed bottom-[13px] flex justify-center items-center z-[997];
+  @apply w-full fixed bottom-[0px] flex justify-center items-center z-[997];
 }
 .navigationBar__nav {
   @apply w-[calc(100%-16px)] h-[73px] bg-[#fff] rounded-[75px] px-[30px] flex justify-center items-center;
