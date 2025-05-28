@@ -27,8 +27,11 @@ export default {
     ChatInput
   },
   methods: {
-    inputFocus() {
-      this.$refs.chatContent.scrollToBottom()
+    inputFocus () {
+      setTimeout(() => {
+        this.$refs.chatContent.scrollToBottom()
+        window.scrollTo(0, document.body.scrollHeight)
+      }, 300)
     }
   }
 }
