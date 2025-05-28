@@ -38,7 +38,7 @@
           </label>
         </div>
       </div>
-      <div class="caution">※ 음성대화는 크롬과 엣지 브라우저만 지원합니다.</div>
+      <div class="caution">※ iOS에서는 음성 입력 기능을 사용할 수 없어요.</div>
     </div>
     <div class="vDataContent__btn animate__animated animate__fadeInUp animate__delay-03s">
       <button

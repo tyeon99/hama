@@ -4,7 +4,7 @@
       <div class="titleBox">
         <div class="title">
           <span>하마터면 소개</span>
-          <p>"여휴, <strong>하마터면</strong> <br />진짜 큰일 날 뻔했네."</p>
+          <p>"어휴, <strong>하마터면</strong> <br />진짜 큰일 날 뻔했네."</p>
         </div>
         <img width="100" src="~/assets/img/guide/guide_top-icon01.png">
       </div>
