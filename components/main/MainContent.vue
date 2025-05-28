@@ -260,7 +260,7 @@ export default {
 
 <style scoped>
 .mainContent {
-  @apply w-full p-[36px_20px_109px] bg-[#F7F5FF];
+  @apply w-full p-[24px_20px_109px] bg-[#F7F5FF];
 }
 .mainContent__box {
   @apply w-full rounded-[16px];
