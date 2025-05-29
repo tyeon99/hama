@@ -2,7 +2,7 @@
 <template>
   <div class="vDataContent">
     <div class="vDataContent__img animate__animated animate__fadeInUp">
-      <img width="153" src="~/assets/img/vdata/vData-img.png">
+      <img width="88" src="~/assets/img/vdata/vData-img.png">
     </div>
     <div class="vDataContent__notice animate__animated animate__fadeInUp animate__delay-01s">
       <strong :class="zoomClass">😊 안녕하세요~</strong>
@@ -78,13 +78,13 @@ export default {
 
 <style scoped>
 .vDataContent{
-  @apply w-full p-[24px_16px_126px] bg-[url(~/assets/img/vdata/vData-bg.png)] bg-cover bg-center bg-no-repeat;
+  @apply w-full !min-h-screen p-[24px_16px_86px] bg-[url(~/assets/img/vdata/vData-bg.png)] bg-cover bg-center bg-no-repeat;
 }
 .vDataContent__img{
   @apply w-full flex justify-center items-center mb-[16px];
 }
 .vDataContent__notice{
-  @apply w-full flex flex-col justify-start items-start gap-[8px] mb-[16px] px-[8px];
+  @apply w-full flex flex-col justify-start items-start gap-[8px] mb-[16px];
 }
 .vDataContent__notice strong{
   @apply w-full text-center block font-[JalnanGothic] font-normal text-[18px] leading-[20px] text-[#2B2436];
@@ -96,7 +96,7 @@ export default {
   @apply font-[JalnanGothic] text-[#7139FF];
 }
 .vDataContent__txt{
-  @apply w-full rounded-[16px] p-[22px_16px] mb-[40px] shadow-[0px_1px_8px_0px_rgba(45,39,80,0.2)] flex flex-col justify-start items-start gap-[12px];
+  @apply w-full rounded-[16px] p-[22px_16px] mb-[20px] shadow-[0px_1px_8px_0px_rgba(45,39,80,0.2)] flex flex-col justify-start items-start gap-[12px];
   background: linear-gradient(110.06deg, #1C054A 43.96%, #7A007A 101.52%);
 }
 .vDataContent__txt p{
@@ -106,7 +106,7 @@ export default {
   @apply w-full px-[8px] flex flex-col justify-start items-center gap-[16px];
 }
 .vDataContent__btn button{
-  @apply w-full h-[52px] pt-[4px] bg-[#fff] rounded-[48px] border-[2px] border-[#AFB2EC] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.14)] font-[JalnanGothic] font-normal text-[16px] leading-[20px] tracking-[3%] text-[#7139FF];
+  @apply w-full h-[50px] pt-[4px] bg-[#fff] rounded-[48px] border-[2px] border-[#AFB2EC] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.14)] font-[JalnanGothic] font-normal text-[16px] leading-[20px] tracking-[3%] text-[#7139FF];
 }
 .vDataContent__btn button.fill{
   @apply border-none bg-[#6B4EFF] text-[#fff];

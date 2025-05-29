@@ -153,7 +153,7 @@ export default {
 
 <style scoped>
 .endPageContent{
-  @apply w-full bg-[#798DFF] pb-[120px];
+  @apply w-full bg-[#798DFF] pb-[112px];
 }
 .endPageContent__top{
   @apply relative w-full p-[48px_16px_77px] bg-center bg-cover bg-no-repeat;
@@ -171,7 +171,7 @@ export default {
   @apply w-full px-[12px];
 }
 .endPageContent__bottom .card-group{
-  @apply w-full pt-[14px] mb-[76px] flex flex-col justify-start items-start gap-[40px];
+  @apply w-full pt-[14px] mb-[46px] flex flex-col justify-start items-start gap-[40px];
 }
 .endPageContent__bottom .card-group .card{
   @apply w-full flex flex-col justify-start items-start gap-[16px];
@@ -195,7 +195,7 @@ export default {
   @apply w-full;
 }
 .endPageContent__btn{
-  @apply w-full px-[4px] flex flex-col justify-start items-center gap-[24px];
+  @apply w-full px-[4px] flex flex-col justify-start items-center gap-[16px];
 }
 .endPageContent__btn button{
   @apply w-full h-[52px] pt-[4px] bg-[#fff] rounded-[48px] border-[2px] border-[#AFB2EC] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.14)] font-[JalnanGothic] font-normal text-[16px] leading-[20px] tracking-[3%] text-[#7139FF];

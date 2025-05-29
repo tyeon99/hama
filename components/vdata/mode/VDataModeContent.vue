@@ -3,7 +3,7 @@
 <template>
   <div class="vDataContent">
     <div class="vDataContent__img animate__animated animate__fadeInUp">
-      <img width="123" src="~/assets/img/vdata/vData-mode-img.png">
+      <img width="90" src="~/assets/img/vdata/vData-mode-img.png">
     </div>
     <div class="vDataContent__notice animate__animated animate__fadeInUp animate__delay-01s">
       <strong :class="zoomClass">거의 다 되었습니다.</strong>
@@ -38,7 +38,7 @@
           </label>
         </div>
       </div>
-      <div class="caution">※ iOS에서는 음성 입력 기능을 사용할 수 없어요.</div>
+      <div class="caution" :class="zoomClass">※ iOS에서는 음성 입력 기능을 사용할 수 없어요.</div>
     </div>
     <div class="vDataContent__btn animate__animated animate__fadeInUp animate__delay-03s">
       <button
@@ -88,13 +88,13 @@ export default {
 
 <style scoped>
 .vDataContent{
-  @apply w-full p-[60px_12px] pb-[126px] bg-[url(~/assets/img/vdata/vData-bg.png)] bg-cover bg-center bg-no-repeat;
+  @apply w-full p-[20px_12px] pb-[86px] bg-[url(~/assets/img/vdata/vData-bg.png)] bg-cover bg-center bg-no-repeat;
 }
 .vDataContent__img{
-  @apply w-full flex justify-center items-center mb-[20px];
+  @apply w-full flex justify-center items-center mb-[16px];
 }
 .vDataContent__notice{
-  @apply w-full mb-[24px] px-[12px];
+  @apply w-full mb-[16px] px-[12px];
 }
 .vDataContent__notice strong{
   @apply block w-full text-center mb-[8px] font-[JalnanGothic] font-normal text-[20px] leading-[28px] text-[#7139FF];
@@ -103,10 +103,10 @@ export default {
   @apply w-full text-center font-[JalnanGothic] text-[16px] leading-[22px] text-[#2B2436];
 }
 .vDataContent__mode{
-  @apply w-full rounded-[16px] bg-[#fff] mb-[40px] p-[22px_28px];
+  @apply w-full rounded-[16px] bg-[#fff] mb-[20px] p-[16px_28px];
 }
 .vDataContent__mode .title{
-  @apply w-full text-center mb-[16px] font-[JalnanGothic] font-normal text-[20px] leading-[24px] text-[#2B2436];
+  @apply w-full text-center mb-[8px] font-[JalnanGothic] font-normal text-[18px] leading-[22px] text-[#2B2436];
 }
 .mode-input {
   @apply w-full flex justify-center items-center gap-[20px];
@@ -115,7 +115,7 @@ export default {
   @apply hidden;
 }
 .mode-input label{
-  @apply w-[137px] h-[126px] flex flex-col justify-center items-center gap-[12px] bg-[#F9F5FF] rounded-[16px] cursor-pointer;
+  @apply w-[137px] h-[120px] flex flex-col justify-center items-center gap-[12px] bg-[#F9F5FF] rounded-[16px] cursor-pointer;
 }
 .mode-input label span{
   @apply font-semibold text-[16px] leading-[17px] text-[#2B2436] text-center;
@@ -143,12 +143,12 @@ export default {
   @apply w-full px-[24px] flex flex-col justify-start items-center gap-[16px];
 }
 .vDataContent__btn button{
-  @apply w-full h-[52px] pt-[4px] bg-[#fff] rounded-[48px] border-[2px] border-[#AFB2EC] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.14)] font-[JalnanGothic] font-normal text-[16px] leading-[20px] tracking-[3%] text-[#7139FF] disabled:!bg-[#AFB2EC];
+  @apply w-full h-[50px] pt-[4px] bg-[#fff] rounded-[48px] border-[2px] border-[#AFB2EC] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.14)] font-[JalnanGothic] font-normal text-[16px] leading-[20px] tracking-[3%] text-[#7139FF] disabled:!bg-[#AFB2EC];
 }
 .vDataContent__btn button.fill{
   @apply border-none bg-[#6B4EFF] text-[#fff];
 }
 .caution{
-  @apply w-full text-center mt-[16px] font-medium text-[14px] leading-[17px] text-[#6B6D95];
+  @apply w-full text-center mt-[8px] font-medium text-[12px] leading-[14px] text-[#6B6D95];
 }
 </style>

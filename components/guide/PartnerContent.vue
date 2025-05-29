@@ -56,7 +56,7 @@ export default {
 
 <style scoped>
 .partnerContent{
-  @apply w-full bg-[#F7F5FF] pb-[120px];
+  @apply w-full bg-[#F7F5FF] pb-[98px];
 }
 .partnerContent__top{
   @apply w-full bg-[#FFF2E7] shadow-[0px_0px_2px_0px_rgba(23,26,31,0.12)] p-[28px_8px_16px];

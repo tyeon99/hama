@@ -241,7 +241,7 @@ export default {
         const el = e.target
 
         const elBottomAbsolute = el.getBoundingClientRect().bottom + window.scrollY
-        const scrollToY = elBottomAbsolute - (window.innerHeight - 76)
+        const scrollToY = elBottomAbsolute - (window.innerHeight - 84)
 
         if (scrollToY > window.scrollY) {
           window.scrollTo({
@@ -276,7 +276,7 @@ export default {
 
 <style scoped>
 .mainContent {
-  @apply w-full p-[24px_20px_82px] bg-[#F7F5FF];
+  @apply w-full p-[24px_20px_88px] bg-[#F7F5FF];
 }
 .mainContent__box {
   @apply w-full rounded-[16px];

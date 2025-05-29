@@ -163,10 +163,10 @@ export default {
 
 <style scoped>
 .detailContent {
-  @apply w-full p-[32px_20px_120px] bg-[#F7F5FF];
+  @apply w-full p-[32px_20px_90px] bg-[#F7F5FF];
 }
 .detailContent__box {
-  @apply relative w-full p-[40px_12px] border border-[#DEE1E6] bg-[#fff] rounded-[16px] flex flex-col justify-start items-start gap-[40px] mb-[36px];
+  @apply relative w-full p-[40px_12px] border border-[#DEE1E6] bg-[#fff] rounded-[16px] flex flex-col justify-start items-start gap-[40px] mb-[24px];
 }
 .detailContent__box .title-box {
   @apply w-full flex flex-col justify-start items-start gap-[24px];
@@ -262,7 +262,7 @@ export default {
   @apply font-bold text-[12px] leading-[14px] text-[#9597BC] mb-[4px];
 }
 .detailContent__btn{
-  @apply w-full px-[4px] flex flex-col justify-start items-center gap-[24px];
+  @apply w-full px-[4px] flex flex-col justify-start items-center gap-[16px];
 }
 .detailContent__btn button{
   @apply w-full h-[52px] pt-[4px] bg-[#fff] rounded-[48px] border-[2px] border-[#AFB2EC] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.14)] font-[JalnanGothic] font-normal text-[16px] leading-[20px] tracking-[3%] text-[#7139FF];

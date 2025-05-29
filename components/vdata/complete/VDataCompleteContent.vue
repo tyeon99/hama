@@ -2,7 +2,7 @@
 <template>
   <div class="vDataContent">
     <div class="vDataContent__img animate__animated animate__fadeInUp">
-      <img width="187" src="~/assets/img/vdata/vData-complete-img.png">
+      <img width="140" src="~/assets/img/vdata/vData-complete-img.png">
     </div>
     <div class="vDataContent__notice animate__animated animate__fadeInUp animate__delay-01s">
       <strong :class="zoomClass">자! 수고하셨습니다.</strong>
@@ -63,13 +63,13 @@ export default {
 
 <style scoped>
 .vDataContent{
-  @apply w-full p-[20px_20px] pb-[126px] bg-[url(~/assets/img/vdata/vData-bg.png)] bg-cover bg-center bg-no-repeat;
+  @apply w-full p-[20px_20px] pb-[86px] bg-[url(~/assets/img/vdata/vData-bg.png)] bg-cover bg-center bg-no-repeat;
 }
 .vDataContent__img{
-  @apply w-full flex justify-center items-center mb-[24px];
+  @apply w-full flex justify-center items-center mb-[8px];
 }
 .vDataContent__notice{
-  @apply w-full mb-[24px];
+  @apply w-full mb-[16px];
 }
 .vDataContent__notice strong{
   @apply block w-full text-center mb-[4px] font-[JalnanGothic] font-normal text-[20px] leading-[28px] text-[#7139FF];
@@ -78,13 +78,13 @@ export default {
   @apply w-full text-center font-[JalnanGothic] text-[14px] leading-[20px] text-[#2B2436];
 }
 .vDataContent__tip{
-  @apply relative w-full p-[64px_20px_20px] rounded-[16px] bg-[#fff] border border-[#DEE1E6] mb-[40px];
+  @apply relative w-full p-[50px_20px_12px] rounded-[16px] bg-[#fff] border border-[#DEE1E6] mb-[20px];
 }
 .vDataContent__tip span{
   @apply absolute top-[8px] left-[8px] p-[7px_17px_5px] bg-[#ECEBFF] rounded-[12px] font-[JalnanGothic] font-normal text-[14px] leading-[17px] text-[#7139FF];
 }
 .vDataContent__tip .tip-box{
-  @apply w-full flex flex-col justify-start items-start gap-[16px];
+  @apply w-full flex flex-col justify-start items-start gap-[12px];
 }
 .vDataContent__tip .tip-box .tip{
   @apply w-full flex justify-start items-center gap-[15px];
@@ -102,7 +102,7 @@ export default {
   @apply w-full px-[4px] flex flex-col justify-start items-center gap-[16px];
 }
 .vDataContent__btn button{
-  @apply w-full h-[52px] pt-[4px] bg-[#fff] rounded-[48px] border-[2px] border-[#AFB2EC] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.14)] font-[JalnanGothic] font-normal text-[16px] leading-[20px] tracking-[3%] text-[#7139FF];
+  @apply w-full h-[50px] pt-[4px] bg-[#fff] rounded-[48px] border-[2px] border-[#AFB2EC] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.14)] font-[JalnanGothic] font-normal text-[16px] leading-[20px] tracking-[3%] text-[#7139FF];
 }
 .vDataContent__btn button.fill{
   @apply border-none bg-[#6B4EFF] text-[#fff];

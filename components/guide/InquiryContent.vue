@@ -49,7 +49,7 @@ export default {
 
 <style scoped>
 .inquiryContent{
-  @apply w-full h-[calc(100dvh-59px)] bg-[#F7F5FF] pb-[112px];
+  @apply w-full h-[calc(100dvh-59px)] bg-[#F7F5FF] pb-[98px];
 }
 .inquiryContent__top{
   @apply w-full bg-[#FFF2E7] shadow-[0px_0px_2px_0px_rgba(23,26,31,0.12)] p-[28px_8px_16px];
