@@ -75,6 +75,7 @@
             ref="detailBox"
             class="ex-detail"
             :style="{ maxHeight: item.detailHeight }"
+            @transitionend="endOpenDetail"
           >
             <div class="line"></div>
             <div class="detail-title">
@@ -222,7 +223,7 @@ export default {
       }
       return num + '개';
     },
-    openDetail (idx) {
+    openDetail(idx) {
       const item = this.examples[idx]
       item.isOpen = !item.isOpen
 
@@ -234,6 +235,21 @@ export default {
           item.detailHeight = '0px'
         }
       })
+    },
+    endOpenDetail(e) {
+      if (e.propertyName === 'max-height') {
+        const el = e.target
+
+        const elBottomAbsolute = el.getBoundingClientRect().bottom + window.scrollY
+        const scrollToY = elBottomAbsolute - (window.innerHeight - 76)
+
+        if (scrollToY > window.scrollY) {
+          window.scrollTo({
+            top: scrollToY,
+            behavior: 'smooth'
+          })
+        }
+      }
     },
     onEventBus () {
       this.$eventBus.$on('fontSizeChange', () => {
@@ -260,7 +276,7 @@ export default {
 
 <style scoped>
 .mainContent {
-  @apply w-full p-[24px_20px_109px] bg-[#F7F5FF];
+  @apply w-full p-[24px_20px_82px] bg-[#F7F5FF];
 }
 .mainContent__box {
   @apply w-full rounded-[16px];
