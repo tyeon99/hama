@@ -363,5 +363,5 @@ body{
 
 /* vDataContent */
 .vDataContent{
-  @apply min-h-[100dvh];
+  @apply min-h-[calc(100dvh-59px)] flex flex-col justify-center items-center;
 }

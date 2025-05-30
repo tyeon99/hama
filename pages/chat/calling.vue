@@ -30,7 +30,13 @@ export default {
     inputFocus () {
       setTimeout(() => {
         this.$refs.chatContent.scrollToBottom()
-        window.scrollTo(0, document.body.scrollHeight)
+
+        // 시각적 뷰포트 기준으로 스크롤
+        const scrollOffset = window.visualViewport?.height || window.innerHeight;
+        window.scrollTo({
+          top: document.body.scrollHeight - scrollOffset,
+          behavior: 'smooth'
+        });
       }, 300)
     }
   }

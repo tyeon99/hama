@@ -78,7 +78,7 @@ export default {
 
 <style scoped>
 .vDataContent{
-  @apply w-full !min-h-screen p-[24px_16px_86px] bg-[url(~/assets/img/vdata/vData-bg.png)] bg-cover bg-center bg-no-repeat;
+  @apply w-full p-[24px_16px_86px] bg-[url(~/assets/img/vdata/vData-bg.png)] bg-cover bg-center bg-no-repeat;
 }
 .vDataContent__img{
   @apply w-full flex justify-center items-center mb-[16px];
