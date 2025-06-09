@@ -91,8 +91,9 @@ export default {
         { label: '서비스 소개', link: '/guide/intro' },
         { label: '오프라인 교육안내', link: '/guide/education' },
         { label: '협력 파트너', link: '/guide/partner' },
-        { label: '안드로이드 앱 다운로드', link: '/' },
-        { label: 'Contact Us', link: '/guide/inquiry' }
+        { label: '안드로이드 앱 다운로드', link: '/guide/download' },
+        { label: 'Contact Us', link: '/guide/inquiry' },
+        { label: '약관 및 정책', link: '/guide/terms' }
       ]
     };
   },

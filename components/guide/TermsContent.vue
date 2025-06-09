@@ -46,7 +46,7 @@ import TermsTabContent02 from '~/components/guide/TermsTabContent02'
 export default {
   data() {
     return {
-      activeTab: 'tab2',
+      activeTab: 'tab1',
       tabs: [
         { name: 'tab1', label: '개인정보 처리방침', component: TermsTabContent01 },
         { name: 'tab2', label: '이용약관', component: TermsTabContent02 }
@@ -108,6 +108,6 @@ export default {
   @apply p-[12px_14px] border-[2px] border-[#2B2436] rounded-[12px] bg-[#fff] text-[#2B2436] font-extrabold text-[18px] leading-[20px];
 }
 .termsContent__bottom--tab button.active{
-  @apply bg-[#846BFF] shadow-[0px_0px_12px_0px_rgba(0,0,0,0.5)] border-none text-[#fff];
+  @apply p-[14px_16px] bg-[#846BFF] shadow-[0px_0px_12px_0px_rgba(0,0,0,0.5)] border-none text-[#fff];
 }
 </style>
