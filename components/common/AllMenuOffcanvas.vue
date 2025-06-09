@@ -77,6 +77,7 @@
     <PreparingModal
       v-if="isPreparingModalOpen"
       :isModalAni="isModalAni"
+      @close-preparingModal="closePreparingModal"
     />
   </div>
 </template>

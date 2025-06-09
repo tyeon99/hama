@@ -53,6 +53,7 @@ export default {
   methods: {
     goLink(path) {
       this.$router.push(path)
+      this.closePreparingModal()
     },
     closePreparingModal() {
       this.$emit('close-preparingModal')
