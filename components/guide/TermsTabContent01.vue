@@ -62,14 +62,14 @@
           <strong>10. 개인정보 보호책임자 및 문의처</strong>
           회사는 개인정보 관련 문의 및 불만 처리를 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.
           <span>개인정보 보호책임자</span>
-          <span>성명: [담당자명]</span>
-          <span>직책: [직책]</span>
-          <span>연락처: [전화번호]</span>
-          <span>이메일: [이메일 주소]</span>
+          <span>성명: 김정민</span>
+          <span>직책: 전무</span>
+          <span>연락처: 010-3275-6621</span>
+          <span>이메일: vongchu@thinkpool.com</span>
           <span>담당부서</span>
-          <span>부서명: [부서명]</span>
-          <span>연락처: [전화번호]</span>
-          <span>이메일: [이메일 주소]</span>
+          <span>부서명: ThinkPool Lab</span>
+          <span>연락처: 02-2174-6402</span>
+          <span>이메일: hun402@thinkpool.com</span>
         </p>
         <p :class="zoomClass">
           <strong>11. 개인정보 처리방침의 변경</strong>

@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/attribute-hyphenation -->
 <template>
   <div
     class="offcanvas-overlay animate__animated animate__faster"
@@ -59,7 +60,7 @@
             :key="idx"
             class="animate__animated animate__fadeInRight"
             :style="{ animationDelay: `${idx * 0.1}s` }"
-            @click="goLink(item.link)"
+            @click="idx === 4 ? openPreparingModal() : goLink(item.link)"
           >
             <span>{{ item.label }}</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
@@ -73,11 +74,20 @@
         <button @click="goLink('/main')">체험을 시작하세요</button>
       </div> -->
     </div>
+    <PreparingModal
+      v-if="isPreparingModalOpen"
+      :isModalAni="isModalAni"
+    />
   </div>
 </template>
 
 <script>
+import PreparingModal from '~/components/common/PreparingModal'
+
 export default {
+  components: {
+    PreparingModal
+  },
   props: {
     isOffcanvasAni: {
       type: Boolean,
@@ -94,8 +104,10 @@ export default {
         { label: '안드로이드 앱 다운로드', link: '/guide/download' },
         { label: 'Contact Us', link: '/guide/inquiry' },
         { label: '약관 및 정책', link: '/guide/terms' }
-      ]
-    };
+      ],
+      isModalAni: false,
+      isPreparingModalOpen: false
+    }
   },
   methods: {
     closeMenuOffcanvas() {
@@ -104,6 +116,16 @@ export default {
     goLink(path) {
       this.closeMenuOffcanvas()
       this.$router.push(path)
+    },
+    openPreparingModal () {
+      this.isModalAni = true
+      this.isPreparingModalOpen = true
+    },
+    closePreparingModal () {
+      this.isModalAni = false
+      setTimeout(() => {
+        this.isPreparingModalOpen = false
+      }, 300)
     }
   }
 }

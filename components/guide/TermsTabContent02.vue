@@ -71,11 +71,11 @@
           <strong>제 12조 (문의사항)</strong>
           <span>앱명: 하마터면</span>
           <span>연락처: [hama@thinkpool.com]</span>
-          <span>고객지원: [고객센터 연락처]</span>
+          <span>고객지원: 02-2174-6402</span>
         </p>
         <p :class="zoomClass">
           <strong>부칙</strong>
-          <span>본 약관은 [2025.05.28]부터 시행됩니다.</span>
+          <span>본 약관은 2025.06.28부터 시행됩니다.</span>
           <span>본 앱은 구글 플레이 스토어 정책을 준수합니다.</span>
         </p>
       </div>
