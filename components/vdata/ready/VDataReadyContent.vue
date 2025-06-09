@@ -113,7 +113,7 @@ export default {
 
 <style scoped>
 .vDataContent {
-  @apply w-full p-[40px_20px] bg-[url(~/assets/img/vdata/vData-bg.png)] bg-cover bg-center bg-no-repeat;
+  @apply w-full !min-h-[100dvh] p-[40px_20px] bg-[url(~/assets/img/vdata/vData-bg.png)] bg-cover bg-center bg-no-repeat;
 }
 .vDataContent__top {
   @apply w-full flex justify-start items-end gap-[12px] mb-[40px];
