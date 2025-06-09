@@ -130,9 +130,9 @@ export default {
   @apply block mb-[4px] font-extrabold text-[16px] text-[#6F75F2];
 }
 .termsTabContent .txt-group .txtBox p span{
-  @apply block w-full pl-[20px] relative font-semibold text-[14px] leading-[17px] text-[#6B6D95] before:content-[''] before:w-[3.5px] before:h-[3.5px] before:absolute before:rounded-full before:bg-[#6B6D95] before:left-[6px] before:top-[6px];
+  @apply block w-full pl-[20px] relative font-medium text-[14px] leading-[17px] text-[#6B6D95] before:content-[''] before:w-[3.5px] before:h-[3.5px] before:absolute before:rounded-full before:bg-[#6B6D95] before:left-[6px] before:top-[6px];
 }
 .termsTabContent .txt-group .txtBox p em{
-  @apply block w-full pl-[40px] relative font-semibold text-[14px] leading-[17px] text-[#6B6D95] before:content-[''] before:w-[3.5px] before:h-[3.5px] before:absolute before:rounded-full before:bg-[#6B6D95] before:left-[26px] before:top-[6px];
+  @apply block w-full pl-[40px] relative font-medium text-[14px] leading-[17px] text-[#6B6D95] before:content-[''] before:w-[3.5px] before:h-[3.5px] before:absolute before:rounded-full before:bg-[#6B6D95] before:left-[26px] before:top-[6px];
 }
 </style>

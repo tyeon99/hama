@@ -122,10 +122,10 @@ export default {
   @apply block mb-[4px] font-extrabold text-[16px] text-[#6F75F2];
 }
 .termsTabContent .txt-group .txtBox p span{
-  @apply block w-full pl-[20px] relative font-semibold text-[14px] leading-[17px] text-[#6B6D95] before:content-[''] before:w-[3.5px] before:h-[3.5px] before:absolute before:rounded-full before:bg-[#6B6D95] before:left-[6px] before:top-[6px];
+  @apply block w-full pl-[20px] relative font-medium text-[14px] leading-[17px] text-[#6B6D95] before:content-[''] before:w-[3.5px] before:h-[3.5px] before:absolute before:rounded-full before:bg-[#6B6D95] before:left-[6px] before:top-[6px];
 }
 .termsTabContent .txt-group .txtBox p em{
-  @apply block w-full pl-[20px] relative font-semibold text-[14px] leading-[17px] text-[#6B6D95] before:content-['1.'] before:w-[10px] before:h-[17px] before:text-[14px] before:font-medium before:absolute before:rounded-full before:left-[4px] before:top-[0px];
+  @apply block w-full pl-[20px] relative font-medium text-[14px] leading-[17px] text-[#6B6D95] before:content-['1.'] before:w-[10px] before:h-[17px] before:text-[14px] before:font-medium before:absolute before:rounded-full before:left-[4px] before:top-[0px];
 }
 .termsTabContent .txt-group .txtBox p em:nth-child(3){
   @apply before:content-['2.'];
