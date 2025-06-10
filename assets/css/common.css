@@ -43,12 +43,12 @@ body{
 .container{
   @apply max-w-full;
 }
-/* .wrap{
-  @apply !max-w-[480px] m-[0_auto] bg-[#fff];
+.wrap{
+  @apply !max-w-[674px] m-[0_auto] bg-[#fff];
 }
 .offcanvas-overlay, .chatModal, .chatVoiceAnimation, .navigationBar, .chatNavigationBar, .chatTimeOutWarning, .modal-overlay, .introHeader, .callingHeader, .chatInput, .kakaoHeader, .messagesHeader {
-  @apply max-w-[480px] m-[0_auto];
-} */
+  @apply max-w-[674px] m-[0_auto];
+}
 
 /* 폰트사이즈 */
 .zoom-13 { zoom: 1.3; }
