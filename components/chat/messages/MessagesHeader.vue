@@ -29,7 +29,7 @@ export default {
 
 <style scoped>
 .messagesHeader{
-  @apply w-full h-[64px] bg-[#fff] flex justify-between items-center fixed top-0 left-0 right-0 max-w-[480px] m-[0_auto] z-[996] border-b border-[#f5f5f5] px-[16px];
+  @apply w-full h-[64px] bg-[#fff] flex justify-between items-center fixed top-0 left-0 right-0 z-[996] border-b border-[#f5f5f5] px-[16px];
 }
 .messagesHeader .right{
   @apply flex justify-end items-center gap-[16px];

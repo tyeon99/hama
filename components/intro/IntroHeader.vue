@@ -72,7 +72,7 @@ export default {
 
 <style scoped>
 .introHeader{
-  @apply w-full p-[20px_20px_0px_16px] flex justify-between items-center fixed top-0 left-0 right-0 bg-transparent z-[998] max-w-[480px] m-[0_auto];
+  @apply w-full p-[20px_20px_0px_16px] flex justify-between items-center fixed top-0 left-0 right-0 bg-transparent z-[998];
 }
 .introHeader__menu{
   @apply flex justify-center items-center;

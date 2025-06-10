@@ -63,7 +63,7 @@ export default {
 
 <style scoped>
 .chatInput {
-  @apply w-full h-[57px] fixed bottom-[89px] left-0 right-0 max-w-[480px] m-[0_auto] z-[996] px-[12px];
+  @apply w-full h-[57px] fixed bottom-[89px] left-0 right-0 z-[996] px-[12px];
 }
 .chatInput__box {
   @apply relative;

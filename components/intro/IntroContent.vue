@@ -69,10 +69,10 @@ export default {
   @apply w-full h-[100dvh] flex flex-col justify-between items-center bg-[#0F172A] overflow-y-auto;
 }
 .introSwiper{
-  @apply w-full min-h-[592px];
+  @apply w-full min-h-[calc(100dvh-156px)];
 }
 .swiper-slide{
-  @apply w-full relative px-[24px] pt-[122px] bg-center bg-[length:100%] bg-no-repeat bg-fixed flex flex-col items-start gap-[20px];
+  @apply w-full relative px-[24px] pt-[122px] bg-center bg-cover bg-no-repeat bg-fixed flex flex-col items-start gap-[20px];
 }
 .swiper-slide:nth-child(1){
   @apply bg-[url(~/assets/img/intro/intro-bg01.png)] justify-start;
@@ -96,7 +96,7 @@ export default {
   @apply w-auto px-[9px] left-[50%] translate-x-[-50%] bottom-[16px] rounded-[16px] bg-[rgba(15,23,42,0.5)];
 }
 .start-btn{
-  @apply w-full flex justify-center items-center px-[40px] py-[60px];
+  @apply w-full flex justify-center items-center px-[40px] py-[52px];
 }
 .start-btn button{
   @apply w-full h-[52px] border-[2px] border-[#7139FF] bg-[#0F172A] rounded-[10px] text-[#D1BCFF] text-[18px] font-normal leading-[20px] font-[JalnanGothic] pt-[3px];

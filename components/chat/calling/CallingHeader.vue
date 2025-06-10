@@ -18,7 +18,7 @@ export default {
 
 <style scoped>
 .callingHeader{
-  @apply w-full h-[64px] bg-[url(~/assets/img/chat/calling/calling-header.png)] bg-center bg-cover bg-no-repeat flex justify-center items-center gap-[12px] fixed top-0 left-0 right-0 max-w-[480px] m-[0_auto] z-[996];
+  @apply w-full h-[64px] bg-[url(~/assets/img/chat/calling/calling-header.png)] bg-center bg-cover bg-no-repeat flex justify-center items-center gap-[12px] fixed top-0 left-0 right-0 z-[996];
 }
 .callingHeader__txt{
   @apply flex justify-start items-center gap-[8px];

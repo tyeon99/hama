@@ -58,13 +58,13 @@ export default {
   background: linear-gradient(180deg, #FF7072 0%, #FF5ABA 100%);
 }
 .defenselessState .top .score{
-  @apply relative w-full flex justify-end items-start pr-[35px] gap-[16px] mb-[28px];
+  @apply relative w-full flex justify-center items-start gap-[16px] mb-[28px];
 }
 .defenselessState .top .score img{
-  @apply absolute left-[34px] top-[-60px];
+  @apply absolute left-[calc(50%-140px)] top-[-60px];
 }
 .defenselessState .top .score .txtNum{
-  @apply flex flex-col justify-start items-center gap-[12px];
+  @apply flex flex-col justify-start items-center gap-[12px] ml-[140px];
 }
 .defenselessState .top .score .txtNum span{
   @apply rounded-[20px] border-2 border-[#fff] p-[9px_20px_8px] font-extrabold text-[16px] leading-[19px] text-[#fff];

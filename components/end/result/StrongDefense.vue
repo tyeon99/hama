@@ -56,13 +56,13 @@ export default {
   background: linear-gradient(180deg, #FF7824 0%, #DDB800 100%);
 }
 .strongDefense .top .score{
-  @apply relative w-full flex justify-end items-start pr-[35px] gap-[16px] mb-[28px];
+  @apply relative w-full flex justify-center items-start gap-[16px] mb-[28px];
 }
 .strongDefense .top .score img{
-  @apply absolute left-[21px] top-[-60px];
+  @apply absolute left-[calc(50%-140px)] top-[-60px];
 }
 .strongDefense .top .score .txtNum{
-  @apply flex flex-col justify-start items-center gap-[12px];
+  @apply flex flex-col justify-start items-center gap-[12px] ml-[160px];
 }
 .strongDefense .top .score .txtNum span{
   @apply rounded-[20px] border-2 border-[#fff] p-[9px_20px_8px] font-extrabold text-[16px] leading-[19px] text-[#fff];

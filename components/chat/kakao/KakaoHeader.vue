@@ -1,5 +1,5 @@
 <template>
-  <div class="kakaoContent">
+  <div class="kakaoHeader">
     <div class="left">
       <div class="back">
         <img width="24" src="~/assets/img/chat/messages/back-icon.png" alt="뒤로가기">
@@ -37,16 +37,16 @@ export default {
 </script>
 
 <style scoped>
-.kakaoContent{
-  @apply w-full h-[64px] bg-[#A5C0E2] flex justify-between items-center fixed top-0 left-0 right-0 max-w-[480px] m-[0_auto] z-[996] px-[16px];
+.kakaoHeader{
+  @apply w-full h-[64px] bg-[#A5C0E2] flex justify-between items-center fixed top-0 left-0 right-0 z-[996] px-[16px];
 }
-.kakaoContent .right{
+.kakaoHeader .right{
   @apply flex justify-end items-center gap-[16px];
 }
-.kakaoContent .left{
+.kakaoHeader .left{
   @apply flex justify-start items-center gap-[8px];
 }
-.kakaoContent .left .profile{
+.kakaoHeader .left .profile{
   @apply font-semibold text-[18px] leading-[20px] text-[#2B2436];
 }
 </style>
