@@ -26,6 +26,11 @@
     <div class="start-btn animate__animated animate__fadeInUp animate__faster animate__delay-3s">
       <button @click="goLink('/main')">체험을 시작하세요</button>
     </div>
+    <div class="footer-txt animate__animated animate__fadeInUp animate__faster animate__delay-33">
+      <strong>㈜씽크풀</strong>
+      <span>사업자 등록번호 116-81-54775</span>
+      <span>대표 : 김동진</span>
+    </div>
   </div>
 </template>
 
@@ -69,7 +74,7 @@ export default {
   @apply w-full h-[100dvh] flex flex-col justify-between items-center bg-[#0F172A] overflow-y-auto;
 }
 .introSwiper{
-  @apply w-full min-h-[calc(100dvh-156px)];
+  @apply w-full min-h-[calc(100dvh-185px)];
 }
 .swiper-slide{
   @apply w-full relative px-[24px] pt-[122px] bg-center bg-cover bg-no-repeat bg-fixed flex flex-col items-start gap-[20px];
@@ -100,5 +105,14 @@ export default {
 }
 .start-btn button{
   @apply w-full h-[52px] border-[2px] border-[#7139FF] bg-[#0F172A] rounded-[10px] text-[#D1BCFF] text-[18px] font-normal leading-[20px] font-[JalnanGothic] pt-[3px];
+}
+.footer-txt{
+  @apply w-full flex justify-center items-center gap-[12px] pb-[16px];
+}
+.footer-txt strong{
+  @apply font-extrabold text-[11px] text-[#ABADC5] leading-[13px];
+}
+.footer-txt span{
+  @apply font-medium text-[11px] text-[#ABADC5] leading-[13px];
 }
 </style>

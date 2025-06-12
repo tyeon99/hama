@@ -75,7 +75,7 @@ body{
   opacity: 0;
 }
 .introLoading.loadingAni{
-  @apply h-[calc(100dvh-156px)];
+  @apply h-[calc(100dvh-185px)];
 }
 .introLoading svg{
   position: absolute;
@@ -187,6 +187,9 @@ body{
 }
 .animate__delay-27{
   animation-delay: 2.7s
+}
+.animate__delay-33{
+  animation-delay: 3.3s
 }
 
 /* 채팅화면 음성 애니메이션 */
