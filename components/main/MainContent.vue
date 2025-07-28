@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/attribute-hyphenation -->
 <template>
   <div class="mainContent">
     <div class="mainContent__box animate__animated animate__fadeInUp">
@@ -30,7 +31,22 @@
               <div class="txt text-truncate2" :class="zoomClass">
                 {{ item.text }}
               </div>
-              <div class="date" :class="zoomClass">{{ item.date }}</div>
+              <div class="date">
+                <span :class="zoomClass">{{ item.date }}</span>
+
+                <!-- 일반회원일 때 (general 클래스 추가)
+                기업회원일 때 (corporate 클래스 추가, 이미지명 corporate-icon.png 변경, 텍스트 수정) -->
+                <div :class="['member', item.memberType]">
+                  <img
+                    width="10"
+                    :src="item.memberType === 'corporate'
+                      ? require('~/assets/img/main/corporate-icon.png')
+                      : require('~/assets/img/main/general-icon.png')"
+                    :alt="item.memberType === 'corporate' ? '기업회원' : '일반회원'"
+                  >
+                  <p>{{ item.memberType === 'corporate' ? '기업회원' : '일반회원' }}</p>
+                </div>
+              </div>
               <div class="numlike">
                 <div class="num" :class="zoomClass">
                   체험 <strong>{{ item.views }}</strong>
@@ -101,7 +117,10 @@
               </div>
             </div>
             <div class="detail-btn">
-              <button class="fill" @click="goLink('/vdata')">체험 하러 가기</button>
+              <button class="fill" @click="handleExperienceClick(item)">
+                체험 하러 가기
+                <span v-if="item.memberType === 'corporate'">(기업회원)</span>
+              </button>
               <button @click="goLink('/main/detail')">자세히 보러가기</button>
             </div>
           </div>
@@ -110,13 +129,24 @@
         <!-- example -->
       </div>
       <!-- bottom -->
+      <!-- 기업 인증코드 모달 -->
+      <AuthCodeModal
+        v-if="isAuthCodeModalOpen"
+        :isModalAni="isModalAni"
+        @close-authCodeModal="closeAuthCodeModal"
+      />
     </div>
     <!-- mainContent__box -->
   </div>
 </template>
 
 <script>
+import AuthCodeModal from '~/components/common/AuthCodeModal'
+
 export default {
+    components: {
+    AuthCodeModal
+  },
   data () {
     return {
       examples: [
@@ -133,7 +163,8 @@ export default {
           keywords: '가족 사칭, 자녀 납치, 협박, 납치상해, 금전요구',
           summary: '딸을 사칭한 전화로 납치 상황을 연출하고, 사채업자를 사칭한 공범이 신상정보와 폭력적 협박으로 현실감을 높입니다. 구체적인 금액 요구와 시간 압박으로 피해자의 공포심을 극대화해 송금을 유도하는 수법입니다.',
           isOpen: false,
-          detailHeight: '0px'
+          detailHeight: '0px',
+          memberType: 'general'
         },
         {
           cat: '기관사칭',
@@ -148,7 +179,8 @@ export default {
           keywords: '기관 사칭, 스미싱, 납부 유도',
           summary: '공공기관을 사칭하여 납부 안내를 보내며 개인정보를 탈취하는 수법입니다.',
           isOpen: false,
-          detailHeight: '0px'
+          detailHeight: '0px',
+          memberType: 'corporate'
         },
         {
           cat: '카드사기',
@@ -163,7 +195,8 @@ export default {
           keywords: '지인 사칭, 메신저 피싱, 금전 요구',
           summary: '실제 지인을 사칭하여 SNS, 메신저로 금전을 요구하는 피싱 수법입니다.',
           isOpen: false,
-          detailHeight: '0px'
+          detailHeight: '0px',
+          memberType: 'corporate'
         },
         {
           cat: '리딩방',
@@ -178,12 +211,14 @@ export default {
           keywords: '택배 사칭, 스미싱, 악성 앱',
           summary: '택배 회사를 사칭한 문자로 악성 앱 설치를 유도하여 개인정보를 탈취하는 수법입니다.',
           isOpen: false,
-          detailHeight: '0px'
+          detailHeight: '0px',
+          memberType: 'general'
         }
       ],
       isOpen: false,
       detailHeight: '0px',
-      // fontSizePercent: 100  // 기본값
+      isAuthCodeModalOpen: false,
+      isModalAni: false
     }
   },
   computed: {
@@ -269,6 +304,24 @@ export default {
     },
     offEventBus () {
       this.$eventBus.$off('fontSizeChange')
+    },
+    // 기업 인증코드 모달 열기, 닫기
+    openAuthCodeModal () {
+      this.isModalAni = true
+      this.isAuthCodeModalOpen = true
+    },
+    closeAuthCodeModal () {
+      this.isModalAni = false
+      setTimeout(() => {
+        this.isAuthCodeModalOpen = false
+      }, 300)
+    },
+    handleExperienceClick(item) {
+      if (item.memberType === 'corporate') {
+        this.openAuthCodeModal(); // 모달 열기
+      } else {
+        this.goLink('/vdata'); // 일반회원은 기존대로 이동
+      }
     }
   }
 }
@@ -308,8 +361,23 @@ export default {
 .mainContent__box .bottom .example .ex-box .ex-txt .txt {
   @apply font-medium text-[13px] leading-[16px] text-[#9597BC] mb-[4px];
 }
-.mainContent__box .bottom .example .ex-box .ex-txt .date {
-  @apply font-medium text-[10px] leading-[12px] text-[#9597BC] mb-[7px];
+.mainContent__box .bottom .example .ex-box .ex-txt .date{
+  @apply w-full flex justify-start items-center gap-[12px] mb-[7px];
+}
+.mainContent__box .bottom .example .ex-box .ex-txt .date span {
+  @apply font-medium text-[10px] leading-[12px] text-[#9597BC];
+}
+.mainContent__box .bottom .example .ex-box .ex-txt .date .member{
+  @apply p-[4px] flex justify-center items-center gap-[4px];
+}
+.mainContent__box .bottom .example .ex-box .ex-txt .date .member.general{
+  @apply bg-[#879AEC];
+}
+.mainContent__box .bottom .example .ex-box .ex-txt .date .member.corporate{
+  @apply bg-[#7D86A9];
+}
+.mainContent__box .bottom .example .ex-box .ex-txt .date .member p{
+  @apply font-bold text-[10px] text-[#fff] leading-[12px];
 }
 .mainContent__box .bottom .example .ex-box .ex-txt .numlike {
   @apply flex justify-start items-center gap-[16px];
@@ -357,7 +425,10 @@ export default {
   @apply flex flex-col justify-center items-center gap-[16px] pb-[17px];
 }
 .ex-detail .detail-btn button {
-  @apply w-[180px] h-[42px] pt-[3px] rounded-[48px] font-[JalnanGothic] text-[#7139FF] text-[14px] font-normal leading-[16px] tracking-[0.42px] border border-[#7139FF] bg-[#fff] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.14)];
+  @apply w-[208px] h-[42px] pt-[3px] rounded-[48px] font-[JalnanGothic] text-[#7139FF] text-[14px] font-normal leading-[16px] tracking-[0.42px] border border-[#7139FF] bg-[#fff] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.14)];
+}
+.ex-detail .detail-btn button span{
+  @apply font-[JalnanGothic] font-normal text-[12px];
 }
 .ex-detail .detail-btn button.fill {
   @apply bg-[#6B4EFF] text-[#fff] border-none;

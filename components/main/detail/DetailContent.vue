@@ -90,7 +90,10 @@
     </div>
     <!-- detailContent__box -->
     <div class="detailContent__btn  animate__animated animate__fadeInUp animate__delay-03s">
-      <button class="fill" @click="goLink('/vdata')">체험하러 가기</button>
+      <button class="fill" @click="goLink('/vdata')">
+        체험 하러 가기
+        <span>(기업회원)</span>
+      </button>
       <button @click="goLink('/main')">AI피싱 다른 사례 보기</button>
     </div>
   </div>
@@ -266,6 +269,9 @@ export default {
 }
 .detailContent__btn button{
   @apply w-full h-[52px] pt-[4px] bg-[#fff] rounded-[48px] border-[2px] border-[#AFB2EC] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.14)] font-[JalnanGothic] font-normal text-[16px] leading-[20px] tracking-[3%] text-[#7139FF];
+}
+.detailContent__btn button span{
+  @apply font-[JalnanGothic] font-normal text-[14px] tracking-[3%];
 }
 .detailContent__btn button.fill{
   @apply border-none bg-[#6B4EFF] text-[#fff];
