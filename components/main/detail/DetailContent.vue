@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/attribute-hyphenation -->
 <template>
   <div class="detailContent">
     <div class="detailContent__box animate__animated animate__fadeInUp">
@@ -90,17 +91,27 @@
     </div>
     <!-- detailContent__box -->
     <div class="detailContent__btn  animate__animated animate__fadeInUp animate__delay-03s">
-      <button class="fill" @click="goLink('/vdata')">
+      <button class="fill" @click="handleExperienceClick(item)">
         체험 하러 가기
         <span>(기업회원)</span>
       </button>
       <button @click="goLink('/main')">AI피싱 다른 사례 보기</button>
     </div>
+    <AuthCodeModal
+      v-if="isAuthCodeModalOpen"
+      :isModalAni="isModalAni"
+      @close-authCodeModal="closeAuthCodeModal"
+    />
   </div>
 </template>
 
 <script>
+import AuthCodeModal from '~/components/common/AuthCodeModal'
+
 export default {
+  components: {
+    AuthCodeModal
+  },
   data() {
     return {
       newsList: [
@@ -139,7 +150,10 @@ export default {
           platform: 'Youtube',
           date: '2025.04.04'
         }
-      ]
+      ],
+      isAuthCodeModalOpen: false,
+      isModalAni: false,
+      memberType: 'corporate'
     }
   },
   computed: {
@@ -159,6 +173,24 @@ export default {
   methods: {
     goLink(path) {
       this.$router.push(path)
+    },
+    // 기업 인증코드 모달 열기, 닫기
+    openAuthCodeModal () {
+      this.isModalAni = true
+      this.isAuthCodeModalOpen = true
+    },
+    closeAuthCodeModal () {
+      this.isModalAni = false
+      setTimeout(() => {
+        this.isAuthCodeModalOpen = false
+      }, 300)
+    },
+    handleExperienceClick(item) {
+      if (this.memberType === 'corporate') {
+        this.openAuthCodeModal(); // 모달 열기
+      } else {
+        this.goLink('/vdata'); // 일반회원은 기존대로 이동
+      }
     }
   }
 }
