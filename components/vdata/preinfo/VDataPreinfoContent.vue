@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="vDataContent__btn animate__animated animate__fadeInUp animate__delay-02s">
-      <button>확 인</button>
+      <button @click="goLink('/call/incoming')">확 인</button>
     </div>
   </div>
 </template>
