@@ -4,6 +4,11 @@
     <WooriHeader />
     <div class="container">
       <MainIntro />
+      <div class="banner">
+        <button>
+          <img src="~/assets/img/main/banner-img.png" alt="설문조사">
+        </button>
+      </div>
       <div class="content">
         <WooriMainContent />
       </div>
