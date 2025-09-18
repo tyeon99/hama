@@ -44,4 +44,7 @@ export default {
 .content{
 @apply w-full max-w-full;
 }
+.banner{
+  @apply w-full p-[16px_22px_0];
+}
 </style>
