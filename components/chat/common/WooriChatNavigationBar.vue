@@ -46,8 +46,7 @@ export default {
       isOffcanvasAni: false,
       isFontSizeOffcanvasOpen: false,
       isChatOutOffcanvasOpen: false,
-      isUserInfoOffcanvasOpen: false,
-      isVoiceOn: false
+      isUserInfoOffcanvasOpen: false
     }
   },
   computed: {
@@ -67,13 +66,6 @@ export default {
           img: require('~/assets/img/common/chat_user-img.png'),
           label: '가상 사용자 정보',
           action: 'openUserInfo'
-        },
-        {
-          img: this.isVoiceOn
-            ? require('~/assets/img/common/chat_voiceoff-img.png')
-            : require('~/assets/img/common/chat_voiceon-img.png'),
-          label: '음성 출력',
-          action: 'clickVoice'
         }
       ]
     }
@@ -83,8 +75,7 @@ export default {
       const actions = {
         openChatOut: this.openChatOutOffcanvas,
         openFontSize: this.openFontSizeOffcanvas,
-        openUserInfo: this.openUserInfoOffcanvas,
-        clickVoice: this.clickVoice
+        openUserInfo: this.openUserInfoOffcanvas
       }
 
       const fn = actions[action]
@@ -121,9 +112,6 @@ export default {
       setTimeout(() => {
         this.isUserInfoOffcanvasOpen = false
       }, 300)
-    },
-    clickVoice() {
-      this.isVoiceOn = !this.isVoiceOn
     }
   }
 }
@@ -138,7 +126,7 @@ export default {
   box-shadow: -0.3px 1.2px 0.2px 0px rgba(151, 151, 151, 0.2);
 }
 .chatNavigationBar__nav button {
-  @apply w-[calc(100%/4)] h-[76px] flex flex-col justify-center items-center gap-[8px];
+  @apply w-[calc(100%/3)] h-[76px] flex flex-col justify-center items-center gap-[8px];
 }
 .chatNavigationBar__nav button span {
   @apply text-[#2B2436] text-[12px] font-semibold leading-[14px];

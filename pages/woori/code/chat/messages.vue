@@ -5,7 +5,7 @@
       <div class="content">
         <MessagesContent ref="chatContent" />
       </div>
-      <ChatInput
+      <WooriChatInput
         @input-focus="inputFocus"
       />
     </div>
@@ -17,14 +17,14 @@
 import WooriChatNavigationBar from '~/components/chat/common/WooriChatNavigationBar'
 import MessagesHeader from '~/components/chat/messages/MessagesHeader'
 import MessagesContent from '~/components/chat/messages/MessagesContent'
-import ChatInput from '~/components/chat/common/ChatInput'
+import WooriChatInput from '~/components/chat/common/WooriChatInput'
 
 export default {
   components: {
     WooriChatNavigationBar,
     MessagesHeader,
     MessagesContent,
-    ChatInput
+    WooriChatInput
   },
   methods: {
     inputFocus() {

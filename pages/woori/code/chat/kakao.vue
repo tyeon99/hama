@@ -5,7 +5,7 @@
       <div class="content">
         <KakaoContent ref="chatContent" />
       </div>
-      <ChatInput
+      <WooriChatInput
         @input-focus="inputFocus"
       />
     </div>
@@ -17,14 +17,14 @@
 import WooriChatNavigationBar from '~/components/chat/common/WooriChatNavigationBar'
 import KakaoHeader from '~/components/chat/kakao/KakaoHeader'
 import KakaoContent from '~/components/chat/kakao/KakaoContent'
-import ChatInput from '~/components/chat/common/ChatInput'
+import WooriChatInput from '~/components/chat/common/WooriChatInput'
 
 export default {
   components: {
     WooriChatNavigationBar,
     KakaoHeader,
     KakaoContent,
-    ChatInput
+    WooriChatInput
   },
   methods: {
     inputFocus() {

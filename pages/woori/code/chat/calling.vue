@@ -5,7 +5,7 @@
       <div class="content">
         <CallingContent ref="chatContent" />
       </div>
-      <ChatInput
+      <WooriChatInput
         @input-focus="inputFocus"
       />
     </div>
@@ -17,14 +17,14 @@
 import WooriChatNavigationBar from '~/components/chat/common/WooriChatNavigationBar'
 import CallingHeader from '~/components/chat/calling/CallingHeader'
 import CallingContent from '~/components/chat/calling/CallingContent'
-import ChatInput from '~/components/chat/common/ChatInput'
+import WooriChatInput from '~/components/chat/common/WooriChatInput'
 
 export default {
   components: {
     WooriChatNavigationBar,
     CallingHeader,
     CallingContent,
-    ChatInput
+    WooriChatInput
   },
   methods: {
     inputFocus () {

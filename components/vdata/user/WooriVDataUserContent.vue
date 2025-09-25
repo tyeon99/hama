@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="vDataContent__btn animate__animated animate__fadeInUp animate__delay-03s">
-      <button class="fill" @click="goLink('/woori/code/vdata/mode')">다음 단계 넘어가기</button>
+      <button class="fill" @click="goLink('/woori/code/vdata/complete')">다음 단계 넘어가기</button>
       <button @click="goLink('/woori/code/vdata')">가상 정보 다시 고를래요</button>
     </div>
   </div>

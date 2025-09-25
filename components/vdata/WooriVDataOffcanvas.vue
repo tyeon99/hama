@@ -96,7 +96,7 @@
         <button
           :class="{ active: isSelectionComplete }"
           :disabled="!isSelectionComplete"
-          @click="goLink('/woori/code/vdata/usermode')"
+          @click="goLink('/woori/code/vdata/user')"
         >
           선택을 완료합니다.
         </button>
