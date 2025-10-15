@@ -91,26 +91,34 @@
     </div>
     <!-- detailContent__box -->
     <div class="detailContent__btn  animate__animated animate__fadeInUp animate__delay-03s">
-      <button class="fill" @click="handleExperienceClick(item)">
+      <button class="fill" @click="openSafePlusModal">
         체험 하러 가기
         <span>(기업회원)</span>
       </button>
       <button @click="goLink('/main')">AI피싱 다른 사례 보기</button>
     </div>
-    <AuthCodeModal
+    <!-- <AuthCodeModal
       v-if="isAuthCodeModalOpen"
       :isModalAni="isModalAni"
       @close-authCodeModal="closeAuthCodeModal"
+    /> -->
+    <!-- 안심플러스 우선 체험 모달 -->
+    <SafePlusModal
+      v-if="isSafePlusModalOpen"
+      :isModalAni="isModalAni"
+      @close-safePlusModal="closeSafePlusModal"
     />
   </div>
 </template>
 
 <script>
-import AuthCodeModal from '~/components/common/AuthCodeModal'
+// import AuthCodeModal from '~/components/common/AuthCodeModal'
+import SafePlusModal from '~/components/common/SafePlusModal'
 
 export default {
   components: {
-    AuthCodeModal
+    // AuthCodeModal,
+    SafePlusModal
   },
   data() {
     return {
@@ -152,6 +160,7 @@ export default {
         }
       ],
       isAuthCodeModalOpen: false,
+      isSafePlusModalOpen: false,
       isModalAni: false,
       memberType: 'corporate'
     }
@@ -175,22 +184,26 @@ export default {
       this.$router.push(path)
     },
     // 기업 인증코드 모달 열기, 닫기
-    openAuthCodeModal () {
+    // openAuthCodeModal () {
+    //   this.isModalAni = true
+    //   this.isAuthCodeModalOpen = true
+    // },
+    // closeAuthCodeModal () {
+    //   this.isModalAni = false
+    //   setTimeout(() => {
+    //     this.isAuthCodeModalOpen = false
+    //   }, 300)
+    // },
+    // 안심플러스 모달 열기, 닫기
+    openSafePlusModal() {
       this.isModalAni = true
-      this.isAuthCodeModalOpen = true
+      this.isSafePlusModalOpen = true
     },
-    closeAuthCodeModal () {
+    closeSafePlusModal() {
       this.isModalAni = false
       setTimeout(() => {
-        this.isAuthCodeModalOpen = false
+        this.isSafePlusModalOpen = false
       }, 300)
-    },
-    handleExperienceClick(item) {
-      if (this.memberType === 'corporate') {
-        this.openAuthCodeModal(); // 모달 열기
-      } else {
-        this.goLink('/vdata'); // 일반회원은 기존대로 이동
-      }
     }
   }
 }

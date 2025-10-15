@@ -15,7 +15,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .wooriFooter{
   @apply w-full bg-[#F7F5FF] pb-[90px] px-[22px] flex flex-col justify-start items-center gap-[12px];
 }

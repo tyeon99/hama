@@ -100,7 +100,10 @@ body{
 
 /* 사례 카테고리 css */
 .cat{
-  @apply absolute top-0 right-0 w-[82px] h-[24px] p-[5px_0px] rounded-[0px_16px] text-[#fff] text-[12px] font-extrabold leading-[14px] text-center z-[9];
+  @apply absolute top-[-1px] right-[-1px] w-[82px] h-[24px] p-[5px_0px] rounded-[0px_16px] text-[#fff] text-[12px] font-extrabold leading-[14px] text-center z-[9];
+}
+.cat.priority{
+  @apply bg-[#7139FF] left-[-1px] top-[-1px] rounded-[16px_0px];
 }
 .cat01{
   @apply bg-[#FF87AD];
@@ -388,4 +391,48 @@ body{
 /* vDataContent */
 .vDataContent{
   @apply min-h-[calc(100dvh-59px)] flex flex-col justify-center items-center;
+}
+
+/* 안심플러스 */
+/* ===== 가격 카드별 색상 구분 ===== */
+.card .top .txt p span{
+  @apply font-extrabold;
+}
+.card .top .txt strong span{
+  @apply font-extrabold text-[16px] leading-[20px] text-[#00A7E9];
+}
+.card01 .line,
+.card01 .bottom .txt span {
+  @apply bg-[#FF5C95] border-[#FF5C95];
+}
+.card01 .top .num .pri strong,
+.card01 .top button span {
+  @apply text-[#FF5C95];
+}
+.card01 .top button{
+  @apply border-[#FF5C95];
+}
+.card02 .line,
+.card02 .top button,
+.card02 .bottom .txt span {
+  @apply bg-[#7139FF] border-[#7139FF];
+}
+.card02 .top .txt p span,
+.card02 .top .num .pri strong{
+  @apply text-[#7139FF];
+}
+.card02 .top button span{
+  @apply text-[#fff];
+}
+.card03 .line,
+.card03 .bottom .txt span {
+  @apply bg-[#00A7E9] border-[#00A7E9];
+}
+.card03 .top button{
+  @apply border-[#00A7E9];
+}
+.card03 .top .txt p span,
+.card03 .top .num .pri strong,
+.card03 .top button span {
+  @apply text-[#00A7E9];
 }

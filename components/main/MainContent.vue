@@ -9,13 +9,18 @@
         </div>
       </div>
       <div class="bottom">
+        <!-- 우선체험 'priority'클래스 추가 -->
         <div
           v-for="(item, idx) in examples"
           :key="idx"
           class="example animate__animated animate__fadeInUp"
+          :class="{ priority: item.priority }"
           :style="{ animationDelay: `${(idx + 1) * 0.1}s` }"
           @click="openDetail(idx)"
         >
+          <!-- 우선체험일 때 -->
+          <span v-if="item.priority" class="cat priority">우선체험</span>
+          <!--  -->
           <span :class="['cat', item.catClass]">{{ item.cat }}</span>
           <div class="title text-truncate" :class="zoomClass">
             {{ item.title }}
@@ -135,6 +140,12 @@
         :isModalAni="isModalAni"
         @close-authCodeModal="closeAuthCodeModal"
       />
+      <!-- 안심플러스 우선 체험 모달 -->
+      <SafePlusModal
+        v-if="isSafePlusModalOpen"
+        :isModalAni="isModalAni"
+        @close-safePlusModal="closeSafePlusModal"
+      />
     </div>
     <!-- mainContent__box -->
   </div>
@@ -142,10 +153,12 @@
 
 <script>
 import AuthCodeModal from '~/components/common/AuthCodeModal'
+import SafePlusModal from '~/components/common/SafePlusModal'
 
 export default {
     components: {
-    AuthCodeModal
+    AuthCodeModal,
+    SafePlusModal
   },
   data () {
     return {
@@ -164,7 +177,8 @@ export default {
           summary: '딸을 사칭한 전화로 납치 상황을 연출하고, 사채업자를 사칭한 공범이 신상정보와 폭력적 협박으로 현실감을 높입니다. 구체적인 금액 요구와 시간 압박으로 피해자의 공포심을 극대화해 송금을 유도하는 수법입니다.',
           isOpen: false,
           detailHeight: '0px',
-          memberType: 'general'
+          memberType: 'corporate',
+          priority: true
         },
         {
           cat: '기관사칭',
@@ -218,6 +232,7 @@ export default {
       isOpen: false,
       detailHeight: '0px',
       isAuthCodeModalOpen: false,
+      isSafePlusModalOpen: false,
       isModalAni: false
     }
   },
@@ -316,12 +331,24 @@ export default {
         this.isAuthCodeModalOpen = false
       }, 300)
     },
+    openSafePlusModal() {
+      this.isModalAni = true
+      this.isSafePlusModalOpen = true
+    },
+    closeSafePlusModal() {
+      this.isModalAni = false
+      setTimeout(() => {
+        this.isSafePlusModalOpen = false
+      }, 300)
+    },
     handleExperienceClick(item) {
-      if (item.memberType === 'corporate') {
-        this.openAuthCodeModal(); // 모달 열기
-      } else {
-        this.goLink('/vdata'); // 일반회원은 기존대로 이동
+      if (item.priority) {
+        return this.openSafePlusModal()
       }
+      if (item.memberType === 'corporate') {
+        return this.openAuthCodeModal()
+      }
+      return this.goLink('/vdata')
     }
   }
 }
@@ -348,6 +375,9 @@ export default {
 }
 .mainContent__box .bottom .example {
   @apply relative w-full rounded-[16px] border border-[#dee1e6] bg-[#fff] p-[12px_8px_8px] cursor-pointer;
+}
+.mainContent__box .bottom .example.priority {
+  @apply border-[#7139FF] pt-[38px];
 }
 .mainContent__box .bottom .example .title {
   @apply w-[calc(100%-67px)] text-[#2B2436] text-[18px] font-extrabold leading-[20px] mb-[10px] px-[12px];
