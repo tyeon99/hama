@@ -49,7 +49,7 @@ export default {
   @apply w-full flex flex-col justify-start items-center p-[36px_16px_118px];
 }
 .safePlusSubscribeContent .payment{
-  @apply w-full pb-[72px];
+  @apply w-full pb-[72px] px-[8px];
 }
 .safePlusSubscribeContent .payment button{
   @apply w-full h-[52px] border-2 border-[#6B4EFF] rounded-[48px] bg-[#6B4EFF] font-[JalnanGothic] font-normal text-[16px] leading-[20px] text-[#fff] pt-[3px] tracking-wide;

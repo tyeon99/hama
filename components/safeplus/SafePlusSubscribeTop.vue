@@ -1,11 +1,11 @@
 <template>
   <div class="safePlusSubscribeTop">
     <div class="left">
-      <span>구독 및 결제</span>
+      <span :class="zoomClass">구독 및 결제</span>
       <div class="title">모든 구독 공동 혜택</div>
       <div class="txt-group">
-        <p>신종 수법 30일 선체험</p>
-        <p>최대 500만원 보장보험 (구독 후 익일 적용)</p>
+        <p :class="zoomClass">신종 수법 30일 선체험</p>
+        <p :class="zoomClass">최대 500만원 보장보험 (구독 후 익일 적용)</p>
       </div>
     </div>
     <div class="right">
@@ -16,7 +16,20 @@
 
 <script>
 export default {
-
+  computed: {
+    fontSizePercent () {
+      return this.$store.state.font.fontSizePercent
+    },
+    zoomClass () {
+      if (this.fontSizePercent === 130) return 'zoom-13'
+      if (this.fontSizePercent === 120) return 'zoom-12'
+      if (this.fontSizePercent === 110) return 'zoom-11'
+      if (this.fontSizePercent === 90) return 'zoom-09'
+      if (this.fontSizePercent === 80) return 'zoom-08'
+      if (this.fontSizePercent === 70) return 'zoom-07'
+      return ''
+    }
+  }
 }
 </script>
 

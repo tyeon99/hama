@@ -17,7 +17,7 @@
         <img width="28" :src="require(`~/assets/img/safeplus/${item.img}`)">
         <div class="txt">
           <strong>{{ item.num }}</strong>
-          <span>{{ item.txt }}</span>
+          <span :class="zoomClass">{{ item.txt }}</span>
         </div>
       </div>
     </div>
@@ -55,6 +55,20 @@ export default {
         }
       ]
     }
+  },
+  computed: {
+    fontSizePercent () {
+      return this.$store.state.font.fontSizePercent
+    },
+    zoomClass () {
+      if (this.fontSizePercent === 130) return 'zoom-13'
+      if (this.fontSizePercent === 120) return 'zoom-12'
+      if (this.fontSizePercent === 110) return 'zoom-11'
+      if (this.fontSizePercent === 90) return 'zoom-09'
+      if (this.fontSizePercent === 80) return 'zoom-08'
+      if (this.fontSizePercent === 70) return 'zoom-07'
+      return ''
+    }
   }
 }
 </script>
@@ -76,7 +90,7 @@ export default {
   @apply w-full grid grid-cols-2 gap-[12px_16px];
 }
 .spContent .bottom .box{
-  @apply w-full h-[73px] rounded-[12px] p-[16px] flex justify-start items-start gap-[8px];
+  @apply w-full rounded-[12px] p-[16px] flex justify-start items-start gap-[8px];
   box-shadow: 0px 4px 4px 0px #00000024;
 }
 .spContent .bottom .box .txt{

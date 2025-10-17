@@ -13,20 +13,22 @@
       @click.stop
     >
       <div class="modal-body">
-        <div class="title">안심플러스 우선 체험 기간</div>
+        <div class="title" :class="zoomClass">안심플러스 우선 체험 기간</div>
         <div class="txt">
-          현재 <span>안심플러스 멤버십 우선 체험 기간</span>입니다.<br />
-          일반회원은 30일 후 체험할 수 있어요.
+          <p :class="zoomClass">
+            현재 <span>안심플러스 멤버십 우선 체험 기간</span>입니다.<br />
+            일반회원은 30일 후 체험할 수 있어요.
+          </p>
         </div>
         <div class="box">
-          <strong>안심플러스 서비스를 구독하면</strong>
+          <strong :class="zoomClass">안심플러스 서비스를 구독하면</strong>
           <div class="p-group">
-            <p>보이스피싱, 30일 먼저 예방하고</p>
-            <p>피해 시 최대 500만원 보장</p>
-            <p>월 2,750원으로 든든한 예방과 보장까지!</p>
+            <p :class="zoomClass">보이스피싱, 30일 먼저 예방하고</p>
+            <p :class="zoomClass">피해 시 최대 500만원 보장</p>
+            <p :class="zoomClass">월 2,750원으로 든든한 예방과 보장까지!</p>
           </div>
         </div>
-        <button>안심플러스 서비스 알아보기</button>
+        <button :class="zoomClass">안심플러스 서비스 알아보기</button>
       </div>
     </div>
   </div>
@@ -83,10 +85,10 @@ export default {
   @apply font-[JalnanGothic] font-normal text-[18px] leading-[22px] text-[#2B2436] mb-[16px];
 }
 .modal-body .txt{
-  @apply text-center font-normal text-[14px] leading-[20px] text-[#2B2436] mb-[24px];
+  @apply text-center font-medium text-[14px] leading-[20px] text-[#2B2436] mb-[24px];
 }
 .modal-body .txt span{
-  @apply text-[#6F75F2];
+  @apply text-[#6F75F2] font-extrabold;
 }
 .modal-body .box{
   @apply w-full p-[24px_16px] bg-[#EFECFF] rounded-[16px] flex flex-col justify-center items-center gap-[16px] mb-[24px];

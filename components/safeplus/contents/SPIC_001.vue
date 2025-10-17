@@ -15,7 +15,7 @@
       >
         <img :width="item.width" :src="require(`~/assets/img/safeplus/${item.img}`)">
         <div class="title" v-html="item.title"></div>
-        <div class="txt" v-html="item.txt"></div>
+        <div :class="zoomClass" class="txt" v-html="item.txt"></div>
       </div>
     </div>
   </div>
@@ -52,6 +52,20 @@ export default {
         }
       ]
     }
+  },
+  computed: {
+    fontSizePercent () {
+      return this.$store.state.font.fontSizePercent
+    },
+    zoomClass () {
+      if (this.fontSizePercent === 130) return 'zoom-13'
+      if (this.fontSizePercent === 120) return 'zoom-12'
+      if (this.fontSizePercent === 110) return 'zoom-11'
+      if (this.fontSizePercent === 90) return 'zoom-09'
+      if (this.fontSizePercent === 80) return 'zoom-08'
+      if (this.fontSizePercent === 70) return 'zoom-07'
+      return ''
+    }
   }
 }
 </script>
@@ -71,7 +85,7 @@ export default {
   @apply w-full px-[16px] grid grid-cols-2 gap-[20px];
 }
 .spContent .p-intro .box{
-  @apply w-full h-[202px] p-[12px] rounded-[12px] bg-[#fff] flex flex-col justify-between items-center gap-[15px];
+  @apply w-full p-[12px] rounded-[12px] bg-[#fff] flex flex-col justify-between items-center gap-[15px];
   box-shadow: 0px 0px 8px 0px #00000014;
 }
 .spContent .p-intro .box .title{

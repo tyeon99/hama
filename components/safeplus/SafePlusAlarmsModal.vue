@@ -1,8 +1,9 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <div
     class="modal-overlay animate__animated animate__faster"
     :class="{ animate__fadeIn: isModalAni, animate__fadeOut: !isModalAni }"
-    @click="closeLogOutModal"
+    @click="closeAlarmsModal"
   >
     <div
       class="modal-content animate__animated animate__faster"
@@ -14,8 +15,10 @@
     >
       <div class="modal-body">
         <img width="24" src="~/assets/img/common/logout-icon.png" alt="로그아웃">
-        <span :class="zoomClass">로그아웃 되었습니다.</span>
-        <div class="progress"></div>
+        <span :class="zoomClass" v-html="message"></span>
+      </div>
+      <div class="modal-footer">
+        <button @click="closeAlarmsModal">확인</button>
       </div>
     </div>
   </div>
@@ -27,6 +30,10 @@ export default {
     isModalAni: {
       type: Boolean,
       default: false
+    },
+    message: {
+      type: String,
+      default: ''
     }
   },
   computed: {
@@ -45,15 +52,10 @@ export default {
   },
   mounted() {
     document.body.appendChild(this.$el)
-
-    // 2초뒤 닫기
-    setTimeout(() => {
-      this.closeLogOutModal()
-    }, 2000)
   },
   methods: {
-    closeLogOutModal() {
-      this.$emit('close-logOutModal')
+    closeAlarmsModal() {
+      this.$emit('close-alarmsModal')
     }
   }
 }
@@ -64,24 +66,18 @@ export default {
   @apply fixed top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,0.5)] flex justify-center items-center z-[9999] px-[30px];
 }
 .modal-content {
-  @apply w-full bg-[#fff] rounded-[4px] shadow-[0px_4px_8px_0px_rgba(0,0,0,0.3)];
+  @apply w-full bg-[#fff] rounded-[4px] shadow-[0px_4px_8px_0px_rgba(0,0,0,0.3)] border-b-[5px] border-[#7139FF];
 }
 .modal-body{
-  @apply relative w-full p-[20px_12px] flex justify-start items-center gap-[8px];
+  @apply relative w-full p-[20px] flex justify-center items-start gap-[8px];
 }
 .modal-body span{
-  @apply font-normal text-[16px] leading-[20px] text-[#000];
+  @apply font-normal text-[16px] leading-[24px] text-[#2B2436] text-center;
 }
-.modal-body .progress{
-  @apply absolute bottom-0 left-0 w-0 h-[5px] bg-[#7139FF];
-  animation: progress-fill 1s linear forwards;
+.modal-footer{
+  @apply w-full flex justify-center items-center pb-[15px];
 }
-@keyframes progress-fill {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+.modal-footer button{
+  @apply w-[100px] h-[44px] rounded-[15px] bg-[#7139FF] font-bold text-[14px] leading-[17px] text-[#fff];
 }
 </style>

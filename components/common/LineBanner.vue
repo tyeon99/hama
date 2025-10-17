@@ -12,7 +12,20 @@
 
 <script>
 export default {
-
+  computed: {
+    fontSizePercent () {
+      return this.$store.state.font.fontSizePercent
+    },
+    zoomClass () {
+      if (this.fontSizePercent === 130) return 'zoom-13'
+      if (this.fontSizePercent === 120) return 'zoom-12'
+      if (this.fontSizePercent === 110) return 'zoom-11'
+      if (this.fontSizePercent === 90) return 'zoom-09'
+      if (this.fontSizePercent === 80) return 'zoom-08'
+      if (this.fontSizePercent === 70) return 'zoom-07'
+      return ''
+    }
+  }
 }
 </script>
 

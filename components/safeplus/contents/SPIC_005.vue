@@ -1,7 +1,7 @@
 <template>
   <div class="spContent">
-    <div class="title">있고 없고의 차이</div>
-    <div class="txt">꼭 필요한 이유가 무엇인지 알아봅니다.</div>
+    <div class="title" :class="zoomClass">있고 없고의 차이</div>
+    <div class="txt" :class="zoomClass">꼭 필요한 이유가 무엇인지 알아봅니다.</div>
     <div class="box-group">
       <div
         v-for="(item, idx) in boxes"
@@ -12,12 +12,13 @@
         <div class="box">
           <div class="box-title">
             <img width="40" :src="require(`~/assets/img/safeplus/${item.img}`)">
-            <span>{{ item.title }}</span>
+            <span :class="zoomClass">{{ item.title }}</span>
           </div>
           <div class="p-group">
             <p
               v-for="(p, pidx) in item.texts"
               :key="pidx"
+              :class="zoomClass"
             >
               {{ p }}
             </p>
@@ -57,6 +58,20 @@ export default {
           ]
         }
       ]
+    }
+  },
+  computed: {
+    fontSizePercent () {
+      return this.$store.state.font.fontSizePercent
+    },
+    zoomClass () {
+      if (this.fontSizePercent === 130) return 'zoom-13'
+      if (this.fontSizePercent === 120) return 'zoom-12'
+      if (this.fontSizePercent === 110) return 'zoom-11'
+      if (this.fontSizePercent === 90) return 'zoom-09'
+      if (this.fontSizePercent === 80) return 'zoom-08'
+      if (this.fontSizePercent === 70) return 'zoom-07'
+      return ''
     }
   }
 }

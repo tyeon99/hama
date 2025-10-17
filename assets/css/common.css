@@ -436,3 +436,32 @@ body{
 .card03 .top button span {
   @apply text-[#00A7E9];
 }
+
+/* 데이터 css */
+.paymentContent .box .bottom .payment-list .list span strong{
+  @apply font-extrabold text-[16px] leading-[20px];
+}
+.paymentContent .box .bottom .payment-list .list span em{
+  @apply text-[#FF507A];
+}
+.laContent .box-group .box p span{
+  @apply text-[#6F75F2] font-extrabold;
+}
+.modal-body.alarm .txt-box p{
+  @apply w-full font-normal text-[12px] leading-[14px] text-[#6B6D95];
+}
+.modal-body.alarm .txt-box p strong{
+  @apply font-extrabold;
+}
+.modal-body.alarm .txt-box p span{
+  @apply block w-full relative pl-[18px] before:content-[''] before:absolute before:left-[8px] before:top-[5px] before:w-[2.5px] before:h-[2.5px] before:rounded-full before:bg-[#6B6D95];
+}
+.mypageContent .box .list-group .list .right span{
+  @apply font-extrabold text-[12px] leading-[14px] text-[#6F75F2];
+}
+.mypageContent .box .list-group .list .right em{
+  @apply text-[#6F75F2];
+}
+.mypageContent .box .list-group .list .right button{
+  @apply font-extrabold text-[11px] leading-[16px] text-[#6F75F2];
+}

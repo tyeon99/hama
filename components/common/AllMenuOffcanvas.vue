@@ -35,7 +35,7 @@
               :style="{ animationDelay: getAnimationDelay(gidx, idx) }"
               @click="menuClick(item)"
             >
-              <span>{{ item.label }}</span>
+              <span :class="zoomClass">{{ item.label }}</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                 <path d="M12.328 6.46731C12.0338 6.17572 11.5589 6.17784 11.2673 6.47204C10.9757 6.76624 10.9778 7.24111 11.272 7.53269L12.6824 8.93054C13.2573 9.50033 13.6427 9.88386 13.9018 10.2065C13.9137 10.2213 13.9251 10.2358 13.9362 10.25L7 10.25C6.58579 10.25 6.25 10.5858 6.25 11C6.25 11.4142 6.58579 11.75 7 11.75L13.9362 11.75C13.9251 11.7642 13.9137 11.7787 13.9018 11.7935C13.6427 12.1161 13.2573 12.4997 12.6824 13.0695L11.272 14.4673C10.9778 14.7589 10.9757 15.2338 11.2673 15.528C11.5589 15.8222 12.0338 15.8243 12.328 15.5327L13.7691 14.1043C14.3053 13.573 14.7525 13.1298 15.0713 12.7328C15.4057 12.3163 15.6601 11.8787 15.7281 11.3455C15.7427 11.2308 15.75 11.1154 15.75 11C15.75 10.8846 15.7427 10.7692 15.7281 10.6545C15.6601 10.1213 15.4057 9.68367 15.0713 9.26724C14.7525 8.87023 14.3053 8.42705 13.7691 7.89568L12.328 6.46731Z" fill="#2B2436"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M11 0.25C5.06294 0.25 0.25 5.06294 0.25 11C0.25 16.9371 5.06294 21.75 11 21.75C16.9371 21.75 21.75 16.9371 21.75 11C21.75 5.06294 16.9371 0.25 11 0.25ZM1.75 11C1.75 5.89137 5.89137 1.75 11 1.75C16.1086 1.75 20.25 5.89137 20.25 11C20.25 16.1086 16.1086 20.25 11 20.25C5.89137 20.25 1.75 16.1086 1.75 11Z" fill="#2B2436"/>
@@ -114,6 +114,19 @@ export default {
         acc += g.length
       }
       return starts
+    },
+    // 글자크기 설정
+    fontSizePercent () {
+      return this.$store.state.font.fontSizePercent
+    },
+    zoomClass () {
+      if (this.fontSizePercent === 130) return 'zoom-13'
+      if (this.fontSizePercent === 120) return 'zoom-12'
+      if (this.fontSizePercent === 110) return 'zoom-11'
+      if (this.fontSizePercent === 90) return 'zoom-09'
+      if (this.fontSizePercent === 80) return 'zoom-08'
+      if (this.fontSizePercent === 70) return 'zoom-07'
+      return ''
     }
   },
   methods: {

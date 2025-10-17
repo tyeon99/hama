@@ -1,6 +1,6 @@
 <template>
   <div class="spContent">
-    <div class="title">구독 상품 선택</div>
+    <div class="title" :class="zoomClass">구독 상품 선택</div>
 
     <div class="product-list">
       <div
@@ -11,13 +11,13 @@
         @click="selectedIdx = idx"
       >
         <div class="left">
-          <strong>
+          <strong :class="zoomClass">
             <em v-if="item.recommend">추천</em>{{ item.title }}
           </strong>
-          <span>{{ item.subtitle }}</span>
-          <b v-if="item.desc">{{ item.desc }}</b>
+          <span :class="zoomClass">{{ item.subtitle }}</span>
+          <b v-if="item.desc" :class="zoomClass">{{ item.desc }}</b>
         </div>
-        <div class="right">{{ item.price }}</div>
+        <div class="right" :class="zoomClass">{{ item.price }}</div>
       </div>
     </div>
   </div>
@@ -50,6 +50,20 @@ export default {
           recommend: true
         }
       ]
+    }
+  },
+  computed: {
+    fontSizePercent () {
+      return this.$store.state.font.fontSizePercent
+    },
+    zoomClass () {
+      if (this.fontSizePercent === 130) return 'zoom-13'
+      if (this.fontSizePercent === 120) return 'zoom-12'
+      if (this.fontSizePercent === 110) return 'zoom-11'
+      if (this.fontSizePercent === 90) return 'zoom-09'
+      if (this.fontSizePercent === 80) return 'zoom-08'
+      if (this.fontSizePercent === 70) return 'zoom-07'
+      return ''
     }
   }
 }

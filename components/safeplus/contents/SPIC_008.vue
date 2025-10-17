@@ -18,16 +18,16 @@
               <img width="80" :src="require(`~/assets/img/safeplus/pri-img0${idx + 1}.png`)">
             </div>
             <div class="pri">
-              <strong>{{ plan.price }}</strong>
-              <span>{{ plan.period }}</span>
+              <strong :class="zoomClass">{{ plan.price }}</strong>
+              <span :class="zoomClass">{{ plan.period }}</span>
             </div>
           </div>
           <div class="txt">
-            <strong v-html="plan.title"></strong>
-            <p v-html="plan.desc"></p>
+            <strong :class="zoomClass" v-html="plan.title"></strong>
+            <p :class="zoomClass" v-html="plan.desc"></p>
           </div>
           <button>
-            <span>앱으로 구독신청하기</span>
+            <span :class="zoomClass">앱으로 구독신청하기</span>
             <img width="24" :src="require(`~/assets/img/safeplus/arrow0${idx + 1}.png`)">
           </button>
         </div>
@@ -41,7 +41,7 @@
             <span>
               <img width="14" src="~/assets/img/safeplus/check.png" />
             </span>
-            <p v-html="txt"></p>
+            <p :class="zoomClass" v-html="txt"></p>
           </div>
         </div>
       </div>
@@ -84,6 +84,20 @@ export default {
           benefits: ['모든 월간 혜택 포함', '정기구독 11% 할인∣월 2,933원 (6개월 결제)']
         }
       ]
+    }
+  },
+  computed: {
+    fontSizePercent () {
+      return this.$store.state.font.fontSizePercent
+    },
+    zoomClass () {
+      if (this.fontSizePercent === 130) return 'zoom-13'
+      if (this.fontSizePercent === 120) return 'zoom-12'
+      if (this.fontSizePercent === 110) return 'zoom-11'
+      if (this.fontSizePercent === 90) return 'zoom-09'
+      if (this.fontSizePercent === 80) return 'zoom-08'
+      if (this.fontSizePercent === 70) return 'zoom-07'
+      return ''
     }
   }
 }

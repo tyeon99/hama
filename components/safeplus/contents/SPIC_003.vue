@@ -1,7 +1,7 @@
 <template>
   <div class="spContent">
-    <div class="title">최근 신종 수법</div>
-    <div class="txt">30일 빠른 체험 서비스로 예방하세요!</div>
+    <div class="title" :class="zoomClass">최근 신종 수법</div>
+    <div class="txt" :class="zoomClass">30일 빠른 체험 서비스로 예방하세요!</div>
     <div class="box-group">
       <div
         v-for="(item, idx) in boxes"
@@ -10,11 +10,11 @@
         :class="item.class"
       >
         <div class="left">
-          <div class="box-title">{{ item.title }}</div>
-          <div class="box-txt">{{ item.txt }}</div>
+          <div class="box-title" :class="zoomClass">{{ item.title }}</div>
+          <div class="box-txt" :class="zoomClass">{{ item.txt }}</div>
         </div>
         <div class="right">
-          <span>위험도: {{ item.level }}</span>
+          <span :class="zoomClass">위험도: {{ item.level }}</span>
         </div>
       </div>
     </div>
@@ -45,6 +45,20 @@ export default {
           level: '중간'
         }
       ]
+    }
+  },
+  computed: {
+    fontSizePercent () {
+      return this.$store.state.font.fontSizePercent
+    },
+    zoomClass () {
+      if (this.fontSizePercent === 130) return 'zoom-13'
+      if (this.fontSizePercent === 120) return 'zoom-12'
+      if (this.fontSizePercent === 110) return 'zoom-11'
+      if (this.fontSizePercent === 90) return 'zoom-09'
+      if (this.fontSizePercent === 80) return 'zoom-08'
+      if (this.fontSizePercent === 70) return 'zoom-07'
+      return ''
     }
   }
 }

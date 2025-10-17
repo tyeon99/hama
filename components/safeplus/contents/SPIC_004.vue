@@ -1,7 +1,7 @@
 <template>
   <div class="spContent">
-    <div class="title">특히 이런 분들께 필요합니다.</div>
-    <div class="txt">가장 소중한 분께, 안심플러스를 선물하세요.</div>
+    <div class="title" :class="zoomClass">특히 이런 분들께 필요합니다.</div>
+    <div class="txt" :class="zoomClass">가장 소중한 분께, 안심플러스를 선물하세요.</div>
     <div class="box-group">
       <div
         v-for="(item, idx) in boxes"
@@ -18,10 +18,10 @@
           </div>
         </div>
         <div class="bottom">
-          <strong>{{ item.strong }}</strong>
-          <p>{{ item.p }}</p>
-          <em>{{ item.em }}</em>
-          <span>{{ item.span }}</span>
+          <strong :class="zoomClass">{{ item.strong }}</strong>
+          <p :class="zoomClass">{{ item.p }}</p>
+          <em :class="zoomClass">{{ item.em }}</em>
+          <span :class="zoomClass">{{ item.span }}</span>
         </div>
       </div>
     </div>
@@ -70,6 +70,20 @@ export default {
         }
       ]
     }
+  },
+  computed: {
+    fontSizePercent () {
+      return this.$store.state.font.fontSizePercent
+    },
+    zoomClass () {
+      if (this.fontSizePercent === 130) return 'zoom-13'
+      if (this.fontSizePercent === 120) return 'zoom-12'
+      if (this.fontSizePercent === 110) return 'zoom-11'
+      if (this.fontSizePercent === 90) return 'zoom-09'
+      if (this.fontSizePercent === 80) return 'zoom-08'
+      if (this.fontSizePercent === 70) return 'zoom-07'
+      return ''
+    }
   }
 }
 </script>
@@ -88,7 +102,7 @@ export default {
   @apply w-full flex flex-col justify-start items-center gap-[16px];
 }
 .spContent .box-group .box{
-  @apply w-full h-[266px] bg-[#DCE8FF] p-[16px_12px_14px] rounded-[16px] flex flex-col justify-center items-center gap-[16px];
+  @apply w-full bg-[#DCE8FF] p-[16px_12px_14px] rounded-[16px] flex flex-col justify-center items-center gap-[16px];
   box-shadow: 0px 0px 8px 0px #00000014;
 }
 .spContent .box-group .box .top{
