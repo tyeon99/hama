@@ -377,6 +377,12 @@ body{
 .endPageContent__top.s017{
   @apply bg-[url(https://img.thinkpool.com/hama/img/end/end-bg17.png)];
 }
+.endPageContent__top.s018{
+  @apply bg-[url(https://img.thinkpool.com/hama/img/end/end-bg18.png)];
+}
+.endPageContent__top.s019{
+  @apply bg-[url(https://img.thinkpool.com/hama/img/end/end-bg19.png)];
+}
 .endPageContent__bottom .card-group .card .txtBox p{
   @apply w-full pl-[20px] relative font-medium text-[14px] leading-[17px] text-[#6B6D95] before:content-[''] before:absolute before:left-[7px] before:top-[7px] before:w-[3px] before:h-[3px] before:bg-[#6B6D95] before:rounded-full;
 }
