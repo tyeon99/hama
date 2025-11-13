@@ -75,7 +75,7 @@ body{
   opacity: 0;
 }
 .introLoading.loadingAni{
-  @apply h-[calc(100dvh-185px)];
+  @apply h-[calc(100dvh-210px)];
 }
 .introLoading svg{
   position: absolute;

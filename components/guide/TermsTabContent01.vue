@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/attribute-hyphenation -->
 <template>
   <div class="termsTabContent">
     <div class="txt-group">
@@ -6,6 +7,118 @@
         개인정보 처리방침
       </div>
       <div class="txtBox">
+        <p :class="zoomClass">
+          ㈜씽크풀(이하 ‘회사’)은 이용자의 개인정보를 중요하게 생각하며 「개인정보 보호법」 및 관련 법령, Google Play 정책을 준수합니다.<br />
+          본 개인정보 처리방침은 회사가 운영하는 “하마터면” 및 “하마터면 안심플러스” 서비스에 적용됩니다
+        </p>
+        <p :class="zoomClass">
+          <strong>1. 개인정보의 수집 및 이용 목적</strong>
+          1) 하마터면(무료 서비스)<br />
+          <span>무료 체험 서비스는 회원가입 없이 이용 가능하며, 이용자의 실제 개인정보를 수집하지 않습니다.</span>
+          <span>체험 과정에서 사용되는 이름·성별·주민번호 등은 모두 가상 정보이며, 서버에 저장되거나 외부로 전송되지 않습니다.</span><br />
+          2) 하마터면 안심플러스(유로 구독 서비스)
+          <span>유료 구독 결제 및 본인확인을 위해 아래 정보만 수집합니다. (이름, 휴대폰번호, 이메일 주소)</span>
+          <span>보험사 보장심사 시 필요한 구독 상태 및 보장요건 충족 여부 조회를 위해 아래 목적에 한해 정보를 사용합니다.</span>
+        </p>
+        <p :class="zoomClass">
+          <strong>2. 수집하는 개인정보 항목 및 수집방법</strong>
+          1) 수집하는 항목 - 하마터면 무료 서비스
+          <span>없음 (개인 정보를 저장·수집·전송하지 않음)</span><br />
+          2) 수집하는 항목 - 하마터면 안심플러스
+          <span>이름</span>
+          <span>휴대폰번호</span>
+          <span>이메일 주소</span><br />
+          ※ 유료 구독 시 이용자가 직접 입력하여 수집함.<br /><br />
+          3)보험 보당 확인 관련 안내 (제 3자 조회)
+          <span>이용자가 보험금 지급 심사를 위해 보험사에 자신의 휴대폰번호를 제공한 경우, 보험사는 해당 번호를 기준으로 구독 상태 및 보장요건 충족 여부를 조회할 수 있습니다. (회사는 휴대폰번호를 보험사에 제공하지 않으며, 보험사가 직접 확인 요청)</span>
+        </p>
+        <p :class="zoomClass">
+          <strong>3. 개인정보 보유 및 이용기간</strong>
+          하마터면 무료 서비스
+          <span>개인정보를 수집하지 않으므로 보유기간 없음.</span><br />
+          하마터면 안심플러스
+          <span>관련 법령에서 정한 기간 동안 보유</span>
+          <em>대금결제 및 재화 등의 공급 기록: 5년</em>
+          <em>계약 또는 청약철회 등의 기록: 5년</em>
+          <em>소비자 불만 또는 분쟁처리 기록: 3년</em><br />
+          ※ 위 기간 내에서 구독관리 및 보험사 보장검증 목적을 위해 이용될 수 있음.
+        </p>
+        <p :class="zoomClass">
+          <strong>4. 개인정보의 제3자 제공</strong>
+          회사는 소비자의 동의 없이 개인정보를 제3자에게 제공하지 않습니다.<br />
+          다만, 하마터면 안심플러스 보험금 심사 시 아래의 제공이 이루어질 수 있습니다.
+          <span>제공받는 자: 이용자가 보험금 청구 과정에서 선택한 보험사</span>
+          <span>제공 목적: 보장 적용여부 및 필수 체험 완료 여부 확인</span>
+          <span>제공 항목:</span>
+          <em>유료 구독 여부</em>
+          <em>보장요건 충족 여부</em>
+          <span>제공 시점: 보험사가 필요 시마다 조회</span>
+          <span>동의 거부 시: 보장 심사 불가</span>
+        </p>
+        <p :class="zoomClass">
+          <strong>5. 개인정보 처리 위탁</strong>
+          <span>하마터면 무료 서비스는 위탁 없음.</span>
+          <span>하마터면 안심플러스는 결제 및 본인확인 등을 위해 일부 위탁 서비스 사용 가능.<br />
+            (예: 결제대행사, 본인인증 서비스 등)</span>
+        </p>
+        <p :class="zoomClass">
+          <strong>6. 개인정보 자동수집 장치 사용 여부</strong>
+          <span>쿠키, 광고 ID, 기기정보, 위치정보 등을 자동으로 수집하지 않음.</span>
+          <span>음성대화 기능은 실시간 처리 후 즉시 폐기되며 저장되지 않음.</span>
+        </p>
+        <p :class="zoomClass">
+          <strong>7. 정보주체 권리 행사</strong>
+          <span>무료 서비스는 개인정보를 보관하지 않으므로 별도의 권리 행사 필요 없음.</span>
+          <span>안심플러스 이용자는 개인정보 열람·정정·삭제 요청 가능.</span>
+        </p>
+        <p :class="zoomClass">
+          <strong>8. 개인정보 파기</strong>
+          <span>무료 서비스 : 파기 대상 없음</span>
+          <span>안심플러스 : 법정 보유기간 경과 후 즉시 파기</span>
+        </p>
+        <p :class="zoomClass">
+          <strong>9. 개인정보 보호책임자</strong>
+          <span>개인정보 보호책임자: 김정민 전무</span>
+          <span>담당부서: ThinkPool Lab</span>
+        </p>
+        <p :class="zoomClass">
+          <strong>10. Google Play 정책 준수</strong>
+          <span>앱은 데이터 최소 수집 원칙을 준수하며 수집·이용 목적 외 사용하지 않습니다.</span>
+        </p>
+        <p :class="zoomClass">
+          <strong>부칙</strong>
+          <span>본 개인정보 처리방침은 2025년 11월 00일부터 적용됩니다.</span>
+        </p>
+      </div>
+    </div>
+    <div class="prev">
+      <span>▶</span>
+      <button :class="zoomClass" @click="openPrevTermsModal">이전 개인정보 처리방침 보기</button>
+    </div>
+    <!-- 이전 약관 팝업 -->
+    <PrevTermsModal
+      v-if="isPrevTermsModalOpen"
+      :isModalAni="isModalAni"
+      :title="prevTermsTitle"
+      :txt="prevTermsTxt"
+      @close-prevtermsModal="closePrevTermsModal"
+    />
+  </div>
+</template>
+
+<script>
+import PrevTermsModal from '~/components/guide/PrevTermsModal'
+
+export default {
+  components: {
+    PrevTermsModal
+  },
+  data() {
+    return {
+      isPrevTermsModalOpen: false,
+      isModalAni: false,
+      prevTermsTitle: '개인정보 처리방침',
+      prevTermsTxt:`
         <p :class="zoomClass">
           ㈜[씽크풀](이하 ‘회사’라 합니다)은 이용자의 개인정보를 중요하게 생각하며, 「개인정보 보호법」, 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」, 구글 플레이 스토어 정책 등 관련 법령을 준수합니다. <br />
           “하마터면”(이하 ‘앱’)은 디지털 피싱 위험성을 가상체험을 통해 인지하고 예방하는 교육 서비스로, 사용자의 개인정보를 일체 수집하지 않습니다.<br />
@@ -86,13 +199,9 @@
           <strong>부칙</strong>
           <span>본 개인정보 처리방침은 2025년 5월 26일부터 적용됩니다.</span>
         </p>
-      </div>
-    </div>
-  </div>
-</template>
-
-<script>
-export default {
+      `
+    }
+  },
   computed: {
     fontSizePercent () {
       return this.$store.state.font.fontSizePercent
@@ -105,6 +214,20 @@ export default {
       if (this.fontSizePercent === 80) return 'zoom-08'
       if (this.fontSizePercent === 70) return 'zoom-07'
       return ''
+    }
+  },
+  methods: {
+    openPrevTermsModal() {
+      this.isModalAni = true
+      this.isPrevTermsModalOpen = true
+      document.body.style.overflow = 'hidden'
+    },
+    closePrevTermsModal(){
+      this.isModalAni = false
+      setTimeout(() => {
+        this.isPrevTermsModalOpen = false
+        document.body.style.overflow = ''
+      }, 300)
     }
   }
 }
@@ -127,12 +250,21 @@ export default {
   @apply text-[#6F75F2] before:content-none p-0;
 }
 .termsTabContent .txt-group .txtBox p strong{
-  @apply block mb-[4px] font-extrabold text-[16px] text-[#6F75F2];
+  @apply block mb-[6px] font-extrabold text-[16px] text-[#6F75F2];
 }
 .termsTabContent .txt-group .txtBox p span{
-  @apply block w-full pl-[20px] relative font-medium text-[14px] leading-[17px] text-[#6B6D95] before:content-[''] before:w-[3.5px] before:h-[3.5px] before:absolute before:rounded-full before:bg-[#6B6D95] before:left-[6px] before:top-[6px];
+  @apply block w-full pl-[20px] relative font-medium text-[14px] leading-[17px] text-[#6B6D95] mt-[4px] before:content-[''] before:w-[3.5px] before:h-[3.5px] before:absolute before:rounded-full before:bg-[#6B6D95] before:left-[6px] before:top-[6px];
 }
 .termsTabContent .txt-group .txtBox p em{
   @apply block w-full pl-[40px] relative font-medium text-[14px] leading-[17px] text-[#6B6D95] before:content-[''] before:w-[3.5px] before:h-[3.5px] before:absolute before:rounded-full before:bg-[#6B6D95] before:left-[26px] before:top-[6px];
+}
+.prev{
+  @apply w-full pt-[12px] pl-[4px] flex justify-start items-center gap-[4px];
+}
+.prev button{
+  @apply text-[#6B6D95] text-[14px] leading-[17px] underline;
+}
+.prev span{
+  @apply text-[#6B6D95] text-[14px] leading-[17px];
 }
 </style>
