@@ -194,6 +194,12 @@ body{
 .animate__delay-04s{
   animation-delay: 0.4s
 }
+.animate__delay-05s{
+  animation-delay: 0.5s
+}
+.animate__delay-06s{
+  animation-delay: 0.6s
+}
 .animate__delay-26{
   animation-delay: 2.6s
 }
