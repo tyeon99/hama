@@ -18,7 +18,7 @@
         <strong :class="zoomClass">검증된 공신력</strong>
       </p>
       <p :class="zoomClass">
-        하마터면은 정부(산업통상자원부) AI 국책과제로 개발되고, 국회 포럼에서도 검증된 서비스 입니다. 
+        하마터면은 정부(산업통상자원부) AI 국책과제로 개발된 서비스로, 국회 포럼에서도 검증된 서비스입니다. 
       </p>
     </div>
     <div class="vDataContent__mode animate__animated animate__fadeInUp animate__delay-02s">
@@ -62,16 +62,21 @@
             :key="option.value"
             class="mode"
           >
+          <!-- ios일 때 '음성과 글로 대화할게요' disabled 처리 -->
             <input
               :id="'mode-' + idx"
               v-model="selectedMode"
               type="radio"
               name="mode"
               :value="option.value"
+              :disabled="option.value === 'voice'"
             />
             <label
               :for="'mode-' + idx"
-              :class="{ 'selected': selectedMode === option.value }"
+              :class="{ 
+                'selected': selectedMode === option.value,
+                'disabled': option.value === 'voice' 
+              }"
             >
               <img
                 width="40"
@@ -82,7 +87,14 @@
           </div>
         </div>
       </div>
-      <div class="caution" :class="zoomClass">아직 IOS에서는 음성 기능이 지원되지 않아요.</div>
+      <!-- ios일 때만 보이도록 -->
+      <div
+        class="caution"
+        :class="zoomClass"
+      >
+        아직 IOS에서는 음성 기능이 지원되지 않아요.
+      </div>
+      <!-- // -->
     </div>
     <div class="vDataContent__btn animate__animated animate__fadeInUp animate__delay-06s">
       <button @click="goLink('/vdata/ready')">
@@ -157,13 +169,13 @@ export default {
   @apply tracking-normal font-extrabold text-[16px] leading-[19px] text-[#2B2436];
 }
 .vDataContent__mode{
-  @apply w-full rounded-[16px] bg-[#fff] mb-[20px] p-[16px];
+  @apply w-full rounded-[16px] bg-[#fff] mb-[20px] p-[16px] flex flex-col justify-start items-start gap-[16px];
 }
 .vDataContent__mode .title{
-  @apply w-full mb-[16px] font-[JalnanGothic] font-normal text-[16px] leading-[19px] text-[#2B2436];
+  @apply w-full font-[JalnanGothic] font-normal text-[16px] leading-[19px] text-[#2B2436];
 }
 .input-group{
-  @apply w-full flex flex-col justify-start items-start gap-[8px] mb-[16px];
+  @apply w-full flex flex-col justify-start items-start gap-[8px];
 }
 .input-group p{
   @apply font-bold text-[16px] leading-[19px] text-[#2B2436];
@@ -178,7 +190,7 @@ export default {
   @apply w-1/2;
 }
 .input-box label{
-  @apply w-full h-[72px] p-[16px_12px] flex justify-start items-center gap-[10px] bg-[#F9F5FF] rounded-[16px] cursor-pointer;
+  @apply w-full h-[72px] p-[16px_12px] flex justify-center items-center gap-[10px] bg-[#F9F5FF] rounded-[16px] cursor-pointer;
 }
 .input-box.user-input label{
   @apply gap-[4px];
@@ -187,7 +199,7 @@ export default {
   @apply font-semibold text-[16px] leading-[17px] text-[#2B2436];
 }
 .input-box label p span{
-  @apply block mt-[4px] font-medium text-[12px] leading-[14px] tracking-tighter;
+  @apply block mt-[4px] font-medium text-[12px] leading-[14px] tracking-[-0.07em];
 }
 .input-box label.selected{
   @apply shadow-[0px_0px_12px_0px_rgba(0,0,0,0.5)];
@@ -196,17 +208,11 @@ export default {
 .input-box label.selected p{
   @apply font-extrabold text-[#fff];
 }
-.input-box label:hover{
-  @apply border-[3px] border-[#7139FF];
+.input-box label.disabled p{
+  @apply opacity-30;
 }
-.input-box label:hover p{
-  @apply text-[#7139FF];
-}
-.input-box label.selected:hover{
-  @apply border-none;
-}
-.input-box label.selected:hover p{
-  @apply text-[#fff];
+.input-box label.disabled img{
+  @apply opacity-30;
 }
 .vDataContent__btn{
   @apply w-full px-[8px] flex flex-col justify-start items-center gap-[8px];
