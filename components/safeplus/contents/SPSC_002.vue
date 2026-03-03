@@ -62,6 +62,7 @@
         <div class="input-group">
           <input id="email" type="text" placeholder="사용자 이메일">
         </div>
+        <div class="txt">이메일을 입력해 주세요.</div>
       </div>
     </div>
     <!--
@@ -172,5 +173,8 @@ export default {
 }
 .spContent .box .input-box .input-group .input-wrap .time{
   @apply absolute top-[15px] right-[12px] font-medium text-[12px] leading-[14px] text-[#FF7474];
+}
+.spContent .box .input-box .txt{
+  @apply w-full font-medium  text-[12px] leading-[14px] text-[#FF7474] pl-[6px];
 }
 </style>
