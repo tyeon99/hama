@@ -141,6 +141,9 @@ body{
 .cat12{
   @apply bg-[#00B9DA];
 }
+.cat13{
+  @apply bg-[#5E78FA];
+}
 
 /* 메인 아코디언 효과 */
 .ex-detail {
