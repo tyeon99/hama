@@ -410,6 +410,12 @@ body{
 .endPageContent__top.s025{
   @apply bg-[url(https://img.thinkpool.com/hama/img/end/end-bg25.png)];
 }
+.endPageContent__top.s026{
+  @apply bg-[url(https://img.thinkpool.com/hama/img/end/end-bg26.png)];
+}
+.endPageContent__top.s027{
+  @apply bg-[url(https://img.thinkpool.com/hama/img/end/end-bg27.png)];
+}
 .endPageContent__bottom .card-group .card .txtBox p{
   @apply w-full pl-[20px] relative font-medium text-[14px] leading-[17px] text-[#6B6D95] before:content-[''] before:absolute before:left-[7px] before:top-[7px] before:w-[3px] before:h-[3px] before:bg-[#6B6D95] before:rounded-full;
 }
