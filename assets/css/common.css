@@ -105,6 +105,12 @@ body{
 .cat.priority{
   @apply bg-[#7139FF] left-[-1px] top-[-1px] rounded-[16px_0px];
 }
+.cat.free{
+  @apply bg-[#5996FF];
+}
+.cat.paid{
+  @apply bg-[#7139FF];
+}
 .cat01{
   @apply bg-[#FF87AD];
 }

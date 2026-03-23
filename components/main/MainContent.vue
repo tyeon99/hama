@@ -21,7 +21,10 @@
           <!-- 우선체험일 때 -->
           <span v-if="item.priority" class="cat priority">우선체험</span>
           <!--  -->
-          <span :class="['cat', item.catClass]">{{ item.cat }}</span>
+          <!-- <span :class="['cat', item.catClass]">{{ item.cat }}</span> -->
+          <span :class="['cat', item.isFree ? 'free' : 'paid']">
+            {{ item.isFree ? '무료체험' : '유료전용' }}
+          </span>
           <div class="title text-truncate" :class="zoomClass">
             {{ item.title }}
           </div>
@@ -146,6 +149,12 @@
         :isModalAni="isModalAni"
         @close-safePlusModal="closeSafePlusModal"
       />
+      <!-- 유로전용 모달 -->
+      <PaidOnlyModal
+        v-if="isPaidOnlyModalOpen"
+        :isModalAni="isModalAni"
+        @close-paidOnlyModal="closePaidOnlyModal"
+      />
     </div>
     <!-- mainContent__box -->
   </div>
@@ -154,11 +163,13 @@
 <script>
 import AuthCodeModal from '~/components/common/AuthCodeModal'
 import SafePlusModal from '~/components/common/SafePlusModal'
+import PaidOnlyModal from '~/components/common/PaidOnlyModal'
 
 export default {
     components: {
     AuthCodeModal,
-    SafePlusModal
+    SafePlusModal,
+    PaidOnlyModal
   },
   data () {
     return {
@@ -178,7 +189,8 @@ export default {
           isOpen: false,
           detailHeight: '0px',
           memberType: 'corporate',
-          priority: true
+          priority: true,
+          isFree: true
         },
         {
           cat: '기관사칭',
@@ -194,7 +206,8 @@ export default {
           summary: '공공기관을 사칭하여 납부 안내를 보내며 개인정보를 탈취하는 수법입니다.',
           isOpen: false,
           detailHeight: '0px',
-          memberType: 'corporate'
+          memberType: 'corporate',
+          isFree: true
         },
         {
           cat: '카드사기',
@@ -210,7 +223,8 @@ export default {
           summary: '실제 지인을 사칭하여 SNS, 메신저로 금전을 요구하는 피싱 수법입니다.',
           isOpen: false,
           detailHeight: '0px',
-          memberType: 'corporate'
+          memberType: 'corporate',
+          isFree: false
         },
         {
           cat: '리딩방',
@@ -226,13 +240,15 @@ export default {
           summary: '택배 회사를 사칭한 문자로 악성 앱 설치를 유도하여 개인정보를 탈취하는 수법입니다.',
           isOpen: false,
           detailHeight: '0px',
-          memberType: 'general'
+          memberType: 'general',
+          isFree: false
         }
       ],
       isOpen: false,
       detailHeight: '0px',
       isAuthCodeModalOpen: false,
       isSafePlusModalOpen: false,
+      isPaidOnlyModalOpen: false,
       isModalAni: false
     }
   },
@@ -341,7 +357,21 @@ export default {
         this.isSafePlusModalOpen = false
       }, 300)
     },
+    // 유료전용 모달
+    openPaidOnlyModal() {
+      this.isModalAni = true
+      this.isPaidOnlyModalOpen = true
+    },
+    closePaidOnlyModal() {
+      this.isModalAni = false
+      setTimeout(() => {
+        this.isPaidOnlyModalOpen = false
+      }, 300)
+    },
     handleExperienceClick(item) {
+      if (!item.isFree) {
+        return this.openPaidOnlyModal()
+      }
       if (item.priority) {
         return this.openSafePlusModal()
       }
