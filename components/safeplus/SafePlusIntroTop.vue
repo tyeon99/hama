@@ -1,19 +1,16 @@
 <template>
   <div class="safePlusIntroTop">
     <div class="left">
-      <span>하마터면 안심플러스</span>
+      <span class="tag">하마터면 안심플러스</span>
       <div class="title">
-        <strong>보이스피싱</strong>,<br />
-        30일먼저 예방하고<br />
-        최대 <strong>500만원</strong>보장
+        보이스피싱 피해 시<br />
+        <span>500만원</span> 보상<br />
+        <strong>부모님께 안심을 <br />선물</strong>하세요
       </div>
       <div class="txt">
-        하마터면 프리미엄 서비스 <strong>'안심플러스'</strong>
-        최신 사기 수법을 미리 학습하고, 피해 시 즉시 보상
+        나를 위한 <strong>안심 구독,</strong><br />
+        부모님을 위한 <strong>안전 선물과<br />케어를 한번에!</strong>
       </div>
-    </div>
-    <div class="right">
-      <img width="140" src="~/assets/img/safeplus/top-img.png">
     </div>
   </div>
 </template>
@@ -26,24 +23,21 @@ export default {
 
 <style scoped>
 .safePlusIntroTop{
-  @apply w-full flex justify-between items-center bg-[#FF6B6A];
+  @apply w-full flex justify-start items-center bg-[#EFDFC5] p-4 bg-[url('~/assets/img/safeplus/top-bg.png')] bg-right bg-[length:375px] bg-no-repeat;
 }
-.safePlusIntroTop .left{
-  @apply pl-[20px];
-}
-.safePlusIntroTop .left span{
-  @apply p-[5px_20px] rounded-[16px] border border-[#fff] mb-[20px] inline-block font-bold text-[14px] leading-[17px] text-[#fff];
+.safePlusIntroTop .left .tag{
+  @apply p-[5px_20px] rounded-[16px] mb-[12px] inline-block font-bold text-[14px] leading-[17px] text-[#fff] bg-[#FF6B6A];
 }
 .safePlusIntroTop .left .title{
-  @apply font-[JalnanGothic] font-normal text-[22px] leading-[28px] text-[#fff] mb-[8px];
+  @apply font-[JalnanGothic] font-normal text-[23px] leading-[27px] text-[#333333] mb-[8px] pl-1;
+}
+.safePlusIntroTop .left .title span{
+  @apply font-[JalnanGothic] font-normal text-[#7139FF];
 }
 .safePlusIntroTop .left .title strong{
-  @apply font-[JalnanGothic] font-normal text-[#FFEE4E];
+  @apply font-[JalnanGothic] font-normal text-[#FF507A];
 }
 .safePlusIntroTop .left .txt{
-  @apply font-medium text-[14px] leading-[17px] text-[#fff];
-}
-.safePlusIntroTop .right img{
-  @apply min-w-[140px];
+  @apply font-medium text-[15px] leading-[21px] text-[#333333] pl-1 tracking-[-2%];
 }
 </style>

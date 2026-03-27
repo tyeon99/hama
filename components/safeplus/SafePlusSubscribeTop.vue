@@ -4,8 +4,9 @@
       <span :class="zoomClass">구독 및 결제</span>
       <div class="title">모든 구독 공동 혜택</div>
       <div class="txt-group">
-        <p :class="zoomClass">신종 수법 30일 선체험</p>
-        <p :class="zoomClass">최대 500만원 보장보험 (구독 후 익일 적용)</p>
+        <p :class="zoomClass">최대 500만원 피해보상 (구독 후 익일 적용)<br />최근 1년 내 AI피싱체험 5종이상 체험 시 적용</p>
+        <p :class="zoomClass">유료전용 AI피싱 체험 이용</p>
+        <p :class="zoomClass">피싱 정보 (앱 설치시 푸시 알림 제공)</p>
       </div>
     </div>
     <div class="right">
@@ -35,7 +36,7 @@ export default {
 
 <style scoped>
 .safePlusSubscribeTop{
-  @apply w-full flex justify-between items-center p-[24px_16px] bg-[#FFE8E7];
+  @apply w-full flex justify-between items-end p-[24px_16px] bg-[#FFE8E7];
   box-shadow: 0px 0px 1px 0px #171A1F12;
   box-shadow: 0px 0px 2px 0px #171A1F1F;
 }
@@ -50,5 +51,8 @@ export default {
 }
 .safePlusSubscribeTop .left .txt-group p{
   @apply relative pl-[21px] font-medium text-[14px] leading-[22px] text-[#F05B54] before:content-[''] before:w-[3px] before:h-[3px] before:rounded-full before:absolute before:left-[10px] before:top-[8px] before:bg-[#F05B54];  
+}
+.safePlusSubscribeTop .right{
+  @apply mb-[8px];
 }
 </style>

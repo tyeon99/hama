@@ -15,7 +15,7 @@
           :key="idx"
           class="example animate__animated animate__fadeInUp"
           :class="{ priority: item.priority }"
-          :style="{ animationDelay: `${(idx + 1) * 0.1}s` }"
+          :style="{ animationDelay: `${((idx % 10) + 1) * 0.1}s` }"
           @click="openDetail(idx)"
         >
           <!-- 우선체험일 때 -->

@@ -11,7 +11,7 @@
       </div>
       <div class="bottom">
         <div class="txt-group">
-          <p :class="zoomClass">
+          <!-- <p :class="zoomClass">
             Google Play 스토어 앱을 최신 버전으로 업데이트해 주세요.
           </p>
           <p :class="zoomClass">
@@ -19,7 +19,10 @@
           </p>
           <p :class="zoomClass">
             그래도 안 되면 하마터면 앱도 최신 버전으로 업데이트한 뒤 다시 시도해 주세요.
-          </p>
+          </p> -->
+          <!-- 웹 카드결제 전용 메세지 -->
+          <strong>결제 기능을 이용할 수 없습니다.</strong>
+          <span>다른 카드로 결제를 시도해주세요.</span>
         </div>
       </div>
     </div>
@@ -73,7 +76,7 @@ export default {
   @apply font-medium text-[12px] leading-[14px] text-[#fff];
 }
 .paymentContent .box .bottom{
-  @apply w-full border-2 border-[#F736CD] rounded-[16px] p-[30px_35px];
+  @apply w-full min-h-[196px] border-2 border-[#F736CD] rounded-[16px] p-[30px_35px] flex justify-center items-center;
   box-shadow: 0px 4px 10px 0px #0000004D;
 }
 .paymentContent .box .bottom .txt-group{
@@ -81,6 +84,12 @@ export default {
 }
 .paymentContent .box .bottom .txt-group p{
   @apply w-full relative pl-[18px] font-medium text-[12px] leading-[14px] text-[#2B2436] before:content-[''] before:absolute before:left-[8px] before:top-[5px] before:w-[2.5px] before:h-[2.5px] before:rounded-full before:bg-[#2B2436];
+}
+.paymentContent .box .bottom .txt-group strong{
+  @apply font-bold text-[16px] leading-[22px] text-[#2B2436];
+}
+.paymentContent .box .bottom .txt-group span{
+  @apply font-normal text-[14px] leading-[20px] text-[#2B2436];
 }
 .btn-wrap{
   @apply px-[4px] w-full;

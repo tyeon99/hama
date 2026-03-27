@@ -59,7 +59,7 @@ export default {
         { label: '이용약관 (필수)', checked: false },
         { label: '개인정보 수집 및 이용동의 (필수)', checked: false },
         { label: '개인정보 제 3자 제공 동의 (필수)', checked: false },
-        { label: '안심플러스 피해보상 보험 약관 (필수)', checked: false }
+        { label: '하마터면 안심플러스 보험약관 (필수)', checked: false }
       ],
       isTermsModalOpen: false,
       isModalAni: false

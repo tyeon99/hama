@@ -1,27 +1,45 @@
 <template>
   <div class="spContent">
-    <div class="title" :class="zoomClass">특히 이런 분들께 필요합니다.</div>
-    <div class="txt" :class="zoomClass">가장 소중한 분께, 안심플러스를 선물하세요.</div>
-    <div class="box-group">
-      <div
-        v-for="(item, idx) in boxes"
-        :key="idx"
-        class="box"
-      >
-        <div class="top">
-          <img :width="item.width" :src="require(`~/assets/img/safeplus/${item.img}`)">
-          <div class="per">
-            <p>
-              <span>위험도</span><br />
-              <strong>{{ item.per }}</strong><span>%</span>
-            </p>
+    <div class="top">
+      <span class="tag" :class="zoomClass">FOR WHO</span>
+      <div class="title" :class="zoomClass">
+        나를 위한 <span>안심</span>부터,<br />
+        가족을 위한 <strong>케어</strong>까지
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="box-group">
+        <div class="box">
+          <img width="60" src="~/assets/img/safeplus/spic04-icon01.png">
+          <div class="txt">
+            <strong>나를 위한 안심</strong>
+            <p>사고당 최대 500만원 피싱·스미싱 피해 보상 <br />(본인부담금 5만원)</p>
           </div>
         </div>
-        <div class="bottom">
-          <strong :class="zoomClass">{{ item.strong }}</strong>
-          <p :class="zoomClass">{{ item.p }}</p>
-          <em :class="zoomClass">{{ item.em }}</em>
-          <span :class="zoomClass">{{ item.span }}</span>
+        <div class="box">
+          <img width="60" src="~/assets/img/safeplus/spic04-icon02.png">
+          <div class="txt">
+            <strong>부모님을 위한 안심 선물</strong>
+            <p>안심을 선물하고 체험 결과까지 함께 챙기고 싶은 분</p>
+          </div>
+        </div>
+        <div class="box">
+          <img width="60" src="~/assets/img/safeplus/spic04-icon03.png">
+          <div class="txt">
+            <strong>가족을 위한 케어</strong>
+            <p>가족의 예방 대응 상태를 꾸준히 살피고 싶은 분</p>
+          </div>
+        </div>
+        <div class="box">
+          <img width="60" src="~/assets/img/safeplus/spic04-icon04.png">
+          <div class="txt">
+            <strong>커피 한잔 값으로 시작하는 안심플러스</strong>
+            <p>
+              <span>[추천]</span>
+              연간구독 월 3,250원(↓17%)<br />
+              월간구독 월 3,900원
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -30,47 +48,6 @@
 
 <script>
 export default {
-  data() {
-    return {
-      boxes: [
-        {
-          img: 'sp-pbox-img09.png',
-          width: '101',
-          per: '87',
-          strong: '60대 이상 부모님',
-          p: '“고령층 부모님, 전화 금융사기에 반복적으로 노출”',
-          em: '(머니투데이, 2021)',
-          span: '평균 피해액 890만원, 반복 피해 확률 높음'
-        },
-        {
-          img: 'sp-pbox-img10.png',
-          width: '141',
-          per: '72',
-          strong: '20대 사회초년생',
-          p: '“사회초년생, 경험 부족으로 보이스피싱 피해 다수”',
-          em: '(연합뉴스, 2024)',
-          span: '평균 피해액 420만원, 경제활동 시작기 타격'
-        },
-        {
-          img: 'sp-pbox-img11.png',
-          width: '91',
-          per: '68',
-          strong: '자영업자·소상공인',
-          p: '“자영업자, 대출·세금 연체 빌미 보이스피싱 증가”',
-          em: '(연합뉴스, 2024)',
-          span: '평균 피해액 420만원, 경제활동 시작기 타격'
-        },
-        {
-          img: 'sp-pbox-img12.png',
-          width: '75',
-          per: '77',
-          strong: '그리고 "하마터면 나도!"',
-          p: '“누구나 당할 수 있다! 사칭 보이스피싱”',
-          em: '(대한민국 정책브리핑, 2023)'
-        }
-      ]
-    }
-  },
   computed: {
     fontSizePercent () {
       return this.$store.state.font.fontSizePercent
@@ -90,46 +67,40 @@ export default {
 
 <style scoped>
 .spContent{
-  @apply w-full px-[16px];
+  @apply w-full py-[40px] px-[16px] bg-[#E3EAF8];
 }
-.spContent .title{
-  @apply font-[JalnanGothic] font-normal text-[20px] leading-[24px] text-[#2B2436] mb-[8px] text-center;
+.top {
+  @apply w-full flex flex-col justify-center items-center gap-5 mb-[30px];
 }
-.spContent .txt{
-  @apply w-full text-center mb-[24px] font-semibold text-[16px] leading-[20px] text-[#6B6D95];
+.top span.tag{
+  @apply inline-block bg-[#FF2E7B] p-[4px_12px] rounded-[4px] text-[#FFFFFF] font-extrabold text-[13px] leading-[16px];
 }
-.spContent .box-group{
-  @apply w-full flex flex-col justify-start items-center gap-[16px];
+.top .title{
+  @apply text-center font-[JalnanGothic] font-normal text-[23px] leading-[26px] text-[#333333];
 }
-.spContent .box-group .box{
-  @apply w-full bg-[#DCE8FF] p-[16px_12px_14px] rounded-[16px] flex flex-col justify-center items-center gap-[16px];
+.top .title span{
+  @apply text-[#7139FF] font-[JalnanGothic] font-normal;
+}
+.top .title strong{
+  @apply text-[#FF507A] font-[JalnanGothic] font-normal;
+}
+.box-group{
+  @apply w-full flex flex-col justify-start items-start gap-3;
+}
+.box-group .box{
+  @apply w-full p-[12px_16px] flex justify-start items-center gap-[15px] rounded-[12px] bg-[#fff];
   box-shadow: 0px 0px 8px 0px #00000014;
 }
-.spContent .box-group .box .top{
-  @apply w-full px-[calc((100%-243px)/2)] flex justify-between items-end;
+.box-group .box .txt{
+  @apply flex flex-col justify-start items-start gap-2;
 }
-.spContent .box-group .box .top .per{
-  @apply w-[61px] h-[61px] flex justify-center items-center bg-[#FF2E7B] rounded-[8px];
+.box-group .box .txt strong{
+  @apply font-[JalnanGothic] font-normal text-[16px] leading-[19px] text-[#2B2436];
 }
-.spContent .box-group .box .top .per span{
-  @apply font-[JalnanGothic] font-normal text-[12px] leading-[15px] text-[#fff];
+.box-group .box .txt p{
+  @apply w-full flex justify-start items-start gap-1 font-medium text-[13px] leading-[16px] text-[#6B6D95];
 }
-.spContent .box-group .box .top .per strong{
-  @apply font-[JalnanGothic] font-normal text-[20px] leading-[18px] text-[#fff];
-}
-.spContent .box-group .box .bottom{
-  @apply w-full flex flex-col justify-center items-center gap-[8px];
-}
-.spContent .box-group .box .bottom strong{
-  @apply font-extrabold text-[20px] leading-[24px] text-[#061C3D];
-}
-.spContent .box-group .box .bottom p{
-  @apply font-medium text-[16px] leading-[19px] text-[#6B6D95];
-}
-.spContent .box-group .box .bottom em{
-  @apply font-extrabold text-[12px] leading-[14px] text-[#6B6D95];
-}
-.spContent .box-group .box .bottom span{
-  @apply font-bold text-[14px] leading-[17px] text-[#FF2E7B];
+.box-group .box .txt p span{
+  @apply font-bold text-[#FF2E7B];
 }
 </style>

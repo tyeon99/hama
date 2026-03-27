@@ -1,61 +1,30 @@
 <template>
   <div class="spContent">
     <div class="top">
-      <img width="162" src="~/assets/img/safeplus/spc02-img.png">
-      <div class="txt">
-        <b>보</b><b>이</b><b>스</b> <b>피</b><b>싱</b><br />
-        <p>지금 이 순간도<br /> 위험합니다.</p>
+      <span class="tag" :class="zoomClass">GIFT & CARE</span>
+      <div class="title" :class="zoomClass">
+        부모님께 <span>안심</span>을 선물하고,<br />
+        <strong>마음</strong>까지 지켜드릴 수 있어요
       </div>
     </div>
     <div class="bottom">
-      <div
-        v-for="(item, idx) in boxes"
-        :key="idx"
-        class="box"
-        :class="item.class"
-      >
-        <img width="28" :src="require(`~/assets/img/safeplus/${item.img}`)">
+      <div class="txt-box">
         <div class="txt">
-          <strong>{{ item.num }}</strong>
-          <span :class="zoomClass">{{ item.txt }}</span>
+          <img width="27" src="~/assets/img/safeplus/check-icon.png">
+          <p :class="zoomClass">선물받은 구독자의 체험 결과를 공유받아 예방 대응상태를 살피고, 필요한 케어까지 이어갈 수 있습니다.</p>
+        </div>
+        <div class="txt">
+          <img width="27" src="~/assets/img/safeplus/check-icon.png">
+          <p :class="zoomClass">피해가 발생하더라도 경제적 보상과 함께 심리적 충격을 덜고다시 안심할 수 있도록 돕습니다.</p>
         </div>
       </div>
+      <button>부모님·가족에게 선물하기</button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      boxes: [
-        {
-          class: 'box01',
-          img: 'sp-pbox-img05.png',
-          num: '137명',
-          txt: '일일 평균 피해자'
-        },
-        {
-          class: 'box02',
-          img: 'sp-pbox-img06.png',
-          num: '635만원',
-          txt: '평균 피해 금액'
-        },
-        {
-          class: 'box03',
-          img: 'sp-pbox-img07.png',
-          num: '230% 상승',
-          txt: '전년 대비 증가율'
-        },
-        {
-          class: 'box04',
-          img: 'sp-pbox-img08.png',
-          num: '3.2조원',
-          txt: '연간 피해 규모'
-        }
-      ]
-    }
-  },
   computed: {
     fontSizePercent () {
       return this.$store.state.font.fontSizePercent
@@ -75,55 +44,37 @@ export default {
 
 <style scoped>
 .spContent{
-  @apply w-full p-[20px] bg-[#E8C3FF];
+  @apply w-full h-[553px] py-[40px] px-[16px] bg-[#E7E7E3] bg-[url('~/assets/img/safeplus/spic02-bg.png')] bg-no-repeat bg-center bg-cover flex flex-col justify-between items-center;
 }
-.spContent .top{
-  @apply w-full flex justify-between items-center mb-[8px] pr-[16px];
+.top {
+  @apply w-full flex flex-col justify-center items-center gap-5;
 }
-.spContent .top .txt b{
-  @apply pt-[14px] relative font-[JalnanGothic] font-normal text-[24px] leading-[28px] text-[#2B2436] after:content-[''] after:absolute after:top-0 after:left-[10px] after:bg-[#CB78FF] after:rounded-full after:w-[5px] after:h-[5px];
+.top span.tag{
+  @apply inline-block bg-[#FF2E7B] p-[4px_12px] rounded-[4px] text-[#FFFFFF] font-extrabold text-[13px] leading-[16px];
 }
-.spContent .top .txt p{
-  @apply mt-[7px] font-[JalnanGothic] font-normal text-[18px] leading-[21px] text-[#730FB2];
+.top .title{
+  @apply text-center font-[JalnanGothic] font-normal text-[23px] leading-[26px] text-[#333333];
 }
-.spContent .bottom{
-  @apply w-full grid grid-cols-2 gap-[12px_16px];
+.top .title span{
+  @apply text-[#7139FF] font-[JalnanGothic] font-normal;
 }
-.spContent .bottom .box{
-  @apply w-full rounded-[12px] p-[16px] flex justify-start items-start gap-[8px];
+.top .title strong{
+  @apply text-[#FF507A] font-[JalnanGothic] font-normal;
+}
+.bottom{
+  @apply w-full flex flex-col justify-center items-center gap-[30px];
+}
+.bottom .txt-box{
+  @apply w-full p-[10px] bg-[#fff] rounded-[10px] flex flex-col justify-start items-start gap-2;
+}
+.bottom .txt-box .txt{
+  @apply w-full flex justify-start items-start gap-[6px];
+}
+.bottom .txt-box .txt p{
+  @apply font-medium text-[13px] leading-[18px] text-[#6B6D95];
+}
+.bottom button{
+  @apply w-full h-[52px] px-2 bg-[#6B4EFF] rounded-[48px] pt-[3px] font-[JalnanGothic] font-normal text-[16px] leading-[19px] text-[#fff];
   box-shadow: 0px 4px 4px 0px #00000024;
-}
-.spContent .bottom .box .txt{
-  @apply flex flex-col justify-start items-start gap-[8px] pt-[2px];
-}
-.spContent .bottom .box .txt strong{
-  @apply font-[JalnanGothic] font-normal text-[16px] leading-[18px] tracking-wide;
-}
-.spContent .bottom .box .txt span{
-  @apply font-medium text-[12px] leading-[14px] text-[#42526B];
-}
-.spContent .bottom .box01{
-  @apply bg-[#F1EBFF];
-}
-.spContent .bottom .box01 .txt strong{
-  @apply text-[#8945FF];
-}
-.spContent .bottom .box02{
-  @apply bg-[#E7F5E8]
-}
-.spContent .bottom .box02 .txt strong{
-  @apply text-[#029B59]
-}
-.spContent .bottom .box03{
-  @apply bg-[#FFF9EE];
-}
-.spContent .bottom .box03 .txt strong{
-  @apply text-[#F39200];
-}
-.spContent .bottom .box04{
-  @apply bg-[#FEEDFA];
-}
-.spContent .bottom .box04 .txt strong{
-  @apply text-[#FF2E43];
 }
 </style>

@@ -33,8 +33,8 @@
           </div>
           <div class="bottom">
             <strong>
-              30일 빠른 AI 피싱 예방 <br />
-              체험 서비스
+              유료전용 보이스피싱 <br />
+              AI 체험 서비스
             </strong>
             <p>
               최신 피싱 수법을 먼저 <br />

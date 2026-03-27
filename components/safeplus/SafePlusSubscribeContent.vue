@@ -7,6 +7,12 @@
       :key="idx"
     />
 
+    <!-- 웹 정기결제 안내(모바일 앱에서 비노출) -->
+    <div class="guide">
+      <strong>※ 웹 정기결제는 BC카드를 지원하지 않습니다.</strong>
+      <p>BC카드 이용 시 하마터면 앱에서 인앱결제를 이용해 주세요.</p>
+    </div>
+
     <!-- 결제하기 버튼 -->
     <div class="payment">
       <button>결제하기</button>
@@ -72,5 +78,14 @@ export default {
 }
 .safePlusSubscribeContent .note p button em{
   @apply font-medium text-[11px] leading-[13px] text-[#7139FF];
+}
+.safePlusSubscribeContent .guide{
+  @apply w-full flex flex-col justify-center items-center gap-1 mb-[20px];
+}
+.safePlusSubscribeContent .guide strong{
+  @apply font-extrabold text-[12px] leading-[14px] text-[#6B6D95] tracking-[-2%];
+}
+.safePlusSubscribeContent .guide p{
+  @apply font-medium text-[12px] leading-[14px] text-[#6B6D95] tracking-[-2%];
 }
 </style>

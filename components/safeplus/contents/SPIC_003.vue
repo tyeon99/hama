@@ -1,20 +1,44 @@
 <template>
   <div class="spContent">
-    <div class="title" :class="zoomClass">최근 신종 수법</div>
-    <div class="txt" :class="zoomClass">30일 빠른 체험 서비스로 예방하세요!</div>
-    <div class="box-group">
-      <div
-        v-for="(item, idx) in boxes"
-        :key="idx"
-        class="box"
-        :class="item.class"
-      >
-        <div class="left">
-          <div class="box-title" :class="zoomClass">{{ item.title }}</div>
-          <div class="box-txt" :class="zoomClass">{{ item.txt }}</div>
+    <div class="top">
+      <span class="tag" :class="zoomClass">WHY NOW</span>
+      <div class="title" :class="zoomClass">
+        <strong>왜 지금</strong><br />
+        <span>안심플러스</span>가 필요할까요?
+      </div>
+    </div>
+    <div class="bottom">
+      <img width="203" src="~/assets/img/safeplus/safe-icon.png">
+      <div class="txt-box">
+        <p :class="zoomClass">
+          <span>돈만</span> 보상하는 게 아닙니다.<br />
+          <strong>마음</strong>까지 지켜드립니다.
+        </p>
+        <span :class="zoomClass">
+          보이스피싱 피해는 <strong>단순한 금전 손실</strong>로<br />
+          <strong>끝나지 않습니다.</strong><br />
+          죄책감과 자기비난, 불안까지 이어질 수<br />
+          있기 때문에 <strong>미리 대비해야 합니다.</strong>
+        </span>
+      </div>
+      <div class="box-group">
+        <div class="box">
+          <img width="50" src="~/assets/img/safeplus/spic03-icon01.png">
+          <div class="title">안심플러스 없이<br />피해를 당하면</div>
+          <div class="txt">
+            <p :class="zoomClass">피해금 회복이 어렵습니다.</p>
+            <p :class="zoomClass">가족에 대한 죄책감과 자책이 커질 수 있습니다.</p>
+            <p :class="zoomClass">가족 관계와 일상이 흔들릴 수 있습니다.</p>
+          </div>
         </div>
-        <div class="right">
-          <span :class="zoomClass">위험도: {{ item.level }}</span>
+        <div class="box">
+          <img width="50" src="~/assets/img/safeplus/spic03-icon02.png">
+          <div class="title">안심플러스가<br />있다면</div>
+          <div class="txt">
+            <p :class="zoomClass">피해 시 500만원 보상으로 경제적 부담을 덜 수 있습니다.</p>
+            <p :class="zoomClass">심리적 충격을 줄이고 다시 안심할 수 있도록 돕습니다.</p>
+            <p :class="zoomClass">예방 체험과 교육으로 재발 방지를 준비할 수 있습니다.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -23,30 +47,6 @@
 
 <script>
 export default {
-  data() {
-    return {
-      boxes: [
-        {
-          class: 'box01',
-          title: '긴급재난지원금 환수 사칭',
-          txt: '“코로나 지원금을 잘못 수령하셨습니다. 24시간 내 환수하지 않으면 형사 고발됩니다.”',
-          level: '극심'
-        },
-        {
-          class: 'box02',
-          title:'카카오톡 해외 로그인 차단',
-          txt: '“코로나 지원금을 잘못 수령하셨습니다. 코로나 지원금을 잘못 수령하셨습니다. 코로나 지원금을 잘못 수령하셨습니다.”',
-          level: '높음'
-        },
-        {
-          class: 'box03',
-          title: '해외직구 관세 체납 협박',
-          txt: '“코로나 지원금을 잘못 수령하셨습니다.“',
-          level: '중간'
-        }
-      ]
-    }
-  },
   computed: {
     fontSizePercent () {
       return this.$store.state.font.fontSizePercent
@@ -66,54 +66,63 @@ export default {
 
 <style scoped>
 .spContent{
-  @apply w-full px-[16px];
+  @apply w-full py-[40px] px-[16px] bg-[#fff];
 }
-.spContent .title{
-  @apply font-[JalnanGothic] font-normal text-[20px] leading-[24px] text-[#2B2436] mb-[8px] text-center;
+.top {
+  @apply w-full flex flex-col justify-center items-center gap-5 mb-[10px];
 }
-.spContent .txt{
-  @apply w-full text-center mb-[24px] font-semibold text-[16px] leading-[20px] text-[#6B6D95];
+.top span.tag{
+  @apply inline-block bg-[#FF2E7B] p-[4px_12px] rounded-[4px] text-[#FFFFFF] font-extrabold text-[13px] leading-[16px];
 }
-.spContent .box-group{
-  @apply w-full flex flex-col justify-start items-center gap-[20px];
+.top .title{
+  @apply text-center font-[JalnanGothic] font-normal text-[23px] leading-[26px] text-[#333333];
 }
-.spContent .box-group .box{
-  @apply w-full border-dashed border-2 rounded-[10px] p-[14px] pl-[16px] flex justify-between items-start gap-[14px];
+.top .title span{
+  @apply text-[#7139FF] font-[JalnanGothic] font-normal;
 }
-.spContent .box-group .box .box-title{
-  @apply mb-[4px] font-bold text-[16px] leading-[20px] text-[#2B2436];
+.top .title strong{
+  @apply text-[#FF507A] font-[JalnanGothic] font-normal;
 }
-.spContent .box-group .box .box-txt{
-  @apply font-medium text-[13px] leading-[16px];
+.bottom{
+  @apply w-full flex flex-col justify-center items-center;
 }
-.spContent .box-group .box span{
-  @apply min-w-[80px] h-[25px] flex justify-center items-center rounded-[100px] text-[#fff] font-extrabold text-[11px] leading-[13px];
+.bottom .txt-box{
+  @apply mt-6 flex flex-col justify-center items-center gap-[20px];
 }
-.spContent .box-group .box01{
-  @apply bg-[#FFE5EE] border-[#FF2E7B];
+.bottom .txt-box p{
+  @apply text-center font-[JalnanGothic] font-normal text-[18px] leading-[21px] text-[#333333];
 }
-.spContent .box-group .box01 .box-txt{
-  @apply text-[#CA7493];
+.bottom .txt-box p span{
+  @apply text-[#7139FF] font-[JalnanGothic] font-normal;
 }
-.spContent .box-group .box01 span{
-  @apply bg-[#FF2E7B];
+.bottom .txt-box p strong{
+  @apply text-[#FF507A] font-[JalnanGothic] font-normal;
 }
-.spContent .box-group .box02{
-  @apply bg-[#FFE7E0] border-[#FF923E];
+.bottom .txt-box span{
+  @apply text-[#6B6D95] text-center font-medium text-[18px] leading-[25px];
 }
-.spContent .box-group .box02 .box-txt{
-  @apply text-[#C88585]
+.box-group{
+  @apply w-full grid grid-cols-2 mt-[30px] gap-3;
 }
-.spContent .box-group .box02 span{
-  @apply bg-[#FF923E];
+.box-group .box{
+  @apply flex flex-col justify-start items-center gap-[15px] rounded-[12px] p-[16px_12px];
+  box-shadow: 0px 0px 8px 0px #00000014;
 }
-.spContent .box-group .box03{
-  @apply bg-[#F5FAF9] border-[#39D4C8];
+.box-group .box:first-child{
+  @apply border-2 border-[#EBBCBC];
+  background: linear-gradient(0deg, #FFFFFF 0%, #FFEAEA 100%);
 }
-.spContent .box-group .box03 .box-txt{
-  @apply text-[#6AACA8];
+.box-group .box:last-child{
+  @apply border-2 border-[#C3D4EA];
+  background: linear-gradient(360deg, #FFFFFF 0%, #EAF7FF 100%);
 }
-.spContent .box-group .box03 span{
-  @apply bg-[#01C6B9];
+.box .title{
+  @apply font-[JalnanGothic] font-normal text-[16px] leading-[19px] text-[#2B2436] text-center;
+}
+.box .txt{
+  @apply w-full flex flex-col justify-start items-start gap-[3px];
+}
+.box .txt p{
+  @apply relative w-full pl-[7px] font-medium text-[13px] leading-[16px] text-[#6B6D95] tracking-tighter before:content-[''] before:absolute before:left-0 before:top-[6px] before:w-[2.5px] before:h-[2.5px] before:rounded-full before:bg-[#6B6D95];
 }
 </style>

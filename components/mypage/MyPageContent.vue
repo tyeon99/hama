@@ -42,7 +42,13 @@
               <div class="right" :class="zoomClass" v-html="item.value"></div>
             </div>
           </div>
-          <button :class="zoomClass" @click="openManageModal">구독/결제 관리</button>
+          <button
+            class="w-full h-[44px] rounded-[10px] bg-[#5D5D8F] mt-[25px] font-bold text-[14px] leading-[17px] text-[#fff]"
+            :class="zoomClass"
+            @click="openManageModal"
+          >
+            구독/결제 관리
+          </button>
         </div>
       </div>
 
@@ -60,9 +66,19 @@
               <div class="right" :class="zoomClass">{{ item.amount }}</div>
             </div>
           </div>
-          <button :class="zoomClass">더 보기 +</button>
+          <button
+            class="w-full h-[44px] rounded-[10px] bg-[#fff] mt-[25px] font-bold text-[14px] leading-[17px] border border-[#C0B8E8] text-[#2B2436]"
+            :class="zoomClass"
+          >
+            더 보기 +
+          </button>
         </div>
       </div>
+    </div>
+
+    <!-- 계정 삭제 버튼 -->
+    <div class="delete-account">
+      <button @click="openDeleteAccountModal">[계정 삭제]</button>
     </div>
 
     <div class="note">
@@ -84,16 +100,31 @@
       v-if="isManageModalOpen"
       :isModalAni="isModalAni"
       @close-manageModal="closeManageModal"
+      @open-mypageAlarmModal="openUnsubscribeModal"
+    />
+    <!-- 알림 모달 -->
+    <MypageAlarmModal
+      v-if="isMypageAlarmModalOpen"
+      :isInModalAni="isInModalAni"
+      :modalTitle="modalInfo.title"
+      :modalTxt="modalInfo.txt"
+      :activeBtnTxt="modalInfo.btnTxt"
+      :loadingBtnTxt="modalInfo.loadingBtnTxt"
+      :finishedTitle="modalInfo.finishTitle"
+      :finishedTxt="modalInfo.finishTxt"
+      @close-mypageAlarmModal="closeMypageAlarmModal"
     />
   </div>
 </template>
 
 <script>
 import ManageModal from '~/components/mypage/ManageModal'
+import MypageAlarmModal from '~/components/mypage/MyPageAlarmModal'
 
 export default { 
   components: {
-    ManageModal
+    ManageModal,
+    MypageAlarmModal
   },
   data() {
     return {
@@ -119,7 +150,17 @@ export default {
         { period: '2025-09-10 ~ 2025-10-10', amount: '16,500 원' }
       ],
       isManageModalOpen: false,
-      isModalAni: false
+      isModalAni: false,
+      isMypageAlarmModalOpen: false,
+      isInModalAni: false,
+      modalInfo: {
+        title: '',
+        txt: '',
+        btnTxt: '',
+        loadingBtnTxt: '',
+        finishTitle: '',
+        finishTxt: ''
+      }
     }
   },
   computed: {
@@ -148,79 +189,145 @@ export default {
         this.isManageModalOpen = false
         document.body.style.overflow = ''
       }, 300)
+    },
+    // 구독 해지 모달
+    openUnsubscribeModal() {
+      this.modalInfo = {
+        title: '구독을 해지하시겠습니까?',
+        txt: '지금 해지하셔도 이미 결제된 이용기간 종료 시점까지는 서비스 이용이 가능합니다.<br>다음 결제일부터는 자동 결제가 진행되지 않습니다.',
+        btnTxt: '구독 해지',
+        loadingBtnTxt: '구독 해지 중..',
+        finishTitle: '구독 해지가 완료되었습니다',
+        finishTxt: '이용기간 종료 시점까지는 서비스 이용이 가능합니다<br>다음 결제일부터는 자동 결제가 진행되지 않습니다.'
+      }
+      this.closeManageModal() // 관리 모달 닫기
+      setTimeout(() => {
+        this.openMypageAlarmModal();
+      }, 100);
+    },
+    // 계정 삭제 모달
+    openDeleteAccountModal() {
+      this.modalInfo = {
+        title: '게정 정보를 삭제하시겠습니까?',
+        txt: '삭제 시 모든 이용 기록이 즉시 파기되며 <br>복구할 수 없습니다.<br><br>계정 삭제 후에도 <strong>App Store 자동 결제는 유지</strong>되오니, 반드시 [아이폰 설정 > 구독]에서 <br>직접 해지하셔야 합니다.<br><br>삭제 즉시 남은 구독 권한은 소멸됩니다.',
+        btnTxt: '계정 삭제',
+        loadingBtnTxt: '계정 삭제 중..',
+        finishTitle: '삭제 완료',
+        finishTxt: '모든 이용 정보가 파기되었습니다.<br><br>계정 삭제 후에도 <strong>App Store 자동 결제는 유지</strong>되오니, 반드시 [아이폰 설정 > 구독]에서 <br>직접 해지하셔야 합니다.<br><br>첫화면으로 이동합니다.'
+      }
+      this.openMypageAlarmModal();
+    },
+    // 공통 열기 닫기
+    // 공통 오픈 로직
+    openMypageAlarmModal() {
+      this.isInModalAni = true
+      this.isMypageAlarmModalOpen = true
+      document.body.style.overflow = 'hidden'
+    },
+    closeMypageAlarmModal() {
+      this.isInModalAni = false
+      setTimeout(() => {
+        this.isMypageAlarmModalOpen = false
+        document.body.style.overflow = ''
+      }, 300)
     }
   }
 }
 </script>
 
 <style scoped>
-.mypageContent{
+.mypageContent {
   @apply w-full p-[32px_18px_118px];
 }
-.mypageContent .box-wrap{
-  @apply w-full flex flex-col justify-start items-start gap-[24px] mb-[52px];
+.mypageContent .box-wrap {
+  @apply w-full flex flex-col justify-start items-start gap-[24px] mb-[16px];
 }
-.mypageContent .box-group{
+.mypageContent .box-group {
   @apply w-full flex flex-col justify-start items-start gap-[12px];
 }
-.mypageContent .box-group .box{
+.mypageContent .box-group .box {
   @apply w-full rounded-[8px] border border-[#E3E0F9] bg-[#fff] p-[20px];
 }
-.mypageContent .box-group .title{
+.mypageContent .box-group .title {
   @apply w-full flex justify-between items-center;
 }
-.mypageContent .box-group .title .left{
+.mypageContent .box-group .title .left {
   @apply flex justify-start items-center gap-[8px];
 }
-.mypageContent .box-group .title p{
+.mypageContent .box-group .title p {
   @apply font-extrabold text-[16px] leading-[19px] text-[#2B2436];
 }
-.mypageContent .box-group .title strong{
+.mypageContent .box-group .title strong {
   @apply text-[#6F75F2] font-extrabold text-[16px] leading-[19px];
 }
-.mypageContent .box-group .title span{
+.mypageContent .box-group .title span {
   @apply p-[4px_8px] rounded-[12px] bg-[#7139FF] font-extrabold text-[11px] leading-[13px] text-[#fff];
 }
-.mypageContent .box .list-group{
+.mypageContent .box .list-group {
   @apply w-full flex flex-col justify-start items-start gap-[12px];
 }
-.mypageContent .box .list-group .list{
+.mypageContent .box .list-group .list {
   @apply w-full flex justify-between items-center;
 }
-.mypageContent .box .list-group .list .left{
-  @apply font-bold text-[12px] leading-[14px] text-[#6B6D95];
+.mypageContent .box .list-group .list .left {
+  @apply font-semibold text-[12px] leading-[14px] text-[#6B6D95];
 }
-.mypageContent .box .list-group .list .right{
-  @apply flex justify-end items-center gap-[12px] font-normal text-[13px] leading-[16px] text-[#2B2436];
+.mypageContent .box .list-group .list .right {
+  @apply flex justify-end items-center gap-[2px] font-semibold text-[13px] leading-[16px] text-[#2B2436];
 }
-.mypageContent .box-group:last-child .box .left{
-  @apply font-medium;
+.mypageContent .box .list-group .list .right button {
+  @apply w-auto h-auto mt-0 p-0 bg-transparent border-0 font-extrabold text-[13px] leading-[16px] text-[#6F75F2];
 }
-.mypageContent .box-group:last-child .box .right{
-  @apply font-semibold;
+.mypageContent .note {
+  @apply w-full flex flex-col justify-start items-center gap-[8px] pt-[34px];
 }
-.mypageContent .box-group:last-child .box button{
-  @apply bg-[#fff] border border-[#C0B8E8] text-[#2B2436];
-}
-.mypageContent .box button{
-  @apply w-full h-[44px] rounded-[10px] bg-[#5D5D8F] mt-[25px] font-bold text-[14px] leading-[17px] text-[#fff];
-}
-.mypageContent .note{
-  @apply w-full flex flex-col justify-start items-center gap-[8px];
-}
-.mypageContent .note p{
+.mypageContent .note p {
   @apply w-full flex justify-center items-center gap-[12px];
 }
-.mypageContent .note p strong{
+.mypageContent .note p strong {
   @apply font-extrabold text-[11px] leading-[13px] text-[#ABADC5];
 }
-.mypageContent .note p span{
+.mypageContent .note p span {
   @apply font-medium text-[11px] leading-[13px] text-[#ABADC5];
 }
-.mypageContent .note p button{
-  @apply flex justify-start items-center gap-[12px]
+.mypageContent .note p button {
+  @apply flex justify-start items-center gap-[12px];
 }
-.mypageContent .note p button em{
+.mypageContent .note p button em {
   @apply font-medium text-[11px] leading-[13px] text-[#7139FF];
+}
+.experience-complete {
+  @apply text-[#00B050] font-semibold;
+}
+.experience-incomplete {
+  @apply text-[#FF6B6B] font-semibold;
+}
+/* 선물 이용자 케어 스타일 */
+.gift-care-group .sub-title {
+  @apply w-full;
+}
+.gift-care-group .sub-title span {
+  @apply font-semibold text-[13px] leading-[16px] text-[#6B6D95];
+}
+.gift-care-box {
+  @apply flex flex-row items-center gap-[12px] mt-[12px];
+}
+.gift-care-box .gift-select {
+  @apply flex-1 min-w-0 h-[44px] px-[16px] rounded-[8px] border border-[#E3E0F9] bg-[#fff] font-medium text-[14px] leading-[17px] text-[#2B2436] cursor-pointer;
+}
+.gift-care-box .gift-select:focus {
+  @apply outline-none border-[#6F75F2];
+}
+.gift-care-box .search-btn {
+  @apply flex-shrink-0 h-[44px] px-[16px] rounded-[8px] bg-[#6F75F2] font-bold text-[14px] leading-[17px] text-[#fff] mt-0;
+}
+.gift-care-box .search-btn:disabled {
+  @apply bg-[#C0B8E8] cursor-not-allowed;
+}
+.delete-account{
+  @apply w-full flex justify-center items-center;
+}
+.delete-account button{
+  @apply font-bold text-[16px] leading-[19px] text-[#6B6D95];
 }
 </style>

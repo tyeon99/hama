@@ -21,7 +21,7 @@
       class="tabContent"
     >
       <div class="box">
-        <p :class="zoomClass" v-html="tab.content"></p>
+        <div class="txt" :class="zoomClass" v-html="tab.content"></div>
       </div>
     </div>
   </div>
@@ -37,22 +37,27 @@ export default {
           name: 'tab01',
           label: '안내',
           content: `
-            <strong>안내</strong><br /><br />
-            ① 모든 결제는 구글 플레이 스토어를 통해 진행되며, 등록한 결제 수단을 이용하여 결제가 가능합니다.<br /><br />
-            ② 모든 상품은 결제와 동시에 서비스 사용이 가능하므로 서비스가 개시된 결제 상품에 대한 취소 시 환불 금액은 없습니다.<br /><br />
-            ③ 정기결제(구독형 상품)의 경우, 구독 기간에 대한 약정이 없으며 언제든 구글 플레이 스토어를 통해 해지가 가능합니다.<br /><br />
-            ④ 정기결제(구독형 상품)를 해지하셔도 결제월 이용기간까지 서비스 이용이 가능합니다.
+            <strong>안내</strong>
+            <p>① 모든 상품은 결제와 동시에 서비스 사용이 가능하므로 서비스가 개시된 결제 상품에 대한 취소 시 환불 금액은 없습니다.</p>
+            <p>② 정기결제(구독형 상품)의 경우, 구독 기간에 대한 약정이 없으며 앱스토어 결제는 각 스토어에서, 웹 구독결제는 마이페이지-구독/결제 관리를 통해 해지가 가능합니다.</p>
+            <p>③ 정기결제(구독형 상품)를 해지하셔도 결제 이용기간까지 서비스 이용이 가능합니다.</p>
           `,
         },
         {
           name: 'tab02',
           label: '보험안내',
           content: `
-            <strong>보험 안내</strong><br /><br />
-            - 본 서비스 구독자는 보이스피싱 등 금융사기 피해 발생 시 최대 500만원까지 보장을 받을 수 있습니다.<br /><br />
-            - 보장은 구독 익일부터 적용되며, 구독 만료 시 자동 종료됩니다.<br /><br />
-            - 보험은 제휴 보험사(○○손해보험)에서 제공하며, 별도의 가입 절차가 필요하지 않습니다.<br /><br />
-            - 보험 청구는 가입자가 직접 보험사에 신청해야 하며, 보험사 심사를 거쳐 보상됩니다. 보험사 고객센터: 1588-0000
+            <strong>보험 안내</strong>
+            <p>- 보험제공사: 현대해상보험 하이사이버안심보험</p>
+            <p>- 보장내용: 보이스피싱·파밍·스미싱·메모리해킹 등 사이버금융범죄 피해 보장</p>
+            <p>- 보상한도: 최대 500만원</p>
+            <p>- 자기부담금: 1사고당 5만원</p>
+            <p>- 보상기간: 구독 유지 기간 중 적용 (구독 후 익일 적용)</p>
+            <p>- 보상조건: 최근 1년 내 구독 중 AI피싱 5종 체험완료 이력 충족 시 적용</p>
+            <p>- 보상제외: 고의·공모, 개인정보 자진노출, 해외사고, 법인계좌·가상화폐 피해, 인터넷 직거래·쇼핑몰 사기 등</p>
+            <p>- 보험료: 서비스 이용료에 포함 (별도 납부 없음)</p>
+            <p>- 보험금 청구: 피해자 직접 보험사 청구 (수사기관 피해사실 확인서 필요)</p>
+            <p>- 지급기준: 보상 여부 및 금액은 보험사 약관 기준에 따라 결정</p>
           `
         }
       ]
@@ -100,10 +105,10 @@ export default {
 .box{
   @apply p-[16px] border border-[#E3E0F9] rounded-[10px] bg-[#fff];
 }
-.box p{
-  @apply font-normal text-[12px] leading-[14px] text-[#6B6D95];
+.box .txt{
+  @apply font-normal text-[12px] leading-[14px] text-[#6B6D95] flex flex-col justify-start items-start gap-2;
 }
-.box p strong{
-  @apply font-extrabold;
+::v-deep .box .txt strong{
+  @apply block font-extrabold pb-1;
 }
 </style>

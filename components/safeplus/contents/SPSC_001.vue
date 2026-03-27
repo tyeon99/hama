@@ -27,27 +27,27 @@
 export default {
   data() {
     return {
-      selectedIdx: null,
+      selectedIdx: 0,
       products: [
+        {
+          title: '연간 구독',
+          subtitle: '1년씩 정기결제',
+          desc: '월 3,250원 (17% 할인, 연간 결제 시 7,800원 절약)',
+          price: '39,000원',
+          recommend: true
+        },
         {
           title: '월간 구독',
           subtitle: '매월 정기결제',
-          price: '3,300원',
+          price: '3,900원',
           recommend: false
         },
         {
           title: '6개월 구독',
           subtitle: '6개월씩 정기결제',
-          desc: '월 2,933원 (11% 할인)',
-          price: '17,600원',
+          desc: '월 3,316원 (15% 할인)',
+          price: '19,900원',
           recommend: false
-        },
-        {
-          title: '연간 구독',
-          subtitle: '1년씩 정기결제',
-          desc: '월 2,750원 (17% 할인)',
-          price: '33,000원',
-          recommend: true
         }
       ]
     }
@@ -86,7 +86,7 @@ export default {
   @apply border-2 border-[#6F75F2] bg-[#EDEEFF] py-[13px];
 }
 .product-list .product .left{
-  @apply flex flex-col justify-start items-start gap-[4px];
+  @apply w-[220px] flex flex-col justify-start items-start gap-[4px];
 }
 .product-list .product .left strong{
   @apply font-bold text-[16px] leading-[19px] text-[#2B2436] flex justify-start items-center gap-[8px];
@@ -98,7 +98,7 @@ export default {
   @apply font-medium text-[12px] leading-[14px] text-[#6F75F2];
 }
 .product-list .product .left b{
-  @apply font-extrabold text-[12px] leading-[14px] text-[#6F75F2];
+  @apply font-extrabold text-[12px] leading-[14px] text-[#6F75F2] whitespace-nowrap;
 }
 .product-list .product .right{
   @apply font-extrabold text-[20px] leading-[30px] text-[#2B2436];

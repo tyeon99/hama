@@ -10,7 +10,7 @@
         </div>
         <div class="right">
           <span>POINT 01</span>
-          <strong>30일 빠른 보이스피싱 AI체험</strong>
+          <strong>유료전용 보이스피싱 AI체험</strong>
           <p>최신 피싱 수법을 가장 먼저 체험하고 예방할 수 있습니다.</p>
         </div>
       </div>
