@@ -48,20 +48,29 @@
         <button @click="goLink('/main')">체험을 시작하세요</button>
       </div> -->
     </div>
+    <!-- 로그아웃 모달 -->
     <LogOutModal
       v-if="isLogOutModalOpen"
       :isModalAni="isModalAni"
       @close-logOutModal="closeLogOutModal"
+    />
+    <!-- 계정 삭제 모달 -->
+    <DeleteAccountModal
+      v-if="isDeleteAccountModalOpen"
+      :isModalAni="isModalAni"
+      @close-deleteAccountModal="closeDeleteAccountModal"
     />
   </div>
 </template>
 
 <script>
 import LogOutModal from '~/components/common/LogOutModal'
+import DeleteAccountModal from '~/components/common/DeleteAccountModal'
 
 export default {
   components: {
-    LogOutModal
+    LogOutModal,
+    DeleteAccountModal
   },
   props: {
     isOffcanvasAni: {
@@ -84,9 +93,11 @@ export default {
         { label: '오프라인 교육안내', link: '/guide/education' },
         { label: 'Contact Us', link: '/guide/inquiry' },
         { label: '협력 파트너', link: '/guide/partner' },
-        { label: '약관 및 정책', link: '/guide/terms' }
+        { label: '약관 및 정책', link: '/guide/terms' },
+        { label: '계정삭제', action: 'deleteAccount' }
       ],
       isLogOutModalOpen: false,
+      isDeleteAccountModalOpen: false,
       isModalAni: false
     }
   },
@@ -145,17 +156,21 @@ export default {
     menuClick(item) {
       if (item.action === 'logout') return this.logOutAction()
       if (item.action === 'login') return this.logInAction()
+      if (item.action === 'deleteAccount') return this.deleteAccountAction()
       if (item.link) return this.goLink(item.link)
     },
     // 로그인
     logInAction() {
-      console.log('로그인')
+      // console.log('로그인')
     },
     // 로그아웃
     logOutAction() {
       // console.log('로그아웃')
       this.openLogOutModal()
       // this.closeMenuOffcanvas()
+    },
+    deleteAccountAction() {
+      this.openDeleteAccountModal()
     },
     openLogOutModal() {
       this.isModalAni = true
@@ -166,6 +181,22 @@ export default {
       setTimeout(() => {
         this.isLogOutModalOpen = false
         this.closeMenuOffcanvas()
+      }, 300)
+    },
+    openDeleteAccountModal() {
+      this.isModalAni = true
+      this.isDeleteAccountModalOpen = true
+      document.body.style.overflow = 'hidden'
+    },
+    closeDeleteAccountModal(isFinalConfirm = false) {
+      this.isModalAni = false
+      setTimeout(() => {
+        this.isDeleteAccountModalOpen = false
+        document.body.style.overflow = ''
+
+        if (isFinalConfirm) {
+          this.goLink('/main')
+        }
       }, 300)
     }
   }

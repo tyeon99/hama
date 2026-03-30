@@ -77,9 +77,9 @@
     </div>
 
     <!-- 계정 삭제 버튼 -->
-    <div class="delete-account">
+    <!-- <div class="delete-account">
       <button @click="openDeleteAccountModal">[계정 삭제]</button>
-    </div>
+    </div> -->
 
     <div class="note">
       <p>
@@ -206,17 +206,17 @@ export default {
       }, 100);
     },
     // 계정 삭제 모달
-    openDeleteAccountModal() {
-      this.modalInfo = {
-        title: '게정 정보를 삭제하시겠습니까?',
-        txt: '삭제 시 모든 이용 기록이 즉시 파기되며 <br>복구할 수 없습니다.<br><br>계정 삭제 후에도 <strong>App Store 자동 결제는 유지</strong>되오니, 반드시 [아이폰 설정 > 구독]에서 <br>직접 해지하셔야 합니다.<br><br>삭제 즉시 남은 구독 권한은 소멸됩니다.',
-        btnTxt: '계정 삭제',
-        loadingBtnTxt: '계정 삭제 중..',
-        finishTitle: '삭제 완료',
-        finishTxt: '모든 이용 정보가 파기되었습니다.<br><br>계정 삭제 후에도 <strong>App Store 자동 결제는 유지</strong>되오니, 반드시 [아이폰 설정 > 구독]에서 <br>직접 해지하셔야 합니다.<br><br>첫화면으로 이동합니다.'
-      }
-      this.openMypageAlarmModal();
-    },
+    // openDeleteAccountModal() {
+    //   this.modalInfo = {
+    //     title: '게정 정보를 삭제하시겠습니까?',
+    //     txt: '삭제 시 모든 이용 기록이 즉시 파기되며 <br>복구할 수 없습니다.<br><br>계정 삭제 후에도 <strong>App Store 자동 결제는 유지</strong>되오니, 반드시 [아이폰 설정 > 구독]에서 <br>직접 해지하셔야 합니다.<br><br>삭제 즉시 남은 구독 권한은 소멸됩니다.',
+    //     btnTxt: '계정 삭제',
+    //     loadingBtnTxt: '계정 삭제 중..',
+    //     finishTitle: '삭제 완료',
+    //     finishTxt: '모든 이용 정보가 파기되었습니다.<br><br>계정 삭제 후에도 <strong>App Store 자동 결제는 유지</strong>되오니, 반드시 [아이폰 설정 > 구독]에서 <br>직접 해지하셔야 합니다.<br><br>첫화면으로 이동합니다.'
+    //   }
+    //   this.openMypageAlarmModal();
+    // },
     // 공통 열기 닫기
     // 공통 오픈 로직
     openMypageAlarmModal() {
