@@ -1,6 +1,6 @@
 <template>
   <div class="vDataContent">
-    <div class="w-full">
+    <div class="vDataContent__top">
       <div class="vDataContent__title animate__animated animate__fadeInUp">
         <span>사전 상황</span> 설명
       </div>
@@ -41,6 +41,7 @@ export default {
 <style scoped>
 .vDataContent {
   @apply w-full h-[100dvh] p-[40px_20px] bg-[url(~/assets/img/vdata/vData-bg.png)] bg-cover bg-center bg-no-repeat flex flex-col justify-between items-start;
+  padding-bottom: calc(40px + env(safe-area-inset-bottom));
 }
 .vDataContent__title{
   @apply w-full mb-[24px] font-[JalnanGothic] text-[20px] leading-[20px] text-[#2B2436] font-normal;
@@ -48,8 +49,13 @@ export default {
 .vDataContent__title span{
   @apply font-[JalnanGothic] text-[#7139FF];
 }
+.vDataContent__top{
+  @apply w-full flex flex-col justify-start items-start min-h-0;
+  flex: 0 1 auto;
+}
 .vDataContent__preinfo{
-  @apply w-full max-h-[calc(100dvh-200px)] p-[20px] rounded-[16px] bg-[#fff] mb-[24px] overflow-y-auto;
+  @apply w-full p-[20px] max-h-[calc(100dvh-200px)] rounded-[16px] bg-[#fff] mb-[24px] overflow-y-auto break-all whitespace-normal;
+  flex: 0 1 auto;
 }
 .vDataContent__btn{
   @apply w-full px-[4px] flex flex-col justify-start items-center gap-[16px];
