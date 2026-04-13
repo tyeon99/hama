@@ -28,6 +28,7 @@
             <strong :class="zoomClass">{{ subscription.name }}</strong>
           </div>
           <div class="right">
+            <span class="gift">선물</span>
             <span>{{ subscription.status }}</span>
           </div>
         </div>
@@ -136,7 +137,7 @@ export default {
       ],
       subscription: {
         name: '안심 플러스 6개월',
-        status: '정기결제/구독 중'
+        status: '구독 중'
       },
       subscriptionList: [
         { label: '다음 결제일', value: '<span>2025-10-10</span>' },
@@ -262,6 +263,9 @@ export default {
 }
 .mypageContent .box-group .title span {
   @apply p-[4px_8px] rounded-[12px] bg-[#7139FF] font-extrabold text-[11px] leading-[13px] text-[#fff];
+}
+.mypageContent .box-group .title span.gift{
+  @apply bg-[#D657EF];
 }
 .mypageContent .box .list-group {
   @apply w-full flex flex-col justify-start items-start gap-[12px];

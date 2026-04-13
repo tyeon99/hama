@@ -76,12 +76,34 @@
                 <strong>잔여 이용 종료일</strong>
                 <span>2027.03.30</span>
               </p>
+              <button @click="$emit('open-mypageAlarmModal')">구독 해지</button>
             </div>
+            <div class="box">
+              <p>
+                <strong>구독상품</strong>
+                <span>안심플러스 연간 구독</span>
+              </p>
+              <p>
+                <strong>결제수단</strong>
+                <span>삼성카드 ***-3333</span>
+              </p>
+              <p>
+                <strong>다음결제일</strong>
+                <span>2027.03.30</span>
+              </p>
+              <div class="noProduct">현재 구독중인 상품이 없습니다.</div>
+              <p>
+                <strong>잔여 이용 종료일</strong>
+                <span>2027.03.30</span>
+              </p>
+              <button @click="$emit('open-mypageAlarmModal')">구독 해지</button>
+            </div>
+
+            <!-- 안내 사항 박스 -->
             <div class="box">
               <div class="txt">구독 해지 시 이미 결제된 이용기간 종료 시점까지 서비스 이용이 가능합니다.</div>
               <div class="txt">해지 이후 다음 결제일부터는 자동 결제가 진행되지 않습니다.</div>
             </div>
-            <button @click="$emit('open-mypageAlarmModal')">구독 해지</button>
           </div>
 
           <!-- Android 내용 -->
@@ -326,6 +348,6 @@ export default {
   @apply relative w-full pl-[7px] font-medium text-[13px] leading-[18px] text-[#6B6D95] before:content-[''] before:absolute before:left-0 before:top-[6px] before:w-[2.5px] before:h-[2.5px] before:rounded-full before:bg-[#6B6D95];
 }
 .modal-body .txt-box .box-group button{
-  @apply mt-[30px] w-[115px] h-[44px] rounded-[15px] bg-[#7139FF] font-bold text-[14px] leading-[17px] text-[#fff];
+  @apply w-[100px] h-[30px] rounded-[15px] bg-[#7139FF] font-bold text-[14px] leading-[17px] text-[#fff];
 }
 </style>

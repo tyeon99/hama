@@ -5,7 +5,7 @@
     <div class="container">
       <SafePlusTab
         :activeTab="activeTab"
-        @change="activeTab = $event"
+        @change="isSubscribedTabClick"
       />
       <template v-if="activeTab === 'subscribe'">
         <SafePlusSubscribeTop />
@@ -20,6 +20,13 @@
         </div>
       </template>
     </div>
+    <SubscribeAlarmsModal
+      v-if="isAlarmsModalOpen"
+      :isModalAni="isModalAni"
+      :modalTitle="modalTitle"
+      :modalTxt="modalTxt"
+      @close-alarmsModal="closeAlarmsModal"
+    />
   </div>
 </template>
 
@@ -30,6 +37,7 @@ import SafePlusSubscribeContent from '~/components/safeplus/SafePlusSubscribeCon
 import SafePlusGiftTop from '~/components/safeplus/SafePlusGiftTop'
 import SafePlusGiftContent from '~/components/safeplus/SafePlusGiftContent'
 import SafePlusTab from '~/components/safeplus/SafePlusTab'
+import SubscribeAlarmsModal from '~/components/safeplus/SubscribeAlarmsModal'
 // import { useAuthStore } from '~/stores/authStore'
 
 export default {
@@ -40,10 +48,16 @@ export default {
     SafePlusGiftTop,
     SafePlusGiftContent,
     SafePlusTab,
+    SubscribeAlarmsModal,
   },
   data() {
     return {
       activeTab: 'subscribe',
+      isSubscribed: true,
+      isAlarmsModalOpen: false,
+      isModalAni: false,
+      modalTitle: '',
+      modalTxt: ''
     }
   },
   // computed: {
@@ -59,12 +73,40 @@ export default {
   //     }
   //   },
   // },
-  // mounted() {
-  //   if (this.$route.query.tab === 'gift') {
-  //     this.activeTab = 'gift'
-  //   }
-  // },
+  mounted() {
+    if (this.$route.query.tab === 'gift') {
+      this.activeTab = 'gift'
+    } else if (this.isSubscribed) {
+      this.activeTab = 'gift'
+    }
+  },
   // middleware: ['require-subscription'],
+  methods: {
+    isSubscribedTabClick(tab) {
+      if (tab === 'subscribe' && this.isSubscribed) {
+        this.openAlarmsModal(
+          '본인 구독 중입니다', 
+          '본인이 구독 중인 멤버십이 있어 지금은 선물하기만 이용하실 수 있습니다.<br>본인 구독 정보는 마이페이지에서 확인해 주세요.'
+        )
+        return
+      }
+      this.activeTab = tab
+    },
+    openAlarmsModal(title, txt) {
+      this.modalTitle = title
+      this.modalTxt = txt
+      this.isModalAni = true
+      this.isAlarmsModalOpen = true
+      document.body.style.overflow = 'hidden'
+    },
+    closeAlarmsModal() {
+      this.isModalAni = false
+      setTimeout(() => {
+        this.isAlarmsModalOpen = false
+        document.body.style.overflow = ''
+      }, 300)
+    }
+  }
 }
 </script>
 
