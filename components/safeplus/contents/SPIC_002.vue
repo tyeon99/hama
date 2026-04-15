@@ -44,7 +44,8 @@ export default {
 
 <style scoped>
 .spContent{
-  @apply w-full h-[553px] py-[40px] px-[16px] bg-[#E7E7E3] bg-[url('~/assets/img/safeplus/spic02-bg.png')] bg-no-repeat bg-center bg-cover flex flex-col justify-between items-center;
+  @apply w-full min-h-[553px] max-h-[795px] py-[40px] px-[16px] bg-[#E7E7E3] bg-[url('~/assets/img/safeplus/spic02-bg.png')] bg-no-repeat bg-top bg-cover flex flex-col justify-between items-center;
+  aspect-ratio: 375 / 553;
 }
 .top {
   @apply w-full flex flex-col justify-center items-center gap-5;
