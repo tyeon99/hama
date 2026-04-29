@@ -77,14 +77,18 @@ body{
 .introLoading.loadingAni{
   @apply h-[calc(100dvh-210px)];
 }
-.introLoading svg{
+.introLoading .logo-box{
+  display: flex;
+  justify-content: center;
+  aligin-items: center;
+  gap: 7px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1.5);
   transition: transform 0.6s ease, top 0.6s ease, left 0.6s ease;
 }
-.introLoading.loadingAni svg{
+.introLoading.loadingAni .logo-box{
   top: 20px;
   left: 16px; 
   transform: translate(0, 0) scale(1);

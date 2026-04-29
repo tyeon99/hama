@@ -15,6 +15,10 @@
     <div class="partnerContent__bottom">
       <div class="btn-group">
         <button>
+          <img width="96" src="~/assets/img/common/hankyung-logo01.png">
+          <span :class="zoomClass">종합 경제 미디어 <br />한국경제</span>
+        </button>
+        <button>
           <img width="120" src="~/assets/img/guide/partner_logo-img01.png">
           <span :class="zoomClass">AI 금융회사 씽크풀</span>
         </button>
@@ -98,7 +102,7 @@ export default {
   @apply w-full flex flex-col justify-start items-center gap-[12px];
 }
 .partnerContent__bottom .btn-group button{
-  @apply w-full flex justify-between items-center bg-[#fff] border border-[#AFB2EC] p-[17px_12px] rounded-[8px];
+  @apply w-full flex justify-between items-center bg-[#fff] border border-[#AFB2EC] p-[12px] rounded-[8px];
 }
 .partnerContent__bottom .btn-group button span{
   @apply font-bold text-[16px] leading-[20px] text-[#2B2436] text-left;

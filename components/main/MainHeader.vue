@@ -2,6 +2,10 @@
 <template>
   <div class="mainHeader">
     <div class="mainHeader__title">
+      <!-- 한국경제 로고 -->
+      <img width="76" src="~/assets/img/common/hankyung-logo01.png" alt="한국경제 로고">
+      <!-- // -->
+      <img width="18" src="~/assets/img/common/logo-x02.png" alt="X">
       <svg xmlns="http://www.w3.org/2000/svg" width="80" height="19" viewBox="0 0 80 19" fill="none">
         <path d="M61.9808 0.594055H73.5052V1.70293H75.2477V0.594055H79.802V12.7125H75.2477V9.62346H73.5052V10.7323H65.347C63.1293 10.7323 61.9808 9.58386 61.9808 7.36611V0.594055ZM61.9808 11.7224H66.5351V13.5045C66.5351 14.2174 67.0103 14.6926 67.7232 14.6926H80V18.6529H66.3371C63.7233 18.6529 61.9808 16.9103 61.9808 14.2966V11.7224ZM66.5351 6.57406C66.5351 6.89088 66.8123 7.1681 67.1291 7.1681H68.9509V4.15829H66.5351V6.57406ZM73.5052 5.06916V6.25723H75.2477V5.06916H73.5052Z" fill="url(#paint0_linear_2003_279)"/>
         <path d="M47.129 14.8906H52.7129V18.6529H45.7429C43.1291 18.6529 41.3866 16.9103 41.3866 14.2966V0.594055H52.5149V4.35631H45.9409V7.60372H51.1288V11.2472H45.9409V13.7025C45.9409 14.4154 46.4161 14.8906 47.129 14.8906ZM54.6535 18.6529V11.2472H52.0793V7.60372H54.6535V0.594055H59.2078V18.6529H54.6535Z" fill="url(#paint1_linear_2003_279)"/>
@@ -73,6 +77,9 @@ export default {
 <style scoped>
 .mainHeader{
   @apply w-full p-[20px_20px_20px_16px] flex justify-between items-center sticky top-0 left-0 right-0 bg-[#fff] z-[998];
+}
+.mainHeader__title{
+  @apply flex justify-start items-center gap-[7px];
 }
 .mainHeader__menu{
   @apply flex justify-center items-center;
