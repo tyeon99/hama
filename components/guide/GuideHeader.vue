@@ -3,7 +3,7 @@
   <div class="guideHeader">
     <div class="guideHeader__title">
       <!-- 한국경제 로고 -->
-      <img width="76" src="~/assets/img/common/hankyung-logo02.png" alt="한국경제 로고">
+      <img width="76" src="~/assets/img/common/LO090D9A02.png" alt="한국경제 로고">
       <!-- // -->
       <img width="18" src="~/assets/img/common/logo-x01.png" alt="X">
       <svg xmlns="http://www.w3.org/2000/svg" width="80" height="19" viewBox="0 0 80 19" fill="none">

@@ -15,7 +15,7 @@
     <div class="partnerContent__bottom">
       <div class="btn-group">
         <button>
-          <img width="96" src="~/assets/img/common/hankyung-logo01.png">
+          <img width="96" src="~/assets/img/common/LO090D9A01.png">
           <span :class="zoomClass">종합 경제 미디어 <br />한국경제</span>
         </button>
         <button>

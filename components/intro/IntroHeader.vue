@@ -3,7 +3,7 @@
   <div class="introHeader">
     <div class="introHeader__title">
       <!-- 한국경제 로고 -->
-      <img width="76" src="~/assets/img/common/hankyung-logo01.png" alt="한국경제 로고">
+      <img width="76" src="~/assets/img/common/LO090D9A01.png" alt="한국경제 로고">
       <!-- // -->
       <img width="18" src="~/assets/img/common/logo-x01.png" alt="X">
       <!-- 하마터면 로고 -->
