@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
     <TopLineAlarm class="alarm01">
-      <p>[제휴사] 고객님을 위한 특별한 혜택! <span>지금 바로 1개월 무료</span></p>
+      <p>더치트 프리미엄 회원 전용 혜택 안심플러스 <span>1개월 무료 체험 제공</span></p>
     </TopLineAlarm>
     <div class="container">
       <PromotionTop01 />

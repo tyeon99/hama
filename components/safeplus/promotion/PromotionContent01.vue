@@ -1,7 +1,10 @@
 <template>
   <div class="PromotionContent">
-    <div class="content-img">
-      <img width="315" src="~/assets/img/safeplus/promotion/content-img01.png">
+    <div class="content-box">
+      <p>누구에게나 일어날 수 <br />있는 <strong>피싱피해!</strong></p>
+      <span>
+        예방 체험과 피해 발생 시<br />최대 500만원 보상 혜택으로<br />대비 하세요!
+      </span>
     </div>
     <div class="point-group">
       <div class="point">
@@ -10,7 +13,7 @@
         </div>
         <div class="right">
           <span>POINT 01</span>
-          <strong>유료전용 보이스피싱 AI체험</strong>
+          <strong>최신 보이스피싱 AI체험</strong>
           <p>최신 피싱 수법을 가장 먼저 체험하고 예방할 수 있습니다.</p>
         </div>
       </div>
@@ -30,7 +33,12 @@
         이 모든 든든함을 <br />
         지금 <span>'0원'</span>으로 누리세요
       </p>
-      <button>안심플러스 1개월 무료체험</button>
+      <button>1개월 무료 혜택 받기</button>
+    </div>
+    <div class="guide">
+      보상은 서비스 약관 및 보험 보장 조건에 따라 적용 됩니다.<br /> 
+      보이스피싱, 파밍, 스미싱, 메모리해킹 등 사이버금융범죄 피해에만 적용되며, <br />
+      일부 피해 유형은 보상 대상에서 제외될 수 있습니다. 
     </div>
   </div>
 </template>
@@ -43,10 +51,19 @@ export default {
 
 <style scoped>
 .PromotionContent{
-  @apply relative w-full pt-[185px] px-[20px] pb-[40px] bg-[#fff];
+  @apply relative w-full pt-[20px] px-[20px] pb-[25px] bg-[#fff];
 }
-.content-img{
-  @apply w-[315px] absolute top-[35px] left-[50%] translate-x-[-50%] z-0;
+.content-box{
+  @apply w-full mb-5 rounded-[12px] bg-[#F1E7D9] p-[16px_20px] bg-right bg-[url(https://img.thinkpool.com/hama/img/safeplus/promotion/con-bg01.png)] bg-contain bg-no-repeat;
+}
+.content-box p{
+  @apply mb-[9px] font-bold text-[18px] leading-[24px] text-[#000000];
+}
+.content-box p strong{
+  @apply text-[#983F0C];
+}
+.content-box span{
+  @apply block w-[160px] font-medium text-[14px] leading-[18px] tracking-[-3%] text-[#4D382C];
 }
 .point-group{
   @apply relative z-[1] w-full flex flex-col justify-center items-center gap-[12px] mb-[25px];
@@ -70,7 +87,7 @@ export default {
   @apply font-medium text-[14px] leading-[18px] tracking-[-3%] text-[#4D382C];
 }
 .go-experience{
-  @apply w-full flex flex-col justify-center items-center gap-[18px];
+  @apply w-full flex flex-col justify-center items-center gap-[18px] mb-[16px];
 }
 .go-experience p{
   @apply font-bold text-[18px] leading-[24px] text-[#121212] text-center;
@@ -80,5 +97,8 @@ export default {
 }
 .go-experience button{
   @apply w-full rounded-[100px] p-[12px_20px] bg-[#ED7127] font-bold text-[18px] leading-[24px] text-[#FFFFFF];
+}
+.guide{
+  @apply font-normal text-[11px] leading-[15px] tracking-[-3%] text-[#666666] text-center;
 }
 </style>
