@@ -38,6 +38,10 @@ export default {
       {
         src: 'https://fastly.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js',
         defer: true
+      },
+      {
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js',
+        defer: true
       }
     ]
   },
