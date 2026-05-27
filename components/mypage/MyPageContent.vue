@@ -53,6 +53,63 @@
         </div>
       </div>
 
+      <!-- 피싱 예방 체험 진행률 -->
+      <div class="box-group">
+        <div class="title"><p :class="zoomClass">피싱 예방 체험 진행률</p></div>
+        <div class="box">
+          <div class="progress-group">
+            <div class="progress">
+              <svg class="svg-donut" viewBox="0 0 120 120">
+                <circle 
+                  class="base-circle" 
+                  cx="60" cy="60" 
+                  :r="circleRadius"
+                  stroke-width="10" 
+                  fill="none"
+                  stroke="#ECECEC"
+                />
+                <circle 
+                  class="progress-bar" 
+                  :class="{ 'complete': completedCount === totalCount }"
+                  cx="60" cy="60" 
+                  :r="circleRadius"
+                  stroke-width="10" 
+                  fill="none" 
+                  stroke-linecap="round"
+                  :stroke-dasharray="circleCircumference"
+                  :stroke-dashoffset="strokeDashoffset"
+                  transform="rotate(-90 60 60)" 
+                />
+              </svg>
+              <div class="inner-circle">
+                <strong>{{ Math.round(progressPercent) }}%</strong>
+                <p>
+                  <span :class="{ 'complete': completedCount === totalCount }">
+                    {{ completedCount }}
+                  </span> 
+                  / {{ totalCount }}
+                </p>
+              </div>
+            </div>
+            <div class="txt">
+              <p>전체 {{ totalCount }}개 중</p>
+              <span>{{ completedCount }}개 완료</span>
+              <strong :class="{ 'complete': completedCount === totalCount }">
+                {{ completedCount === totalCount ? '수료 기준 달성!' : `${totalCount - completedCount}개 남음` }}
+              </strong>
+            </div>
+          </div>
+          
+          <button 
+            class="certificate-btn"
+            :class="{ 'complete': completedCount === totalCount }"
+            :disabled="completedCount !== totalCount"
+          >
+            {{ completedCount === totalCount ? '수료증 발급받기' : '30개 체험을 완료하면 수료증이 발급됩니다.' }}
+          </button>
+        </div>
+      </div>
+
       <!-- 결제 히스토리 -->
       <div class="box-group">
         <div class="title"><p :class="zoomClass">결제 히스토리</p></div>
@@ -161,7 +218,12 @@ export default {
         loadingBtnTxt: '',
         finishTitle: '',
         finishTxt: ''
-      }
+      },
+      // 진행률 개수
+      totalCount: 30,
+      completedCount: 22,
+      // 도넛 svg
+      circleRadius: 50
     }
   },
   computed: {
@@ -176,6 +238,18 @@ export default {
       if (this.fontSizePercent === 80) return 'zoom-08'
       if (this.fontSizePercent === 70) return 'zoom-07'
       return ''
+    },
+    // 진행률 퍼센트 계산
+    progressPercent() {
+      return (this.completedCount / this.totalCount) * 100;
+    },
+    // 도넛 svg
+    circleCircumference() {
+      return 2 * Math.PI * this.circleRadius;
+    },
+    strokeDashoffset() {
+      const progress = this.completedCount / this.totalCount;
+      return this.circleCircumference * (1 - progress);
     }
   },
   methods: {
@@ -333,5 +407,60 @@ export default {
 }
 .delete-account button{
   @apply font-bold text-[16px] leading-[19px] text-[#6B6D95];
+}
+.progress-group{
+  @apply w-full flex gap-14 justify-center items-center mb-5;
+}
+.progress {
+  @apply relative w-[120px] h-[120px] flex justify-center items-center flex-shrink-0;
+}
+.progress .svg-donut {
+  @apply absolute top-0 left-0 w-full h-full;
+}
+.progress .progress-bar {
+  @apply stroke-[#7139FF];
+  transition: stroke-dashoffset 0.5s ease-in-out;
+}
+.progress .progress-bar.complete{
+  @apply stroke-[#D657EF];
+}
+.progress .inner-circle {
+  @apply w-[74px] h-[74px] rounded-full flex flex-col justify-center items-center z-[1];
+}
+.progress strong {
+  @apply font-bold text-[24px] leading-[31px] text-[#333333] mb-[1px];
+}
+.progress p {
+  @apply font-normal text-[12px] leading-[18px] text-[#666666];
+}
+.progress p span {
+  @apply text-[#7139FF] font-bold;
+}
+.progress p span.complete{
+  @apply text-[#D657EF];
+} 
+.progress-group .txt{
+  @apply flex flex-col justify-start items-start;
+}
+.progress-group .txt p{
+  @apply mb-4 font-medium text-[16px] leading-[19px] text-[#6B6D95];
+}
+.progress-group .txt span{
+  @apply mb-[10px] font-bold text-[14px] leading-[17px] text-[#6F75F2];
+}
+.progress-group .txt span.complete{
+  @apply text-[#D657EF];
+}
+.progress-group .txt strong{
+  @apply font-medium text-[14px] leading-[17px] text-[#6B6D95];
+}
+.progress-group .txt strong.complete{
+  @apply font-bold text-[#7139FF];
+}
+.certificate-btn{
+  @apply w-full h-[44px] rounded-[10px] bg-[#5D5D8F] font-bold text-[14px] leading-[17px] text-[#fff];
+}
+.certificate-btn.complete{
+  @apply bg-[#7139FF];
 }
 </style>
