@@ -80,7 +80,7 @@ body{
 .introLoading .logo-box{
   display: flex;
   justify-content: center;
-  aligin-items: center;
+  align-items: center;
   gap: 7px;
   position: absolute;
   top: 50%;
@@ -92,6 +92,9 @@ body{
   top: 20px;
   left: 16px; 
   transform: translate(0, 0) scale(1);
+}
+.introLoading .logo-box svg{
+  @apply shrink-0;
 }
 
 /* swiper css */
