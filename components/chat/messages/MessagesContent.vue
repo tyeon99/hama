@@ -162,8 +162,6 @@ export default {
           typingText: ''
         }
       ],
-      currentTypingIndex: 0,
-      typingInterval: null,
       showMessage01: false, // 생략
       showMessage02: false, // 생략
       showMessage03: false, // 생략
@@ -209,62 +207,34 @@ export default {
     scrollToBottom() {
       this.$nextTick(() => {
         const chatContent = this.$refs.chatContent
-        chatContent.scrollTo({
-          top: chatContent.scrollHeight,
-          behavior: 'smooth'
-        })
+        if (chatContent) {
+          chatContent.scrollTo({
+            top: chatContent.scrollHeight,
+            behavior: 'smooth'
+          })
+        }
       })
     },
-    // ai채팅 타이핑
-    startTyping() {
-      this.typeNextMessage(this.currentTypingIndex)
+    // 딜레이용 헬퍼 함수 (ms 단위)
+    delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms))
     },
-    async typeNextMessage(index) {
-      if (index >= this.aiMessages.length) {
-        this.showMessages() // 생략 (나머지 메세지들 보여주기용입니다)
-        return
+    // AI 채팅 순차 노출 (타이핑 없이 말풍선 단위로 1초 간격 출력)
+    async startTyping() {
+      for (let i = 0; i < this.aiMessages.length; i++) {
+        this.aiMessages[i].typingText = this.aiMessages[i].fullText
+        this.scrollToBottom()
+
+        // 다음 말풍선 출력 전 1초 대기 (속도 조절하려면 1000 숫자를 고치면 돼!)
+        if (i < this.aiMessages.length - 1) {
+          await this.delay(1000)
+        }
       }
 
-      const message = this.aiMessages[index]
-      message.typingText = ''
-
-      // 태그 분리 후 타이핑
-      const regex = /<\/?[^>]+>|[^<>]+/g
-      const parts = message.fullText.match(regex) || []
-
-      let partIndex = 0
-      let charIndex = 0
-
-      await new Promise((resolve) => {
-        this.typingInterval = setInterval(() => {
-          if (partIndex < parts.length) {
-            const part = parts[partIndex]
-            if (part.startsWith('<')) {
-              message.typingText += part
-              partIndex++
-              charIndex = 0
-            } else if (charIndex < part.length) {
-              message.typingText += part[charIndex++]
-            } else {
-              partIndex++
-              charIndex = 0
-            }
-            this.scrollToBottom()
-          } else {
-            clearInterval(this.typingInterval)
-            this.scrollToBottom()
-
-            // 1초 대기 후 resolve
-            setTimeout(resolve, 1000)
-          }
-        }, 105)
-      })
-
-      // 다음 메시지로 이동 (타이핑이 완전히 끝난 후)
-      this.currentTypingIndex++
-      await this.typeNextMessage(this.currentTypingIndex)
+      this.showMessages()
     },
-    // 이미지 열고 닫기기
+
+    // 이미지 열고 닫기
     openChatImgModal(src) {
       this.modalImgSrc = src
       this.isModalAni = 'animate__zoomIn'
@@ -279,7 +249,7 @@ export default {
       }, 300)
     },
 
-    // 링크 열고 닫기기
+    // 링크 열고 닫기
     openChatLinkModal(src) {
       this.modalLinkSrc = src
       this.isModalAni = 'animate__zoomIn'
@@ -296,6 +266,7 @@ export default {
     chatLinkClick() {
       this.$nextTick(() => {
         const chatContent = this.$refs.chatContent
+        if (!chatContent) return
         chatContent.addEventListener('click', (event) => {
           if (event.target.classList.contains('chatLink')) {
             const link = event.target.dataset.link
@@ -328,7 +299,9 @@ export default {
     closeChatChoiceOffcanvas () {
       this.isOffcanvasAni = false
       this.openChoiceChatPadding = '166px'
-      this.$refs.chatContent.style.paddingBottom = this.openChoiceChatPadding
+      if (this.$refs.chatContent) {
+        this.$refs.chatContent.style.paddingBottom = this.openChoiceChatPadding
+      }
       this.scrollToBottom()
       setTimeout(() => {
         this.isChatChoiceOffcanvasOpen = false
@@ -338,7 +311,9 @@ export default {
       const extraPadding = 20
       const total = height + extraPadding
       this.openChoiceChatPadding = `${total}px`
-      this.$refs.chatContent.style.paddingBottom = this.openChoiceChatPadding
+      if (this.$refs.chatContent) {
+        this.$refs.chatContent.style.paddingBottom = this.openChoiceChatPadding
+      }
       this.scrollToBottom()
     },
 
@@ -346,12 +321,16 @@ export default {
     openChatKeypadOffcanvas () {
       this.isOffcanvasAni = true
       this.isChatKeypadOffcanvasOpen = true
-      this.$refs.chatContent.style.paddingBottom = '305px'
+      if (this.$refs.chatContent) {
+        this.$refs.chatContent.style.paddingBottom = '305px'
+      }
       this.scrollToBottom()
     },
     closeChatKeypadOffcanvas () {
       this.isOffcanvasAni = false
-      this.$refs.chatContent.style.paddingBottom = '166px'
+      if (this.$refs.chatContent) {
+        this.$refs.chatContent.style.paddingBottom = '166px'
+      }
       this.scrollToBottom()
       setTimeout(() => {
         this.isChatKeypadOffcanvasOpen = false

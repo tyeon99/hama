@@ -163,8 +163,6 @@ export default {
           typingText: ''
         }
       ],
-      currentTypingIndex: 0,
-      typingInterval: null,
       showMessage01: false, // 생략
       showMessage02: false, // 생략
       showMessage03: false, // 생략
@@ -210,62 +208,37 @@ export default {
     scrollToBottom() {
       this.$nextTick(() => {
         const chatContent = this.$refs.chatContent
-        chatContent.scrollTo({
-          top: chatContent.scrollHeight,
-          behavior: 'smooth'
-        })
+        if (chatContent) {
+          chatContent.scrollTo({
+            top: chatContent.scrollHeight,
+            behavior: 'smooth'
+          })
+        }
       })
     },
-    // ai채팅 타이핑
-    startTyping() {
-      this.typeNextMessage(this.currentTypingIndex)
-    },
-    async typeNextMessage(index) {
-      if (index >= this.aiMessages.length) {
-        this.showMessages() // 생략 (나머지 메세지들 보여주기용입니다)
-        return
+    // ai채팅 한 번에 출력하도록 정리
+    async startTyping() {
+      for (let i = 0; i < this.aiMessages.length; i++) {
+        // 해당 순서의 메시지 텍스트를 한 번에 꽂아줌
+        this.aiMessages[i].typingText = this.aiMessages[i].fullText
+        this.scrollToBottom()
+
+        // 마지막 메시지가 아니라면 다음 메시지 나오기 전에 1초(1000ms) 대기
+        if (i < this.aiMessages.length - 1) {
+          await this.delay(1000) // 대기 시간 조절하고 싶으면 이 숫자를 수정 (예: 800 = 0.8초)
+        }
       }
 
-      const message = this.aiMessages[index]
-      message.typingText = ''
+      // AI 메시지가 다 나온 후 하단 테스트용 메시지들 순차 노출
+      this.showMessages()
+  },
 
-      // 태그 분리 후 타이핑
-      const regex = /<\/?[^>]+>|[^<>]+/g
-      const parts = message.fullText.match(regex) || []
-
-      let partIndex = 0
-      let charIndex = 0
-
-      await new Promise((resolve) => {
-        this.typingInterval = setInterval(() => {
-          if (partIndex < parts.length) {
-            const part = parts[partIndex]
-            if (part.startsWith('<')) {
-              message.typingText += part
-              partIndex++
-              charIndex = 0
-            } else if (charIndex < part.length) {
-              message.typingText += part[charIndex++]
-            } else {
-              partIndex++
-              charIndex = 0
-            }
-            this.scrollToBottom()
-          } else {
-            clearInterval(this.typingInterval)
-            this.scrollToBottom()
-
-            // 1초 대기 후 resolve
-            setTimeout(resolve, 1000)
-          }
-        }, 105)
-      })
-
-      // 다음 메시지로 이동 (타이핑이 완전히 끝난 후)
-      this.currentTypingIndex++
-      await this.typeNextMessage(this.currentTypingIndex)
+    // 딜레이용 헬퍼 함수
+    delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms))
     },
-    // 이미지 열고 닫기기
+
+    // 이미지 열고 닫기
     openChatImgModal(src) {
       this.modalImgSrc = src
       this.isModalAni = 'animate__zoomIn'
@@ -280,7 +253,7 @@ export default {
       }, 300)
     },
 
-    // 링크 열고 닫기기
+    // 링크 열고 닫기
     openChatLinkModal(src) {
       this.modalLinkSrc = src
       this.isModalAni = 'animate__zoomIn'
@@ -297,6 +270,7 @@ export default {
     chatLinkClick() {
       this.$nextTick(() => {
         const chatContent = this.$refs.chatContent
+        if (!chatContent) return
         chatContent.addEventListener('click', (event) => {
           if (event.target.classList.contains('chatLink')) {
             const link = event.target.dataset.link
